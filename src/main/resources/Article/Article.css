@@ -1,0 +1,21 @@
+.white-bg{
+    -fx-background-color: #fff;
+}
+.radius{
+    -fx-background-radius: 8px;
+}
+.shodow{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 5,0,0,0);
+}
+.transparent{
+    -fx-background-color: transparent;
+}
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+.btn{
+    -fx-background-color: linear-gradient(to bottom right, #284e8f, #04157c);
+    -fx-cursor: hand ;
+    -fx-text-fill: #ffff    ;
+    -fx-font-size: 14px;
+}

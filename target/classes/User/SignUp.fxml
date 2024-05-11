@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.User.SignUp">
+   <right>
+      <AnchorPane prefHeight="600.0" prefWidth="418.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="600.0" fitWidth="377.0" layoutX="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/User/image/Untitled.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </right>
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="517.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="207.0" layoutY="18.0" prefHeight="50.0" prefWidth="70.0" styleClass="title-signup" stylesheets="@/User/style.css" text="SignUp">
+               <font>
+                  <Font size="44.0" />
+               </font>
+            </Label>
+            <TextField fx:id="UserEmail" layoutX="126.0" layoutY="109.0" prefHeight="30.0" prefWidth="217.0" promptText="Email" style="-fx-background-radius: #0598ff;" styleClass="TextField" stylesheets="@/User/style.css" />
+            <PasswordField fx:id="Password" layoutX="125.0" layoutY="178.0" prefHeight="30.0" prefWidth="217.0" promptText="Password" style="-fx-background-position: #0598ff;" styleClass="TextField" stylesheets="@/User/style.css" />
+            <PasswordField fx:id="ConfirmPassword" layoutX="125.0" layoutY="246.0" prefHeight="30.0" prefWidth="217.0" promptText="ConfirmPassword" style="-fx-border-radius: #0598ff;" styleClass="TextField" stylesheets="@/User/style.css" />
+            <Hyperlink fx:id="Haveaccount" layoutX="282.0" layoutY="71.0" onAction="#linkHaveAccount_OnClick" prefHeight="24.0" prefWidth="46.0" text="Login" />
+            <Button fx:id="SaveButton" layoutX="185.0" layoutY="513.0" mnemonicParsing="false" onAction="#SubmitButton_OnClick" prefHeight="31.0" prefWidth="75.0" style="-fx-background-radius: 60;" stylesheets="@/User/style.css" text="Submit" />
+            <Label fx:id="noValid" disable="true" layoutX="128.0" layoutY="152.0" prefHeight="18.0" prefWidth="216.0" textFill="#e16623" />
+            <Label fx:id="noValid1" disable="true" layoutX="131.0" layoutY="291.0" prefHeight="18.0" prefWidth="205.0" style="-fx-background-radius: 50;" textFill="#fc2020" />
+            <DatePicker fx:id="dateCreation" layoutX="126.0" layoutY="314.0" prefHeight="30.0" prefWidth="217.0" promptText="Date of creation" style="-fx-border-radius: #0598ff;" styleClass="TextField" stylesheets="@/User/style.css" />
+            <ComboBox fx:id="roleCombo" layoutX="138.0" layoutY="459.0" prefHeight="26.0" prefWidth="203.0" promptText="role" style="-fx-background-radius: 60;" />
+            <TextField fx:id="NumTel" layoutX="127.0" layoutY="381.0" prefHeight="30.0" prefWidth="217.0" promptText="NumTel" style="-fx-border-radius: #0598ff;" styleClass="TextField" stylesheets="@/User/style.css" />
+            <Label layoutX="165.0" layoutY="74.0" text="Have Already account" />
+            <ImageView fx:id="imageClosewindow" fitHeight="22.0" fitWidth="25.0" layoutX="479.0" layoutY="21.0" onMouseClicked="#CloseWindow_OnClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/User/image/icons8-close-window-16.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="novalid2" disable="true" layoutX="341.0" layoutY="519.0" prefHeight="18.0" prefWidth="160.0" textFill="#dc3019" />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

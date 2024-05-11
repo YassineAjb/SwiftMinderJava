@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+
+<HBox prefHeight="92.0" prefWidth="980.0" spacing="40.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Election.Election.ELectionItemController">
+    <children>
+      <HBox maxHeight="74.0" maxWidth="47.0" prefHeight="47.0" prefWidth="38.0">
+         <children>
+              <ImageView fx:id="imgItem" fitHeight="74.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@/Election/images/vote12.png" />
+                  </image>
+              </ImageView>
+         </children>
+      </HBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <HBox prefHeight="74.0" prefWidth="203.0">
+         <children>
+              <Label fx:id="nomItem" prefHeight="21.0" prefWidth="196.0" text="nomElection" />
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+              <Label fx:id="posteItem" prefHeight="21.0" prefWidth="204.0" text="posteElection" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+              <Label fx:id="dateItem" prefHeight="21.0" prefWidth="196.0" text="dateElection">
+               <padding>
+                  <Insets top="1.0" />
+               </padding>
+              </Label>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+              <Label fx:id="periodeItem" prefHeight="21.0" prefWidth="236.0" text="periodeElection" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="40.0" top="10.0" />
+    </padding>
+</HBox>

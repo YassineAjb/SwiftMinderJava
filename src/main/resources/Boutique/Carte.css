@@ -1,0 +1,27 @@
+/* Style du GridPane */
+.grid-pane {
+    -fx-hgap: 20; /* Espacement horizontal entre les cellules */
+    -fx-vgap: 10; /* Espacement vertical entre les cellules */
+    ;
+
+}
+
+
+/* Style des cellules */
+.grid-cell {
+    -fx-background-color: #284e8f; /* Couleur de fond des cellules */
+    -fx-padding: 20; /* Marge intérieure des cellules */
+    -fx-content-display: inline;
+}
+
+/* Style des cellules lorsqu'elles sont survolées */
+.grid-cell:hover {
+    -fx-background-color: #ff0202; /* Couleur de fond des cellules au survol */
+}
+
+/* Style des labels à l'intérieur des cellules */
+.grid-label {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+

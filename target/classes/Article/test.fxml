@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Article.ArticleControllors">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="22.0" layoutY="17.0" prefHeight="542.0" prefWidth="236.0" style="-fx-background-color: #FFFFFF;">
+            <children>
+                <Label layoutX="26.0" layoutY="10.0">
+                    <font>
+                        <Font name="Arial Bold Italic" size="29.0" />
+                    </font>
+                </Label>
+                <Label text="SWIFTMINDER">
+                    <VBox.margin>
+                        <Insets bottom="20.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="Arial Bold Italic" size="29.0" />
+                    </font>
+                </Label>
+                <Label layoutX="26.0" layoutY="10.0">
+                    <font>
+                        <Font name="Arial Bold Italic" size="29.0" />
+                    </font>
+                </Label>
+                <Label layoutX="26.0" layoutY="63.0">
+                    <font>
+                        <Font name="Arial Bold Italic" size="29.0" />
+                    </font>
+                </Label>
+                <Button fx:id="btnAcceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false"  prefHeight="42.0" prefWidth="259.0" stylesheets="@/Article/style.css" text="Acceuil" textFill="#e7e5e5">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/Article/images/icons8_Home_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btncalendrier" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false"  prefHeight="42.0" prefWidth="259.0" stylesheets="@/Article/style.css" text="Calendrier">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/Article/images/icons8_Open_Envelope_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnReservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Article/style.css" text="Reservation">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/Article/images/icons8_Slider__32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnJoueurs" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false"  prefHeight="42.0" prefWidth="259.0" stylesheets="@/Article/style.css" text="Joueurs">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/Article/images/icons8_Person_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnStaff" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false"  prefHeight="42.0" prefWidth="259.0" stylesheets="@/Article/style.css" text="Staff">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/Article/images/icons8_Xbox_Menu_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnBoutique" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Article/style.css" text="Boutique">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/Article/images/icons8_Box_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSettings1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="384.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Article/style.css" text="Election">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/Article/images/icons8_Slider__32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="273.0" style="-fx-background-color: #FFFFF;" stylesheets="@/Article/style.css" text="Sign Out">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/Article/images/icons8_Sign_Out_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+            </children>
+        </VBox>
+        <Pane fx:id="img" layoutX="116.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="926.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="-42.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="32.0" nodeOrientation="RIGHT_TO_LEFT" text="Ajouter Article">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="titre" layoutX="279.0" layoutY="129.0" stylesheets="@/Article/Article.css">
+               <styleClass>
+                  <String fx:value="scroll-bar" />
+                  <String fx:value="white-bg" />
+                  <String fx:value="shodow" />
+                  <String fx:value="radius" />
+               </styleClass></TextField>
+                <Label layoutX="328.0" layoutY="103.0" text="Titre">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <VBox layoutX="596.0" layoutY="243.0" style="-fx-border-color: black;">
+               <children>
+                  <ImageView fitHeight="102.0" fitWidth="165.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <Text layoutX="308.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="596.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TextArea fx:id="description" layoutX="249.0" layoutY="259.0" prefHeight="88.0" prefWidth="268.0" stylesheets="@/Article/Article.css">
+               <styleClass>
+                  <String fx:value="radius" />
+                  <String fx:value="shodow" />
+                  <String fx:value="white-bg" />
+               </styleClass></TextArea>
+            <Button fx:id="btnimporter" layoutX="643.0" layoutY="359.0" mnemonicParsing="false" styleClass="btn" stylesheets="@/Article/Article.css" text="Importer" />
+            <Button fx:id="btnsupprimer" layoutX="526.0" layoutY="359.0" mnemonicParsing="false" styleClass="btn" stylesheets="@/Article/Article.css" text="Supprimer" />
+            <Button fx:id="btnmodifier" layoutX="430.0" layoutY="359.0" mnemonicParsing="false" onAction="#modifierArticle" styleClass="btn" stylesheets="@/Article/Article.css" text="Modifer" />
+            <Button fx:id="btnajouter" layoutX="346.0" layoutY="359.0" mnemonicParsing="false" onAction="#ajouterArticle" styleClass="btn" stylesheets="@/Article/Article.css" text="Ajouter" />
+            <TextField fx:id="idJourNaliste" layoutX="494.0" layoutY="129.0" stylesheets="@/Article/Article.css">
+               <styleClass>
+                  <String fx:value="shodow" />
+                  <String fx:value="white-bg" />
+                  <String fx:value="radius" />
+               </styleClass></TextField>
+            <Label layoutX="494.0" layoutY="106.0" text="Idjournaliste">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+                <Pane xmlns:fx="http://javafx.com/fxml" />
+                  <ScrollPane fx:id="fetchScrollPane" layoutX="120.0" layoutY="428.0" prefHeight="207.0" prefWidth="620.0">
+                      <content>
+                          <VBox minHeight="0.0" minWidth="0.0" prefHeight="199.0" prefWidth="642.0" />
+                      </content>
+                  </ScrollPane>
+            </children>
+        </Pane>
+      <Pane prefHeight="800.0" prefWidth="298.0" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,9 @@
+.column-header {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 5px;
+}
+
+.column-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}

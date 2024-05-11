@@ -1,0 +1,67 @@
+.white-bg{
+    -fx-background-color: #fff;
+}
+.radius{
+    -fx-background-radius: 8px;
+}
+.shodow{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 5,0,0,0);
+}
+.transparent{
+    -fx-background-color: transparent;
+}
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+.btn{
+    -fx-background-color: linear-gradient(to bottom right, #284e8f, #04157c);
+    -fx-cursor: hand ;
+    -fx-text-fill: #ffff    ;
+    -fx-font-size: 14px;
+}
+/* Style pour ComboBox */
+.combobox {
+    -fx-background-color: #284e8f; /* Couleur de fond */
+    -fx-border-color: #04157c; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 3px; /* Rayon de la bordure */
+    -fx-pref-width: 200px; /* Largeur préférée */
+    -fx-pref-height: 30px; /* Hauteur préférée */
+}
+
+.combobox .arrow-button {
+    -fx-background-color: #cccccc; /* Couleur du bouton de défilement */
+}
+
+.combobox .list-cell {
+    -fx-background-color: #ffffff; /* Couleur de fond des cellules de la liste déroulante */
+}
+
+.combobox .list-cell:hover {
+    -fx-background-color: #e6e6e6; /* Couleur de fond des cellules de la liste déroulante au survol */
+}
+
+
+/* Style pour les éléments de la liste déroulante */
+.combo-box .list-cell {
+    -fx-padding: 5px 10px; /* Espacement intérieur */
+}
+
+/* Style pour la flèche du ComboBox */
+.combo-box .arrow-button {
+    -fx-background-color: #ffffff; /* Couleur de fond */
+    -fx-padding: 8px; /* Espacement intérieur */
+}
+
+/* Style pour l'effet de survol */
+.combo-box:hover {
+    -fx-background-color: #f8f9fa; /* Couleur de fond au survol */
+}
+.list-view .list-cell {
+    -fx-font-family: "Arial"; /* Police de caractères */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: linear-gradient(to bottom right, #284e8f, #04157c)
+}
+.centered-label {
+    -fx-alignment: center;
+}

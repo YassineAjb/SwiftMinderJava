@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@/User/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.User.Login">
+   <right>
+      <AnchorPane prefHeight="600.0" prefWidth="540.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="user_email" layoutX="177.0" layoutY="236.0" prefHeight="36.0" prefWidth="230.0" promptText="Email" style="-fx-background-color: #ffffff; -fx-border-color: #0598ff;" styleClass="TextField" stylesheets="@/User/style.css" />
+            <PasswordField fx:id="user_password" layoutX="177.0" layoutY="316.0" prefHeight="36.0" prefWidth="228.0" promptText="Password" style="-fx-border-color: #0598ff;" styleClass="TextField" stylesheets="@/User/style.css" />
+            <TextField fx:id="passwordTextfield" editable="false" layoutX="75.0" layoutY="217.0" prefHeight="26.0" prefWidth="204.0" visible="false" />
+            <Button fx:id="button_Sign_In" layoutX="233.0" layoutY="428.0" mnemonicParsing="false" onAction="#Sign_In_OnClick" prefHeight="44.0" prefWidth="119.0" text="SIGN IN" textFill="#454c4d">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <stylesheets>
+                  <URL value="@/User/style.css" />
+                  <URL value="@/User/crud.css" />
+               </stylesheets></Button>
+            <ImageView fitHeight="58.0" fitWidth="72.0" layoutX="246.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/User/image/icons8-user-50.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="234.0" layoutY="99.0" prefHeight="22.0" prefWidth="98.0" text="User Login">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="20.0" />
+               </font></Label>
+            <Hyperlink fx:id="LinkForgotPassword" layoutX="287.0" layoutY="360.0" onAction="#ForgotPassword" prefHeight="25.0" prefWidth="146.0" text="Forgot password ?">
+               <font>
+                  <Font name="Bell MT" size="15.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fitHeight="21.0" fitWidth="27.0" layoutX="131.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/User/image/icons8-lock-50 (1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="129.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/User/image/icons8-user-30 (1).png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="CloseWindow" fitHeight="30.0" fitWidth="26.0" layoutX="495.0" layoutY="14.0" onMouseClicked="#closeWindow" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/User/image/icons8-close-window-40.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="messageError" layoutX="180.0" layoutY="514.0" prefHeight="38.0" prefWidth="237.0" />
+            <CheckBox fx:id="showpassword" layoutX="374.0" layoutY="321.0" mnemonicParsing="false" onAction="#changeVisbility" prefHeight="27.0" prefWidth="27.0" />
+            <Hyperlink fx:id="linkSignUp" layoutX="248.0" layoutY="123.0" onAction="#linkSignUp_OnClick" prefHeight="24.0" prefWidth="67.0" text="SignUp">
+               <font>
+                  <Font size="17.0" />
+               </font></Hyperlink>
+         </children>
+      </AnchorPane>
+   </right>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="600.0" fitWidth="374.0" layoutX="-3.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/User/image/Untitled.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
