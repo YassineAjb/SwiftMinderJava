@@ -26,9 +26,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="f2779556-ee66-4cfb-853f-0a2ec6ce0c05" />
-  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -181,7 +178,7 @@
       <workItem from="1714929168997" duration="306000" />
       <workItem from="1714993394716" duration="683000" />
       <workItem from="1715447042237" duration="916000" />
-      <workItem from="1715447974199" duration="19203000" />
+      <workItem from="1715447974199" duration="21634000" />
     </task>
     <servers />
   </component>

@@ -11,6 +11,7 @@ import org.example.models.Boutique.Produit;
 import org.example.services.Boutique.ServiceCommande;
 import org.example.services.Boutique.ServiceProduit;
 
+import java.io.File;
 import java.sql.SQLException;
 
 public class Carte {
@@ -48,7 +49,9 @@ public class Carte {
         this.prod = prod;
         Produit.setText(prod.getNomProduit());
         Prix.setText(String.valueOf(prod.getPrixProduit()));
-        image = new Image(prod.getImage(), 190, 94, false, true);
+        String absolutePath = "C:/xampp/htdocs/Images/Produits/"+prod.getImage();
+        File file = new File(absolutePath);
+        image = new Image(file.toURI().toString(), 190, 94, false, true);
         Image.setImage(image);
         ObservableList<String> tailleOptions = FXCollections.observableArrayList("S", "M", "L", "XL", "UNI");
         Taille.setItems(tailleOptions);

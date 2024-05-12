@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.example.models.Employe.Joueur;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -44,7 +45,9 @@ public class JoueurRowController {
         JoueurNom.setText(joueur.getNom());
         JoueurNom.setWrapText(true);
         JoueurPrenom.setText(joueur.getPrenom());
-        Image image = new Image("/Employee/images/"+joueur.getImagePath());
+        String absolutePath = "C:/xampp/htdocs/Images/Joueurs/"+joueur.getImagePath();
+        File file = new File(absolutePath);
+        Image image = new Image(file.toURI().toString());
         JoueurImg.setImage(image);
         JoueurDetails.setText("Plus de details");
         JoueurDetails.setOnAction(e -> {
