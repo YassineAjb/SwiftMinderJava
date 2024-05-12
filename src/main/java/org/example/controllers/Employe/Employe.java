@@ -166,6 +166,8 @@ public class Employe {
 
     @FXML
     private ImageView importedImageModifier;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private TextField shirtAjout;
@@ -349,6 +351,9 @@ public class Employe {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
     }

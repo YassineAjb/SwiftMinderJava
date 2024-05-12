@@ -23,6 +23,8 @@ public class ELectionItemController implements Initializable {
 
     @FXML
     private Label nomItem;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Label dateItem;
@@ -117,6 +119,9 @@ public class ELectionItemController implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

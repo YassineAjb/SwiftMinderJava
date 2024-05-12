@@ -37,6 +37,8 @@ public class ModifierElectionController {
 
         @FXML
         private TextField nomTF;
+    @FXML
+    private Button btnArticlles;
 
         @FXML
         private TextField periodeTF;
@@ -170,6 +172,9 @@ public class ModifierElectionController {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

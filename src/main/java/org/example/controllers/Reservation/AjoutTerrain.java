@@ -39,6 +39,8 @@ public class AjoutTerrain {
 
     @FXML
     private TextField adresse;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private TextField description;
@@ -124,6 +126,9 @@ public class AjoutTerrain {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

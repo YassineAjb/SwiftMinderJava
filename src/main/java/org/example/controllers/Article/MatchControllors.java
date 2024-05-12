@@ -34,6 +34,8 @@ public class MatchControllors  implements Initializable{
 
     @FXML
     private Button btnsupprimer;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private TextArea description;
@@ -129,6 +131,9 @@ public class MatchControllors  implements Initializable{
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

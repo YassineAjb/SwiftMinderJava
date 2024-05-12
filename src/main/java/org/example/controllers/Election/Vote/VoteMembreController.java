@@ -31,6 +31,8 @@ public class VoteMembreController implements Initializable {
 
     @FXML
     private Button btnAcceuil;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnBoutique;
@@ -98,6 +100,9 @@ public class VoteMembreController implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
 

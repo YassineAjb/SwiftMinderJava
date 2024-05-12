@@ -27,6 +27,8 @@ public class DashboardElection implements Initializable {
     @FXML
     private PieChart pieChart;
     @FXML
+    private Button btnArticlles;
+    @FXML
     private PieChart pieChart2;
 
     @FXML
@@ -76,6 +78,9 @@ public class DashboardElection implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
     }

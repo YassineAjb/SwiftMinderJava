@@ -22,6 +22,8 @@ public class CandidatItemController implements Initializable {
     @FXML
     private ImageView imgItemCandidat;
     @FXML
+    private Button btnArticlles;
+    @FXML
     private Label nomItemCandidat;
     @FXML
     private Label ageItemCandidat;
@@ -114,6 +116,9 @@ public class CandidatItemController implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

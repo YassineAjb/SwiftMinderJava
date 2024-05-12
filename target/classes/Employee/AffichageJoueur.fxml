@@ -21,7 +21,28 @@
       <DropShadow color="#1b1eeb" />
    </effect>
    <children>
-      <VBox id="menuu" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="777.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
+      <VBox layoutX="210.0" layoutY="117.0" prefHeight="924.0" prefWidth="1690.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="652.0" prefWidth="1381.0" VBox.vgrow="SOMETIMES">
+               <children>
+                  <ScrollPane fx:id="JoueurScroll" prefHeight="664.0" prefWidth="1182.0" style="-fx-background-color: transparent;" stylesheets="@style.css">
+                     <content>
+                        <GridPane fx:id="gridJoueurs" prefHeight="1.0" prefWidth="49.0">
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                           </rowConstraints>
+                        </GridPane>
+                     </content>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ScrollPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TextField fx:id="searchAfficher" layoutX="726.0" layoutY="66.0" prefHeight="36.0" prefWidth="669.0" />
+      <VBox id="menuu" alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="777.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
          <children>
             <Label layoutX="26.0" layoutY="10.0">
                <font>
@@ -67,6 +88,18 @@
                </padding>
             </Button>
             <Button fx:id="btnMatch" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Match">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Employee/images/icons8_Open_Envelope_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnArticlles" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="177.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Articles">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -141,7 +174,7 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="273.0" style="-fx-background-color: #FFFFFF;" stylesheets="@/Employee/style.css" text="Sign Out">
+            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="273.0" style="-fx-background-color: #FFFFF;" stylesheets="@/Employee/style.css" text="Sign Out">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -160,26 +193,5 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="210.0" layoutY="117.0" prefHeight="924.0" prefWidth="1690.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="652.0" prefWidth="1381.0" VBox.vgrow="SOMETIMES">
-               <children>
-                  <ScrollPane fx:id="JoueurScroll" prefHeight="664.0" prefWidth="1182.0" style="-fx-background-color: transparent;" stylesheets="@style.css">
-                     <content>
-                        <GridPane fx:id="gridJoueurs" prefHeight="1.0" prefWidth="49.0">
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                           </rowConstraints>
-                        </GridPane>
-                     </content>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </ScrollPane>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <TextField fx:id="searchAfficher" layoutX="726.0" layoutY="66.0" prefHeight="36.0" prefWidth="669.0" />
    </children>
 </AnchorPane>

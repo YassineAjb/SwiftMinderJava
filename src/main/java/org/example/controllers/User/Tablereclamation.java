@@ -26,6 +26,8 @@ import java.util.ResourceBundle;
 public class Tablereclamation implements Initializable {
     @FXML
     private Button btnBoutique;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnContrats;
@@ -76,6 +78,9 @@ public class Tablereclamation implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

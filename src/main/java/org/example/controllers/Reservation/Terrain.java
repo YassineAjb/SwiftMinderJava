@@ -43,6 +43,8 @@ public class Terrain {
 
     @FXML
     private Button btnAcceuil;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnBoutique;
@@ -114,6 +116,9 @@ public class Terrain {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
         }
 

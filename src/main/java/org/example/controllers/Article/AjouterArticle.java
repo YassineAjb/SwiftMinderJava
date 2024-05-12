@@ -40,6 +40,8 @@ public class AjouterArticle {
 
     @FXML
     private Button btnContrats;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnElection;
@@ -152,6 +154,9 @@ public class AjouterArticle {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

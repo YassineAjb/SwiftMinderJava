@@ -50,6 +50,8 @@ import java.util.Optional;
 
         @FXML
         private Button btnMatch;
+        @FXML
+        private Button btnArticlles;
 
         @FXML
         private Button btnReservation;
@@ -202,6 +204,9 @@ import java.util.Optional;
             });
             btnElection.setOnAction(e -> {
                 naviguezVers("/Election/DashbordElection.fxml");
+            });
+            btnArticlles.setOnAction(e -> {
+                naviguezVers("/Article/afficherarticles.fxml");
             });
             btnSignout.setOnAction(e -> {
                 naviguezVers("/User/tablereclamation.fxml");

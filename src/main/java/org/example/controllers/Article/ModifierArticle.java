@@ -32,6 +32,8 @@ public class ModifierArticle {
     private TextField image;
     @FXML
     private TextField idArticle;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnAcceuil;
@@ -165,6 +167,9 @@ public class ModifierArticle {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

@@ -35,6 +35,8 @@ public class ContratController {
     private final ServiceJoueur serviceJoueur = new ServiceJoueur();
     @FXML
     private DateRangePicker ContratDateAjout;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private DateRangePicker ContratDateModifier;
@@ -169,6 +171,9 @@ public class ContratController {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
         recupererGridContrats();

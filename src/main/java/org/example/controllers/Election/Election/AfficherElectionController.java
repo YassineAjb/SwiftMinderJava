@@ -30,6 +30,8 @@ public class AfficherElectionController implements Initializable{
 
     @FXML
     private ListView<Election> listViewE;
+    @FXML
+    private Button btnArticlles;
 
     private final ElectionService electionService=new ElectionService();
     Election currentElection;
@@ -211,6 +213,9 @@ public class AfficherElectionController implements Initializable{
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
 

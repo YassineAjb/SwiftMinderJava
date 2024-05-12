@@ -29,6 +29,8 @@ public class AfficherCandidatController implements Initializable{
 
     @FXML
     private ListView<Candidat> listViewC;
+    @FXML
+    private Button btnArticlles;
 
     private final CandidatService candidatService=new CandidatService();
     Candidat currentCandidat;
@@ -198,6 +200,9 @@ public class AfficherCandidatController implements Initializable{
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

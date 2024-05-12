@@ -23,6 +23,8 @@ public class AfficherProduit {
 
     @FXML
     private GridPane produitContainer;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private VBox vbox;
@@ -80,6 +82,9 @@ public class AfficherProduit {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
 

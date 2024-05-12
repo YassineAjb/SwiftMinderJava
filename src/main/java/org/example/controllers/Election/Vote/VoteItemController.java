@@ -28,6 +28,8 @@ public class VoteItemController implements Initializable {
 
     @FXML
     private ImageView imgVoteItemCandidat;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Label prenomVoteItemCandidat;
@@ -147,6 +149,9 @@ public class VoteItemController implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

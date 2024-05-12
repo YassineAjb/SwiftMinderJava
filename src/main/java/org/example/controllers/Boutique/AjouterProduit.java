@@ -28,6 +28,8 @@ public class AjouterProduit {
     private final ServiceProduit pr = new ServiceProduit();
     @FXML
     private ImageView imageView;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private TextField NomProduit;
@@ -144,6 +146,9 @@ public class AjouterProduit {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
     }

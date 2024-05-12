@@ -37,6 +37,8 @@ public class AffichageJoueur implements Initializable {
     @FXML
     private GridPane gridJoueurs;
     @FXML
+    private Button btnArticlles;
+    @FXML
     private Button JoueurDetails;
 
     @FXML
@@ -146,6 +148,9 @@ public class AffichageJoueur implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
 

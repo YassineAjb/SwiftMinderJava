@@ -46,6 +46,8 @@ public class ModifierTerrain {
 
     @FXML
     private Button btnContrats;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnElection;
@@ -134,6 +136,9 @@ public class ModifierTerrain {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
     @FXML

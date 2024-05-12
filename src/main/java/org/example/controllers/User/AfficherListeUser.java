@@ -55,6 +55,8 @@ public class AfficherListeUser implements Initializable {
     @FXML
     private TableColumn date_creationcol;
     @FXML
+    private Button btnArticlles;
+    @FXML
     private TableColumn emailcol;
     @FXML
     private Button deleteButton;
@@ -131,6 +133,9 @@ public class AfficherListeUser implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
     }

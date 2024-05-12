@@ -31,6 +31,8 @@ public class Reservation {
 
     @FXML
     private Button btnModifier ;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnAcceuil;
@@ -103,6 +105,9 @@ public class Reservation {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
     }

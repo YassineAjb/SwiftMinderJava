@@ -34,6 +34,8 @@ public class Store {
 
     @FXML
     private Button btnBoutique;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnJoueurs;
@@ -111,6 +113,9 @@ public class Store {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
     }

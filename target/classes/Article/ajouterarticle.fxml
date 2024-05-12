@@ -125,6 +125,18 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
+            <Button fx:id="btnArticlles" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="177.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Articles">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Employee/images/icons8_Open_Envelope_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
             <Button id="Reservation" fx:id="btnReservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Reservation">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">

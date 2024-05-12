@@ -26,6 +26,8 @@ public class ListeReservation {
     private Button btnReserver;
 
     private List<Reservation> produits;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private GridPane produitContainer;
@@ -90,6 +92,9 @@ public class ListeReservation {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
     }

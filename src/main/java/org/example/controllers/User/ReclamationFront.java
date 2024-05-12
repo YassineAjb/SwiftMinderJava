@@ -26,6 +26,8 @@ public class ReclamationFront implements Initializable {
 
     @FXML
     private Button btnContrats;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnElection;
@@ -80,6 +82,9 @@ public class ReclamationFront implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
     }

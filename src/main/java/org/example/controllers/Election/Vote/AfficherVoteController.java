@@ -26,6 +26,8 @@ public class AfficherVoteController implements Initializable {
     @FXML
     private Button exportButtonVote;
     @FXML
+    private Button btnArticlles;
+    @FXML
     private ComboBox<?> idSortC;
 
     @FXML
@@ -183,6 +185,9 @@ public class AfficherVoteController implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
 
     }

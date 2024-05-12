@@ -31,6 +31,8 @@ public class Crud implements Initializable {
 
     @FXML
     private Button btnBoutique;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnContrats;
@@ -118,6 +120,9 @@ public class Crud implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
     @javafx.fxml.FXML

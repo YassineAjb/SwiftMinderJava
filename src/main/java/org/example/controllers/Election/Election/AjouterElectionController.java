@@ -35,6 +35,8 @@ public class AjouterElectionController {
 
     @FXML
     private Button btnBoutique;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnContrats;
@@ -137,6 +139,9 @@ public void initialize(URL location, ResourceBundle resources) {
     });
     btnElection.setOnAction(e -> {
         naviguezVers("/Election/DashbordElection.fxml");
+    });
+    btnArticlles.setOnAction(e -> {
+        naviguezVers("/Article/afficherarticles.fxml");
     });
 }
 @FXML

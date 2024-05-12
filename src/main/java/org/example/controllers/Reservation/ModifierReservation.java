@@ -23,6 +23,8 @@ public class ModifierReservation {
 
     @FXML
     private ImageView Retour;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private ChoiceBox<String> Choixterrain;
@@ -101,6 +103,9 @@ public class ModifierReservation {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

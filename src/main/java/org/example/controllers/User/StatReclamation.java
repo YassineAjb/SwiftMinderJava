@@ -18,6 +18,8 @@ public class StatReclamation implements Initializable {
 
     @FXML
     private Button btnBoutique;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnContrats;
@@ -69,6 +71,9 @@ public class StatReclamation implements Initializable {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

@@ -28,6 +28,8 @@ public class AjouterCandidatController {
 
     @FXML
     private TextField nomTFCA;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private TextField prenomTFCA;
@@ -266,6 +268,9 @@ private boolean isAlphabetic(String input) {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

@@ -38,6 +38,8 @@ public class ArticleControllors  implements Initializable{
     @FXML
     private TextArea description;
     @FXML
+    private Button btnArticlles;
+    @FXML
     private TextField idJourNaliste;
 
     @FXML
@@ -130,6 +132,9 @@ public class ArticleControllors  implements Initializable{
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
 

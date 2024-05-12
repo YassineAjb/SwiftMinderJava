@@ -34,6 +34,8 @@ public class ModifierMatch {
 
     @FXML
     private Button btnAcceuil;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnBoutique;
@@ -228,6 +230,9 @@ public class ModifierMatch {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
     }
     }

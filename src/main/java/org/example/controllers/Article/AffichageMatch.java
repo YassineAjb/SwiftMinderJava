@@ -46,6 +46,8 @@ public class AffichageMatch {
 
     @FXML
     private Button btnMatch;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnReservation;
@@ -171,6 +173,9 @@ public class AffichageMatch {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
         });
         ajouter.setOnAction(e -> {
             naviguezVers("/Article/ajoutermatch.fxml");
