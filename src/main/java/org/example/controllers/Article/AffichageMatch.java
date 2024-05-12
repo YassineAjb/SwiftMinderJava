@@ -172,6 +172,10 @@ public class AffichageMatch {
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
         });
+        ajouter.setOnAction(e -> {
+            naviguezVers("/Article/ajoutermatch.fxml");
+        });
+
         sortedMatches = new SortedList<>(matches);
         sortedMatches.setComparator(Comparator.comparing(Match::getAdversaireMatch));
 
@@ -302,10 +306,12 @@ public class AffichageMatch {
         try {
             Stage stage = (Stage) ajouter.getScene().getWindow();
             stage.setScene(createScene("/Article/ajoutermatch.fxml"));
+            stage.setFullScreen(true);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
+
 
 
     @FXML
@@ -318,8 +324,7 @@ public class AffichageMatch {
                 ModifierMatch controller = loader.getController();
                 controller.initData(selectedMatch);
 
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(createScene(root));
+                btnAcceuil.getScene().setRoot(root);
             } catch (IOException e) {
                 System.err.println(e.getMessage());
             }

@@ -16,7 +16,7 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        InputStream inputStream = getClass().getResourceAsStream("/Boutique/AjouterProduit.fxml");
+        InputStream inputStream = getClass().getResourceAsStream("/Article/afficherarticles.fxml");
         if (inputStream == null) {
             System.err.println("Resource not found");
         } else {
@@ -24,7 +24,7 @@ public class MainFX extends Application {
             Scene scene = new Scene(root, 900, 600);
             primaryStage.setTitle("Gérer personnes");
             primaryStage.setScene(scene);
-            primaryStage.setMaximized(true);
+            primaryStage.setFullScreen(true);
             primaryStage.show();
         }
     }

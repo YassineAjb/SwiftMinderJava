@@ -206,6 +206,9 @@ import java.util.Optional;
             btnSignout.setOnAction(e -> {
                 naviguezVers("/User/tablereclamation.fxml");
             });
+            btnajouter.setOnAction(e -> {
+                naviguezVers("/Article/ajouterarticle.fxml");
+            });
             // Create a sorted list
             sortedArticles = new SortedList<>(articles);
             sortedArticles.setComparator(Comparator.comparing(Article::getTitreArticle));
@@ -348,7 +351,7 @@ import java.util.Optional;
         void ajouterArticle(ActionEvent event) {
             try {
                 Stage stage = (Stage) btnajouter.getScene().getWindow();
-                stage.setScene(createScene("/ajouterarticle.fxml"));
+                stage.setScene(createScene("/Article/ajouterarticle.fxml"));
             } catch (IOException e) {
                 System.err.println(e.getMessage());
             }
@@ -359,13 +362,12 @@ import java.util.Optional;
             Article selectedarticle = listarticles.getSelectionModel().getSelectedItem();
             if (selectedarticle != null) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/modifierarticle.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Article/modifierarticle.fxml"));
                     Parent root = loader.load();
                     ModifierArticle controller = loader.getController();
                     controller.initData(selectedarticle);
 
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(createScene(root));
+                    btnAcceuil.getScene().setRoot(root);
                 } catch (IOException e) {
                     System.err.println(e.getMessage());
                 }

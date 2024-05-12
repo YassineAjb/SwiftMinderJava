@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: E0E0E7FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Article.AffichageMatch">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: E0E0E7FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Article.AffichageMatch">
     <children>
         <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #ADADBAFF;">
             <children>
@@ -34,7 +34,7 @@
                                 </Label>
                                 <TextField fx:id="searchField" layoutX="46.0" layoutY="84.0" promptText="Search by adversaire" />
                         <ListView fx:id="listMatches" layoutX="46.0" layoutY="112.0" prefHeight="290.0" prefWidth="602.0" />
-                                <Button fx:id="ajouter" defaultButton="true" layoutX="194.0" layoutY="425.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter">
+                                <Button fx:id="ajouter" defaultButton="true" layoutX="194.0" layoutY="425.0" mnemonicParsing="false" text="Ajouter">
                                     <font>
                               <Font size="18.0" />
                            </font>
@@ -51,7 +51,7 @@
                     </children></Pane>
             </children>
         </StackPane>
-      <VBox id="menuu" alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="777.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
+      <VBox id="menuu" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="777.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
          <children>
             <Label layoutX="26.0" layoutY="10.0">
                <font>
