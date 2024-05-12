@@ -140,7 +140,7 @@ public class ModifierProduit {
         Type.setItems(typeOptions);
 
 
-       
+
     }
     public void initData(Produit selectedProduit) {
         this.produit = selectedProduit;
