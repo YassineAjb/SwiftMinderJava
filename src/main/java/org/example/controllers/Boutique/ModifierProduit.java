@@ -137,7 +137,24 @@ public class ModifierProduit {
         Type.setItems(typeOptions);
 
 
-
+        btnMatch.setOnAction(e -> {
+            naviguezVers("/Article/affichermatch.fxml");
+        });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
+        btnJoueurs.setOnAction(e -> {
+            naviguezVers("/Employee/AffichageJoueur.fxml");
+        });
+        btnContrats.setOnAction(e -> {
+            naviguezVers("/Employee/Contrat.fxml");
+        });
+        btnBoutique.setOnAction(e -> {
+            naviguezVers("/Boutique/Store.fxml");
+        });
+        btnElection.setOnAction(e -> {
+            naviguezVers("/Election/DashbordElection.fxml");
+        });
 
     }
     public void initData(Produit selectedProduit) {

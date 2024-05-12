@@ -84,14 +84,8 @@ public class ModifierReservation {
             loadListeReservationView();
         });
 
-        btnContrats.setOnAction(e -> {
-            naviguezVers("/Employee/Contrat.fxml");
-        });
-        btnBoutique.setOnAction(e -> {
-            naviguezVers("/Boutique/AfficherProduit.fxml");
-        });
-        btnElection.setOnAction(e -> {
-            naviguezVers("/Election/DashbordElection.fxml");
+        btnMatch.setOnAction(e -> {
+            naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
@@ -99,8 +93,14 @@ public class ModifierReservation {
         btnJoueurs.setOnAction(e -> {
             naviguezVers("/Employee/AffichageJoueur.fxml");
         });
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
+        btnContrats.setOnAction(e -> {
+            naviguezVers("/Employee/Contrat.fxml");
+        });
+        btnBoutique.setOnAction(e -> {
+            naviguezVers("/Boutique/Store.fxml");
+        });
+        btnElection.setOnAction(e -> {
+            naviguezVers("/Election/DashbordElection.fxml");
         });
     }
 

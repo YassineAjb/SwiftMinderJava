@@ -185,6 +185,15 @@ import java.util.Optional;
         public void initialize() throws SQLException {
             ObservableList<Article> articles = FXCollections.observableArrayList(service.getall());
 
+            btnMatch.setOnAction(e -> {
+                naviguezVers("/Article/affichermatch.fxml");
+            });
+            btnReservation.setOnAction(e -> {
+                naviguezVers("/Reservation/Reservation.fxml");
+            });
+            btnJoueurs.setOnAction(e -> {
+                naviguezVers("/Employee/AffichageJoueur.fxml");
+            });
             btnContrats.setOnAction(e -> {
                 naviguezVers("/Employee/Contrat.fxml");
             });
@@ -193,15 +202,6 @@ import java.util.Optional;
             });
             btnElection.setOnAction(e -> {
                 naviguezVers("/Election/DashbordElection.fxml");
-            });
-            btnReservation.setOnAction(e -> {
-                naviguezVers("/Reservation/Reservation.fxml");
-            });
-            btnJoueurs.setOnAction(e -> {
-                naviguezVers("/Employee/AffichageJoueur.fxml");
-            });
-            btnMatch.setOnAction(e -> {
-                naviguezVers("/Article/affichermatch.fxml");
             });
             btnSignout.setOnAction(e -> {
                 naviguezVers("/User/tablereclamation.fxml");

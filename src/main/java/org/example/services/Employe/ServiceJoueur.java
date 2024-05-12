@@ -21,7 +21,7 @@ public class ServiceJoueur implements IService<Joueur>{
     }
     @Override
     public void ajouter(Joueur joueur) throws SQLException {
-        String sql ="INSERT INTO `joueur`(`Position`, `Hauteur`, `Poids`,`Piedfort`,`Nom`,`Prenom`,`Age`,`imagePath`,`Link`) VALUES " +
+        String sql ="INSERT INTO `joueur`(`Position`, `Hauteur`, `Poids`,`Piedfort`,`Nom`,`Prenom`,`Age`,`imagePath`,`Link`,`shirtnum`) VALUES " +
                 "('"+joueur.getPosition()+"'," +
                 "'"+joueur.getHauteur()+
                 "','"+joueur.getPoids()+
@@ -31,6 +31,7 @@ public class ServiceJoueur implements IService<Joueur>{
                 "','"+joueur.getAge()+
                 "','"+joueur.getImagePath()+
                 "','"+joueur.getLink()+
+                "','"+joueur.getShirtnum()+
                 "')";
         Statement statement = connection.createStatement();
         statement.execute(sql);
@@ -40,7 +41,7 @@ public class ServiceJoueur implements IService<Joueur>{
     @Override
     public void modifier(Joueur joueur) {
         try {
-            String sql = "UPDATE joueur SET Position=?, Hauteur=?, Poids=?, Piedfort=?, Nom=?, Prenom=?, Age=?, imagePath=? ,Link=? WHERE id=?";
+            String sql = "UPDATE joueur SET Position=?, Hauteur=?, Poids=?, Piedfort=?, Nom=?, Prenom=?, Age=?, imagePath=? ,Link=? ,shirtnum=? WHERE id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Set values for each parameter in the prepared statement
@@ -52,7 +53,8 @@ public class ServiceJoueur implements IService<Joueur>{
             preparedStatement.setString(6, joueur.getPrenom());
             preparedStatement.setInt(7, joueur.getAge());
             preparedStatement.setString(8, joueur.getImagePath());
-            preparedStatement.setString(9, joueur.getImagePath());
+            preparedStatement.setString(9, joueur.getLink());
+            preparedStatement.setInt(9, joueur.getShirtnum());
             preparedStatement.setInt(10, joueur.getId());
 
             // Execute the update operation
@@ -97,6 +99,7 @@ public class ServiceJoueur implements IService<Joueur>{
             p.setAge(rs.getInt("Age"));
             p.setImagePath(rs.getString("ImagePath"));
             p.setLink(rs.getString("Link"));
+            p.setShirtnum(rs.getInt("shirtnum"));
             joueurs.add(p);
         }
         return joueurs;

@@ -47,7 +47,7 @@ public class JoueurDashBoard {
     }
 
     @FXML
-    void modifier(ActionEvent event) {
+    void modifier(ActionEvent event) throws SQLException {
 
         employe.Selected(joueur);
 

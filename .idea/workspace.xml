@@ -26,6 +26,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="f2779556-ee66-4cfb-853f-0a2ec6ce0c05" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -49,7 +52,7 @@
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/tun/Desktop/projet/JAVAFX(integration)",
+    "last_opened_file_path": "C:/Users/tun/AppData/Local/SceneBuilder/SceneBuilder.exe",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,7 +61,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.42873564",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -177,7 +180,8 @@
       <workItem from="1714928932361" duration="36000" />
       <workItem from="1714929168997" duration="306000" />
       <workItem from="1714993394716" duration="683000" />
-      <workItem from="1715447042237" duration="221000" />
+      <workItem from="1715447042237" duration="916000" />
+      <workItem from="1715447974199" duration="19203000" />
     </task>
     <servers />
   </component>

@@ -129,7 +129,15 @@ public class AffichageJoueur implements Initializable {
             throw new RuntimeException(e);
         }
 
-
+        btnMatch.setOnAction(e -> {
+            naviguezVers("/Article/affichermatch.fxml");
+        });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
+        btnJoueurs.setOnAction(e -> {
+            naviguezVers("/Employee/AffichageJoueur.fxml");
+        });
         btnContrats.setOnAction(e -> {
             naviguezVers("/Employee/Contrat.fxml");
         });
@@ -139,15 +147,8 @@ public class AffichageJoueur implements Initializable {
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
         });
-        btnReservation.setOnAction(e -> {
-            naviguezVers("/Reservation/Reservation.fxml");
-        });
-        btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/AffichageJoueur.fxml");
-        });
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
-        });
+
+
     }
 
     private void filterItems(String searchText, List<Joueur> list) throws SQLException {

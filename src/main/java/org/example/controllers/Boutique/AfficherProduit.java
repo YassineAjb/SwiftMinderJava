@@ -63,23 +63,23 @@ public class AfficherProduit {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        btnAccueil.setOnAction(e -> {
-            naviguezVers("/Article/afficherarticles.fxml");
-        });
-        btnContrats.setOnAction(e -> {
-            naviguezVers("/Employee/Contrat.fxml");
-        });
-        btnElection.setOnAction(e -> {
-            naviguezVers("/Election/AfficherElection.fxml");
-        });
-        btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/Employe.fxml");
-        });
         btnMatch.setOnAction(e -> {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
-            naviguezVers("/Reservation/AjouterTerrain.fxml");
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
+        btnJoueurs.setOnAction(e -> {
+            naviguezVers("/Employee/AffichageJoueur.fxml");
+        });
+        btnContrats.setOnAction(e -> {
+            naviguezVers("/Employee/Contrat.fxml");
+        });
+        btnBoutique.setOnAction(e -> {
+            naviguezVers("/Boutique/Store.fxml");
+        });
+        btnElection.setOnAction(e -> {
+            naviguezVers("/Election/DashbordElection.fxml");
         });
 
 

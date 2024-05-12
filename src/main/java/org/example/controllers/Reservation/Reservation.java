@@ -86,6 +86,15 @@ public class Reservation {
             e.printStackTrace();
         }
 
+        btnMatch.setOnAction(e -> {
+            naviguezVers("/Article/affichermatch.fxml");
+        });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
+        btnJoueurs.setOnAction(e -> {
+            naviguezVers("/Employee/AffichageJoueur.fxml");
+        });
         btnContrats.setOnAction(e -> {
             naviguezVers("/Employee/Contrat.fxml");
         });
@@ -94,15 +103,6 @@ public class Reservation {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
-        });
-        btnReservation.setOnAction(e -> {
-            naviguezVers("/Reservation/Reservation.fxml");
-        });
-        btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/AffichageJoueur.fxml");
-        });
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
         });
 
     }

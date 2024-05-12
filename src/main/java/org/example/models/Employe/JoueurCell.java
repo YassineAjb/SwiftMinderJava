@@ -18,45 +18,49 @@ public class JoueurCell extends ListCell<Joueur> {
     private final Label prenomLabel = new Label();
     private final Label ageLabel = new Label();
     private final Label imagePathLabel = new Label(); // Added imagePath Label
+    private final Label shirtnumLabel = new Label(); // Added imagePath Label
     private ImageView importedImage;
     public JoueurCell() {
         super();
 
         // Define column width constraints
         ColumnConstraints col1 = new ColumnConstraints();
-        col1.setPercentWidth(12);
+        col1.setPercentWidth(17);
         ColumnConstraints col2 = new ColumnConstraints();
         col2.setPercentWidth(16);
         ColumnConstraints col3 = new ColumnConstraints();
-        col3.setPercentWidth(12);
+        col3.setPercentWidth(9);
         ColumnConstraints col4 = new ColumnConstraints();
-        col4.setPercentWidth(12);
+        col4.setPercentWidth(8);
         ColumnConstraints col5 = new ColumnConstraints();
-        col5.setPercentWidth(12);
+        col5.setPercentWidth(8);
         ColumnConstraints col6 = new ColumnConstraints();
-        col6.setPercentWidth(12);
+        col6.setPercentWidth(8);
         ColumnConstraints col7 = new ColumnConstraints();
-        col7.setPercentWidth(12);
+        col7.setPercentWidth(9);
         ColumnConstraints col8 = new ColumnConstraints();
-        col8.setPercentWidth(12);
+        col8.setPercentWidth(16);
+        ColumnConstraints col9 = new ColumnConstraints();
+        col9.setPercentWidth(9);
 
 
 
 
         // Add column constraints to the GridPane
-        gridPane.getColumnConstraints().addAll(col1, col2, col3, col4, col5, col6, col7, col8);
-        gridPane.setAlignment(Pos.BASELINE_CENTER);
+        gridPane.getColumnConstraints().addAll(col1, col2, col3, col4, col5, col6, col7, col8, col9);
+        gridPane.setAlignment(Pos.BASELINE_LEFT);
 
         // Add labels to the GridPane
 
-        gridPane.add(nomLabel, 0, 5);
-        gridPane.add(prenomLabel, 1, 5);
-        gridPane.add(ageLabel, 2, 5);
-        gridPane.add(piedfortLabel, 3, 5);
-        gridPane.add(positionLabel, 4, 5);
-        gridPane.add(hauteurLabel, 5, 5);
-        gridPane.add(poidsLabel, 6, 5);
-        gridPane.add(imagePathLabel, 7, 5);
+        gridPane.add(nomLabel, 0, 0);
+        gridPane.add(prenomLabel, 1, 0);
+        gridPane.add(ageLabel, 2, 0);
+        gridPane.add(piedfortLabel, 3, 0);
+        gridPane.add(positionLabel, 4, 0);
+        gridPane.add(hauteurLabel, 5, 0);
+        gridPane.add(poidsLabel, 6, 0);
+        gridPane.add(imagePathLabel, 7, 0);
+        gridPane.add(shirtnumLabel, 8, 0);
 
 //        nomLabel.getStyleClass().add("grid-cell");
 //        prenomLabel.getStyleClass().add("grid-cell");
@@ -68,7 +72,7 @@ public class JoueurCell extends ListCell<Joueur> {
 //        imagePathLabel.getStyleClass().add("grid-cell");
 
         // Set horizontal gap between columns
-        gridPane.setHgap(5);
+        gridPane.setHgap(4);
 
         // Add style classes to labels if needed
         // Example: label.getStyleClass().add("centered-label");
@@ -92,7 +96,7 @@ public class JoueurCell extends ListCell<Joueur> {
             prenomLabel.setText(joueur.getPrenom());
             ageLabel.setText(String.valueOf(joueur.getAge()));
             imagePathLabel.setText(joueur.getImagePath()); // Set imagePath Label text
-
+            shirtnumLabel.setText(String.valueOf(joueur.getShirtnum()));
 
 
             // Set the GridPane as the graphic of the cell

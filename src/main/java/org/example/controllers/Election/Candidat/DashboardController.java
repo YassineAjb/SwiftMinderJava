@@ -59,24 +59,24 @@ public class DashboardController implements Initializable {
         loadStatistics();
         loadStatisticsRating();
 
-            btnContrats.setOnAction(e -> {
-                naviguezVers("/Employee/Contrat.fxml");
-            });
-            btnBoutique.setOnAction(e -> {
-                naviguezVers("/Boutique/AfficherProduit.fxml");
-            });
-            btnElection.setOnAction(e -> {
-                naviguezVers("/Election/DashbordElection.fxml");
-            });
-            btnReservation.setOnAction(e -> {
-                naviguezVers("/Reservation/Reservation.fxml");
-            });
-            btnJoueurs.setOnAction(e -> {
-                naviguezVers("/Employee/AffichageJoueur.fxml");
-            });
-            btnMatch.setOnAction(e -> {
-                naviguezVers("/Article/affichermatch.fxml");
-            });
+        btnMatch.setOnAction(e -> {
+            naviguezVers("/Article/affichermatch.fxml");
+        });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
+        btnJoueurs.setOnAction(e -> {
+            naviguezVers("/Employee/AffichageJoueur.fxml");
+        });
+        btnContrats.setOnAction(e -> {
+            naviguezVers("/Employee/Contrat.fxml");
+        });
+        btnBoutique.setOnAction(e -> {
+            naviguezVers("/Boutique/Store.fxml");
+        });
+        btnElection.setOnAction(e -> {
+            naviguezVers("/Election/DashbordElection.fxml");
+        });
 
     }
 

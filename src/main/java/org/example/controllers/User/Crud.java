@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.print.PageLayout;
@@ -27,6 +28,28 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Crud implements Initializable {
+
+    @FXML
+    private Button btnBoutique;
+
+    @FXML
+    private Button btnContrats;
+
+    @FXML
+    private Button btnElection;
+
+    @FXML
+    private Button btnJoueurs;
+
+    @FXML
+    private Button btnMatch;
+
+    @FXML
+    private Button btnReservation;
+
+    @FXML
+    private Button btnSignout;
+
     @javafx.fxml.FXML
     private Pane pnlOrders;
     Crud_user us = new Crud_user();
@@ -77,6 +100,25 @@ public class Crud implements Initializable {
         Search.textProperty().addListener((observable, oldValue, newValue) -> {
             filterUsers(newValue);
         });
+
+        btnMatch.setOnAction(e -> {
+            naviguezVers("/Article/affichermatch.fxml");
+        });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
+        btnJoueurs.setOnAction(e -> {
+            naviguezVers("/Employee/AffichageJoueur.fxml");
+        });
+        btnContrats.setOnAction(e -> {
+            naviguezVers("/Employee/Contrat.fxml");
+        });
+        btnBoutique.setOnAction(e -> {
+            naviguezVers("/Boutique/Store.fxml");
+        });
+        btnElection.setOnAction(e -> {
+            naviguezVers("/Election/DashbordElection.fxml");
+        });
     }
     @javafx.fxml.FXML
     public void AddButton(ActionEvent actionEvent) {
@@ -89,6 +131,15 @@ public class Crud implements Initializable {
         }
     }
 
+    public void naviguezVers(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            btnElection.getScene().setRoot(root);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     public void setPreviousScene(Scene scene) {
         this.previousScene = scene;

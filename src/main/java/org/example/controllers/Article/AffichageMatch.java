@@ -154,6 +154,15 @@ public class AffichageMatch {
     public void initialize() throws SQLException {
         ObservableList<Match> matches = FXCollections.observableArrayList(service.getall());
 
+        btnMatch.setOnAction(e -> {
+            naviguezVers("/Article/affichermatch.fxml");
+        });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
+        btnJoueurs.setOnAction(e -> {
+            naviguezVers("/Employee/AffichageJoueur.fxml");
+        });
         btnContrats.setOnAction(e -> {
             naviguezVers("/Employee/Contrat.fxml");
         });
@@ -162,15 +171,6 @@ public class AffichageMatch {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
-        });
-        btnReservation.setOnAction(e -> {
-            naviguezVers("/Reservation/Reservation.fxml");
-        });
-        btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/AffichageJoueur.fxml");
-        });
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
         });
         sortedMatches = new SortedList<>(matches);
         sortedMatches.setComparator(Comparator.comparing(Match::getAdversaireMatch));

@@ -26,6 +26,26 @@ import java.util.ResourceBundle;
 public class AfficherListeUser implements Initializable {
 
     @FXML
+    private Button btnBoutique;
+
+    @FXML
+    private Button btnContrats;
+
+    @FXML
+    private Button btnElection;
+
+    @FXML
+    private Button btnJoueurs;
+
+    @FXML
+    private Button btnMatch;
+
+    @FXML
+    private Button btnReservation;
+
+    @FXML
+    private Button btnSignout;
+    @FXML
     private TableView tableuser;
     @FXML
     private TableColumn roleCol;
@@ -94,9 +114,36 @@ public class AfficherListeUser implements Initializable {
         refresh();
         // Créer une FilteredList à partir de la liste observable userList
 
+        btnMatch.setOnAction(e -> {
+            naviguezVers("/Article/affichermatch.fxml");
+        });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
+        btnJoueurs.setOnAction(e -> {
+            naviguezVers("/Employee/AffichageJoueur.fxml");
+        });
+        btnContrats.setOnAction(e -> {
+            naviguezVers("/Employee/Contrat.fxml");
+        });
+        btnBoutique.setOnAction(e -> {
+            naviguezVers("/Boutique/Store.fxml");
+        });
+        btnElection.setOnAction(e -> {
+            naviguezVers("/Election/DashbordElection.fxml");
+        });
 
     }
 
+    public void naviguezVers(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            btnElection.getScene().setRoot(root);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
     public void refresh() {
         this.tableuser.setItems(us.afficher());
         this.tableuser.refresh();

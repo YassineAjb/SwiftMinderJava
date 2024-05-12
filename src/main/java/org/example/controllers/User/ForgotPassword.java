@@ -51,6 +51,7 @@ public class ForgotPassword implements Initializable {
 
     }
 
+
     @FXML
     public void ForgotPasswordOn_Click(ActionEvent event) {
         if (process == 1) {

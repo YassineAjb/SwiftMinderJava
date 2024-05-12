@@ -168,6 +168,12 @@ public class Employe {
     private ImageView importedImageModifier;
 
     @FXML
+    private TextField shirtAjout;
+
+    @FXML
+    private TextField shirtModifier;
+
+    @FXML
     private Button importerJoueurAjout;
 
     @FXML
@@ -235,8 +241,8 @@ public class Employe {
 
     public void initialize() throws SQLException {
 
-        ControlleDeSaisie( AgeAjout, HauteurAjout, PoidsAjout, NomAjout, PrenomAjout);
-        ControlleDeSaisie(AgeModifier, HauteurModifier, PoidsModifier, NomModifier, PrenomModifier);
+        ControlleDeSaisie( AgeAjout, HauteurAjout, PoidsAjout, NomAjout, PrenomAjout,shirtAjout);
+        ControlleDeSaisie(AgeModifier, HauteurModifier, PoidsModifier, NomModifier, PrenomModifier,shirtModifier);
 
         InisialiserPoisitions(PositionAjout);
         InisialiserPoisitions(PositionModifier);
@@ -278,10 +284,10 @@ public class Employe {
         });
 
         listJoueur.setOnMouseClicked((EventHandler<MouseEvent>) event -> {
-            Selected(listJoueur,IdSupprimer,NomAjout,PositionAjout,HauteurAjout,PoidsAjout,PrenomAjout,AgeAjout,imageAjout,DroiteAjout,GaucheAjout,importedImageAjout, PiedfortAjout,LinkAjout);
+            Selected(listJoueur,IdSupprimer,NomAjout,PositionAjout,HauteurAjout,PoidsAjout,PrenomAjout,AgeAjout,imageAjout,DroiteAjout,GaucheAjout,importedImageAjout, PiedfortAjout,LinkAjout, shirtAjout);
         });
         listJoueurModifier.setOnMouseClicked((EventHandler<MouseEvent>) event -> {
-            Selected(listJoueurModifier,IdModifier, NomModifier, PositionModifier, HauteurModifier, PoidsModifier, PrenomModifier, AgeModifier, imageModifier, DroiteModifier, GaucheModifier, importedImageModifier, PiedfortModifier,LinkModifier);
+            Selected(listJoueurModifier,IdModifier, NomModifier, PositionModifier, HauteurModifier, PoidsModifier, PrenomModifier, AgeModifier, imageModifier, DroiteModifier, GaucheModifier, importedImageModifier, PiedfortModifier,LinkModifier,shirtModifier);
         });
 
 
@@ -293,7 +299,7 @@ public class Employe {
         });
 
         ajouterJoueur.setOnAction(e ->{
-            AjouterJoueur(NomAjout, PrenomAjout, AgeAjout, PositionAjout, HauteurAjout, PoidsAjout, DroiteAjout, GaucheAjout, PiedfortAjout, filePath, LinkAjout);
+            AjouterJoueur(NomAjout, PrenomAjout, AgeAjout, PositionAjout, HauteurAjout, PoidsAjout, DroiteAjout, GaucheAjout, PiedfortAjout, filePath, LinkAjout, shirtAjout);
 
 
         });
@@ -326,14 +332,8 @@ public class Employe {
             }
         });
 
-        btnContrats.setOnAction(e -> {
-            naviguezVers("/Employee/Contrat.fxml");
-        });
-        btnBoutique.setOnAction(e -> {
-            naviguezVers("/Boutique/AfficherProduit.fxml");
-        });
-        btnElection.setOnAction(e -> {
-            naviguezVers("/Election/DashbordElection.fxml");
+        btnMatch.setOnAction(e -> {
+            naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
@@ -341,8 +341,14 @@ public class Employe {
         btnJoueurs.setOnAction(e -> {
             naviguezVers("/Employee/AffichageJoueur.fxml");
         });
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
+        btnContrats.setOnAction(e -> {
+            naviguezVers("/Employee/Contrat.fxml");
+        });
+        btnBoutique.setOnAction(e -> {
+            naviguezVers("/Boutique/Store.fxml");
+        });
+        btnElection.setOnAction(e -> {
+            naviguezVers("/Election/DashbordElection.fxml");
         });
 
     }
@@ -370,9 +376,9 @@ public class Employe {
         Path currentPath = Paths.get("").toAbsolutePath();
         return currentPath.toString();
     }
-    private void AjouterJoueur(TextField nomAjout, TextField prenomAjout, TextField ageAjout, ComboBox<String> positionAjout, TextField hauteurAjout, TextField poidsAjout, CheckBox DroiteAjout, CheckBox GaucheAjout, TextField PiedfortAjout, String filePath, TextField Link) {
+    private void AjouterJoueur(TextField nomAjout, TextField prenomAjout, TextField ageAjout, ComboBox<String> positionAjout, TextField hauteurAjout, TextField poidsAjout, CheckBox DroiteAjout, CheckBox GaucheAjout, TextField PiedfortAjout, String filePath, TextField Link, TextField shirtnumber) {
         try {
-            if (nomAjout.getText().isEmpty() || prenomAjout.getText().isEmpty() || ageAjout.getText().isEmpty() || positionAjout.getValue() == null || hauteurAjout.getText().isEmpty() || poidsAjout.getText().isEmpty() || PiedfortAjout.getText().isEmpty()) {
+            if (nomAjout.getText().isEmpty() || prenomAjout.getText().isEmpty() || ageAjout.getText().isEmpty() || positionAjout.getValue() == null || hauteurAjout.getText().isEmpty() || poidsAjout.getText().isEmpty() || PiedfortAjout.getText().isEmpty() || shirtnumber.getText().isEmpty()) {
                 // Display a warning or error message
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning");
@@ -380,7 +386,7 @@ public class Employe {
                 alert.setContentText("Please fill in all the required fields.");
                 alert.showAndWait();
             }else{
-                serviceJoueur.ajouter(new Joueur(positionAjout.getValue(),Integer.parseInt(hauteurAjout.getText()),Integer.parseInt(poidsAjout.getText()), PiedfortAjout.getText(), nomAjout.getText(), prenomAjout.getText(),Integer.parseInt(ageAjout.getText()), filePath, Link.getText()));
+                serviceJoueur.ajouter(new Joueur(positionAjout.getValue(),Integer.parseInt(hauteurAjout.getText()),Integer.parseInt(poidsAjout.getText()), PiedfortAjout.getText(), nomAjout.getText(), prenomAjout.getText(),Integer.parseInt(ageAjout.getText()), filePath, Link.getText() ,Integer.parseInt(shirtnumber.getText())));
 
             }
 
@@ -507,7 +513,7 @@ public class Employe {
         position.setItems(positionOptions);
     }
 
-    private void ControlleDeSaisie(TextField AgeAjout,TextField HauteurAjout,TextField PoidsAjout,TextField NomAjout,TextField PrenomAjout) {
+    private void ControlleDeSaisie(TextField AgeAjout,TextField HauteurAjout,TextField PoidsAjout,TextField NomAjout,TextField PrenomAjout, TextField shirtAjout) {
         AgeAjout.addEventFilter(KeyEvent.KEY_TYPED, event -> {
             String input = event.getCharacter();
             if (!input.matches("[0-9]")) {
@@ -542,6 +548,14 @@ public class Employe {
                 event.consume();
             }
         });
+
+
+        shirtAjout.addEventFilter(KeyEvent.KEY_TYPED, event -> {
+            String input = event.getCharacter();
+            if (!input.matches("[0-9]")) {
+                event.consume();
+            }
+        });
     }
 
     private void Clear(TextField IdAjout, TextField NomAjout, ComboBox PositionAjout, TextField HauteurAjout, TextField PoidsAjout, TextField PrenomAjout, TextField AgeAjout, TextField imageAjout, CheckBox DroiteAjout, CheckBox GaucheAjout, TextField PiedfortAjout , TextField LinkAjout) {
@@ -565,7 +579,7 @@ public class Employe {
 
     }
 
-    private void Selected(ListView<Joueur> listJoueur, TextField IdModifier, TextField NomModifier, ComboBox PositionModifier, TextField HauteurModifier, TextField PoidsModifier, TextField PrenomModifier, TextField AgeModifier, TextField imageModifier, CheckBox DroiteModifier, CheckBox GaucheModifier, ImageView importedImageModifier, TextField PiedfortModifier, TextField Link) {
+    private void Selected(ListView<Joueur> listJoueur, TextField IdModifier, TextField NomModifier, ComboBox PositionModifier, TextField HauteurModifier, TextField PoidsModifier, TextField PrenomModifier, TextField AgeModifier, TextField imageModifier, CheckBox DroiteModifier, CheckBox GaucheModifier, ImageView importedImageModifier, TextField PiedfortModifier, TextField Link, TextField shirtnumber) {
         Joueur selectedJoueur = listJoueur.getSelectionModel().getSelectedItem();
         if (selectedJoueur != null) {
             IdModifier.setText(String.valueOf(selectedJoueur.getId()));
@@ -586,6 +600,7 @@ public class Employe {
             AgeModifier.setText(String.valueOf(selectedJoueur.getAge()));
             imageModifier.setText(selectedJoueur.getImagePath());
             Link.setText(selectedJoueur.getLink());
+            shirtnumber.setText(String.valueOf(selectedJoueur.getShirtnum()));
             System.out.println("images/" + selectedJoueur.getImagePath());
 
             try {
@@ -616,6 +631,7 @@ public class Employe {
             PrenomModifier.setText(selectedJoueur.getPrenom());
             AgeModifier.setText(String.valueOf(selectedJoueur.getAge()));
             imageModifier.setText(selectedJoueur.getImagePath());
+            shirtModifier.setText(String.valueOf(selectedJoueur.getShirtnum()));
             System.out.println("images/" + selectedJoueur.getImagePath());
 
             try {
@@ -734,11 +750,14 @@ public class Employe {
         }
     }
 
-    public void ajouterMouseClicked(MouseEvent mouseEvent) {
+    public void ajouterMouseClicked(MouseEvent mouseEvent) throws SQLException {
         interfaceAffichage.setVisible(false);
         interfaceAjout.setVisible(true);
         interfaceSuppression.setVisible(false);
         interfaceModification.setVisible(false);
+        recupererListJoueur(listJoueurAjout);
+        recupererListJoueur(listJoueur);
+        recupererListJoueur(listJoueurModifier);
     }
 
     public void afficherMouseClicked(MouseEvent mouseEvent) throws SQLException {
@@ -749,25 +768,34 @@ public class Employe {
         ObservableList<Joueur> list = recupererListJoueur(listJoueur);
         recupererGridJoueur();
     }
-    public void supprimerMouseClicked(MouseEvent mouseEvent) {
+    public void supprimerMouseClicked(MouseEvent mouseEvent) throws SQLException {
         interfaceAjout.setVisible(false);
         interfaceAffichage.setVisible(false);
         interfaceSuppression.setVisible(true);
         interfaceModification.setVisible(false);
+        recupererListJoueur(listJoueurAjout);
+        recupererListJoueur(listJoueur);
+        recupererListJoueur(listJoueurModifier);
     }
-    public void modifierMouseClicked(MouseEvent mouseEvent) {
+    public void modifierMouseClicked(MouseEvent mouseEvent) throws SQLException {
         interfaceAjout.setVisible(false);
         interfaceAffichage.setVisible(false);
         interfaceSuppression.setVisible(false);
         interfaceModification.setVisible(true);
+        recupererListJoueur(listJoueurAjout);
+        recupererListJoueur(listJoueur);
+        recupererListJoueur(listJoueurModifier);
     }
 
 
-    public void modifierMouseClicked() {
+    public void modifierMouseClicked() throws SQLException {
         interfaceAjout.setVisible(false);
         interfaceAffichage.setVisible(false);
         interfaceSuppression.setVisible(false);
         interfaceModification.setVisible(true);
+        recupererListJoueur(listJoueurAjout);
+        recupererListJoueur(listJoueur);
+        recupererListJoueur(listJoueurModifier);
     }
 }
 
