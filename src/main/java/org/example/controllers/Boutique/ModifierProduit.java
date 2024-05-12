@@ -104,9 +104,12 @@ public class ModifierProduit {
         try{
             String image = produit.getImage();
             if(selectedImage != null){
-                image = selectedImage.getUrl();
+                File file = new File(selectedImage.getUrl());
+                image  = file.getName(); // Obtenez le nom du fichier
+                System.out.println(file.getName());
+
             }
-            pr.modifier(new Produit(idProduit, Type.getValue(),NomProduit.getText(),Integer.parseInt(Prix.getText()),Taille.getValue(),Integer.parseInt(Quantite.getText()),image));
+            pr.modifier(new Produit(idProduit, Type.getValue(),NomProduit.getText(),Integer.parseInt(Prix.getText()),Taille.getValue(),Integer.parseInt(Quantite.getText()),image,9));
             System.out.println("helloo");
         }
         catch (SQLException e) {
@@ -137,25 +140,7 @@ public class ModifierProduit {
         Type.setItems(typeOptions);
 
 
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
-        });
-        btnReservation.setOnAction(e -> {
-            naviguezVers("/Reservation/Reservation.fxml");
-        });
-        btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/AffichageJoueur.fxml");
-        });
-        btnContrats.setOnAction(e -> {
-            naviguezVers("/Employee/Contrat.fxml");
-        });
-        btnBoutique.setOnAction(e -> {
-            naviguezVers("/Boutique/Store.fxml");
-        });
-        btnElection.setOnAction(e -> {
-            naviguezVers("/Election/DashbordElection.fxml");
-        });
-
+       
     }
     public void initData(Produit selectedProduit) {
         this.produit = selectedProduit;

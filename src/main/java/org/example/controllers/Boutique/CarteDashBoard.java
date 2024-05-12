@@ -40,7 +40,7 @@ public class CarteDashBoard {
         this.prod = prod;
         Produit.setText(prod.getNomProduit());
         Prix.setText(String.valueOf(prod.getPrixProduit()));
-        Image.setImage(new Image(prod.getImage()));
+        Image.setImage(new Image("file:/C:/xampp/htdocs/Images/Produits/"+prod.getImage()));
     }
 
     @FXML

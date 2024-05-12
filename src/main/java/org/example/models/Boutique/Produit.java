@@ -7,10 +7,13 @@ public class Produit implements Comparable<Produit> {
     private int prixProduit;
     private String tailleProduit;
     private int quantiteProduit;
+    private int category_id;
     private String image;
     public Produit() {
     }
-    public Produit(int id, String type, String nomProduit, int prixProduit, String tailleProduit, int quantiteProduit,String image) {
+
+
+    public Produit(int id, String type, String nomProduit, int prixProduit, String tailleProduit, int quantiteProduit,String image,int category_id) {
         this.id = id;
         this.type = type;
         this.nomProduit = nomProduit;
@@ -18,14 +21,16 @@ public class Produit implements Comparable<Produit> {
         this.tailleProduit = tailleProduit;
         this.quantiteProduit = quantiteProduit;
         this.image = image;
+        this.category_id = category_id;
     }
-    public Produit( String nomProduit, int prixProduit, String tailleProduit,String type, int quantiteProduit,String image) {
+    public Produit( String nomProduit, int prixProduit, String tailleProduit,String type, int quantiteProduit,String image,int category_id) {
         this.type = type;
         this.nomProduit = nomProduit;
         this.prixProduit = prixProduit;
         this.tailleProduit = tailleProduit;
         this.quantiteProduit = quantiteProduit;
         this.image = image;
+        this.category_id= category_id;
 
     }
 
