@@ -56,7 +56,7 @@ public class MatchService implements IService<Match> {
         while (rs.next()) {
             Match m = new Match();
 
-            m.setIdMatch(rs.getInt("id"));
+            m.setIdMatch(rs.getInt("IdRencontre"));
             m.setAdversaireMatch (rs.getString("Adversaire"));
             m.setDateMatch(rs.getDate("DateRencontre"));
             m.setScoreMatch(rs.getString("Score"));

@@ -58,7 +58,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.42873564",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -140,6 +140,9 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\tun\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6db86b97-cc31-4efa-88d5-5351bf74b1ce" name="Changes" comment="" />
@@ -178,7 +181,7 @@
       <workItem from="1714929168997" duration="306000" />
       <workItem from="1714993394716" duration="683000" />
       <workItem from="1715447042237" duration="916000" />
-      <workItem from="1715447974199" duration="21634000" />
+      <workItem from="1715447974199" duration="24469000" />
     </task>
     <servers />
   </component>

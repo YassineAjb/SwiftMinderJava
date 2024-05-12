@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@Store.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Boutique.AjouterProduit">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@/Boutique/Store.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Boutique.AjouterProduit">
    <styleClass>
       <String fx:value="radius" />
       <String fx:value="white-bg" />
@@ -29,7 +29,7 @@
       <TextField fx:id="Quantite" layoutX="586.0" layoutY="332.0" promptText="0" AnchorPane.topAnchor="332.0" />
       <TextField fx:id="Prix" layoutX="586.0" layoutY="396.0" promptText="0.0$" AnchorPane.topAnchor="396.0" />
       <Text layoutX="538.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Taille :" AnchorPane.topAnchor="526.05078125" />
-      <ComboBox fx:id="Type" layoutX="586.0" layoutY="460.0" prefWidth="150.0" stylesheets="@Store.css" AnchorPane.topAnchor="460.0">
+      <ComboBox fx:id="Type" layoutX="586.0" layoutY="460.0" prefWidth="150.0" stylesheets="@/Boutique/Store.css" AnchorPane.topAnchor="460.0">
          <styleClass>
             <String fx:value="combo-box" />
             <String fx:value="list-cell" />
@@ -37,7 +37,7 @@
          </styleClass>
       </ComboBox>
       <ComboBox fx:id="Taille" layoutX="586.0" layoutY="522.0" prefWidth="150.0" AnchorPane.topAnchor="522.0" />
-      <AnchorPane layoutX="1213.0" layoutY="300.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@Store.css">
+      <AnchorPane layoutX="1213.0" layoutY="300.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@/Boutique/Store.css">
          <styleClass>
             <String fx:value="shodow" />
             <String fx:value="white-bg" />
@@ -47,10 +47,10 @@
             <ImageView fx:id="imageView" fitHeight="166.0" fitWidth="173.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="34.0" />
          </children>
       </AnchorPane>
-      <Button fx:id="btnImporter" layoutX="854.0" layoutY="286.0" mnemonicParsing="false" onAction="#Importer" prefHeight="34.0" prefWidth="102.0" styleClass="btn" stylesheets="@Store.css" text="Importer" AnchorPane.bottomAnchor="464.6" AnchorPane.rightAnchor="555.6" />
-      <Button fx:id="btnAnnuler" layoutX="670.0" layoutY="445.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="34.0" prefWidth="102.0" styleClass="btn" stylesheets="@Store.css" text="Anuuler" AnchorPane.bottomAnchor="305.6" AnchorPane.rightAnchor="739.6" />
-      <Button fx:id="btnAjouter" layoutX="622.0" layoutY="626.0" mnemonicParsing="false" onAction="#ajouterProduit" prefHeight="34.0" prefWidth="102.0" styleClass="btn" stylesheets="@Store.css" text="Ajouter" AnchorPane.bottomAnchor="420.0" AnchorPane.leftAnchor="622.0" />
-      <VBox id="menuu" alignment="TOP_CENTER" layoutX="1.0" prefHeight="1080.0" prefWidth="209.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@style.css">
+      <Button fx:id="btnImporter" layoutX="854.0" layoutY="286.0" mnemonicParsing="false" onAction="#Importer" prefHeight="34.0" prefWidth="102.0" styleClass="btn" stylesheets="@/Boutique/Store.css" text="Importer" AnchorPane.bottomAnchor="464.6" AnchorPane.rightAnchor="555.6" />
+      <Button fx:id="btnAnnuler" layoutX="670.0" layoutY="445.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="34.0" prefWidth="102.0" styleClass="btn" stylesheets="@/Boutique/Store.css" text="Anuuler" AnchorPane.bottomAnchor="305.6" AnchorPane.rightAnchor="739.6" />
+      <Button fx:id="btnAjouter" layoutX="622.0" layoutY="626.0" mnemonicParsing="false" onAction="#ajouterProduit" prefHeight="34.0" prefWidth="102.0" styleClass="btn" stylesheets="@/Boutique/Store.css" text="Ajouter" AnchorPane.bottomAnchor="420.0" AnchorPane.leftAnchor="622.0" />
+      <VBox id="menuu" alignment="TOP_CENTER" layoutX="1.0" prefHeight="1080.0" prefWidth="209.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Boutique/style.css">
          <children>
             <Label layoutX="26.0" layoutY="10.0">
                <font>
@@ -67,7 +67,7 @@
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/thumbnail_logo.png" />
+                        <Image url="@/Boutique/images/thumbnail_logo.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -77,11 +77,11 @@
                   <Font name="Arial Bold Italic" size="29.0" />
                </font>
             </Label>
-            <Button fx:id="btnAcceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="190.0" stylesheets="@style.css" text="Acceuil" textFill="#e7e5e5">
+            <Button fx:id="btnAcceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="190.0" stylesheets="@/Boutique/style.css" text="Acceuil" textFill="#e7e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8_Home_32px.png" />
+                        <Image url="@/Boutique/images/icons8_Home_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -95,11 +95,11 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button fx:id="btnMatch" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Match">
+            <Button fx:id="btnMatch" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Boutique/style.css" text="Match">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8_Open_Envelope_32px.png" />
+                        <Image url="@/Boutique/images/icons8_Open_Envelope_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -107,11 +107,11 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button id="Reservation" fx:id="btnReservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Reservation">
+            <Button id="Reservation" fx:id="btnReservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Boutique/style.css" text="Reservation">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/2636428.png" />
+                        <Image url="@/Boutique/images/shippingtruck.png" />
                      </image>
                      <effect>
                         <ColorAdjust contrast="-1.0" />
@@ -122,11 +122,11 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button fx:id="btnJoueurs" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Joueurs">
+            <Button fx:id="btnJoueurs" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Boutique/style.css" text="Joueurs">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8_Person_32px.png" />
+                        <Image url="@/Boutique/images/icons8_Person_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -134,11 +134,11 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button fx:id="btnContrats" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Contrats">
+            <Button fx:id="btnContrats" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Boutique/style.css" text="Contrats">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8_Xbox_Menu_32px.png" />
+                        <Image url="@/Boutique/images/icons8_Xbox_Menu_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -146,11 +146,11 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button fx:id="btnBoutique" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Boutique">
+            <Button fx:id="btnBoutique" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Boutique/style.css" text="Boutique">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8_Box_32px.png" />
+                        <Image url="@/Boutique/images/icons8_Box_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -158,11 +158,11 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button fx:id="btnElection" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="384.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Election">
+            <Button fx:id="btnElection" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="384.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Boutique/style.css" text="Election">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8_Slider__32px.png" />
+                        <Image url="@/Boutique/images/icons8_Slider__32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -170,11 +170,11 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="273.0" style="-fx-background-color: #FFFFF;" stylesheets="@style.css" text="Sign Out">
+            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="273.0" style="-fx-background-color: #FFFFF;" stylesheets="@/Boutique/style.css" text="Sign Out">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8_Sign_Out_32px.png" />
+                        <Image url="@/Boutique/images/icons8_Sign_Out_32px.png" />
                      </image>
                   </ImageView>
                </graphic>

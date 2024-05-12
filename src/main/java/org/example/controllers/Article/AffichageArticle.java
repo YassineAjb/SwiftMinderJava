@@ -114,7 +114,7 @@ import java.util.Optional;
                         document.add(new Paragraph("Image: "));
 
                         // Handle image insertion (replace "path_to_image" with the actual path or URL)
-                        File initialDirectory = new File("D:\\swiftMinder2.0\\swiftMinder2.0\\src\\main\\resources\\images");
+                        File initialDirectory = new File("C:/xampp/htdocs/Images/Articles/");
                         if (initialDirectory.exists() && initialDirectory.isDirectory()) {
                             fileChooser.setInitialDirectory(initialDirectory);
                         }
@@ -239,8 +239,10 @@ import java.util.Optional;
                         ImageView imageView = new ImageView();
                         imageView.setFitHeight(50);
                         imageView.setFitWidth(50);
+                        String absolutePath = "C:/xampp/htdocs/Images/Articles/"+item.getImageArticle();
+                        File file = new File(absolutePath);
 
-                        Image image = new Image(new File(item.getImageArticle()).toURI().toString());
+                        Image image = new Image(file.toURI().toString());
                         imageView.setImage(image);
 
                         Button deleteButton = new Button("Delete");
