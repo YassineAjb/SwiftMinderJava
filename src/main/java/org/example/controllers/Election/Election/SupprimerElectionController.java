@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.models.Election.Election;
 import org.example.services.Election.ElectionService;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -127,6 +128,10 @@ public class SupprimerElectionController {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
     }

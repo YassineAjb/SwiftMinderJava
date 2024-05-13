@@ -5,7 +5,7 @@ import org.example.models.User.User;
 public class Session {
       private static Session session;
       private User user;
-      private Session(User user)
+      public Session(User user)
       {
           this.user=user;
       }

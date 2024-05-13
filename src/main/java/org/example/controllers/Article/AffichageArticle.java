@@ -22,6 +22,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.models.Article.Article;
 import org.example.services.Article.ArticleService;
+import org.example.utils.Session;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -187,33 +188,45 @@ import java.util.Optional;
         public void initialize() throws SQLException {
             ObservableList<Article> articles = FXCollections.observableArrayList(service.getall());
 
-            btnMatch.setOnAction(e -> {
-                naviguezVers("/Article/affichermatch.fxml");
-            });
-            btnReservation.setOnAction(e -> {
-                naviguezVers("/Reservation/Reservation.fxml");
-            });
-            btnJoueurs.setOnAction(e -> {
-                naviguezVers("/Employee/AffichageJoueur.fxml");
-            });
-            btnContrats.setOnAction(e -> {
-                naviguezVers("/Employee/Contrat.fxml");
-            });
-            btnBoutique.setOnAction(e -> {
-                naviguezVers("/Boutique/Store.fxml");
-            });
-            btnElection.setOnAction(e -> {
-                naviguezVers("/Election/DashbordElection.fxml");
-            });
-            btnArticlles.setOnAction(e -> {
-                naviguezVers("/Article/afficherarticles.fxml");
-            });
+
+                btnMatch.setOnAction(e -> {
+                    naviguezVers("/Article/affichermatch.fxml");
+                });
+                btnReservation.setOnAction(e -> {
+                    naviguezVers("/Reservation/Reservation.fxml");
+                });
+                btnJoueurs.setOnAction(e -> {
+                    naviguezVers("/Employee/AffichageJoueur.fxml");
+                });
+                btnContrats.setOnAction(e -> {
+                    naviguezVers("/Employee/Contrat.fxml");
+                });
+                btnBoutique.setOnAction(e -> {
+                    naviguezVers("/Boutique/Store.fxml");
+                });
+                btnElection.setOnAction(e -> {
+                    naviguezVers("/Election/DashbordElection.fxml");
+                });
+                btnArticlles.setOnAction(e -> {
+                    naviguezVers("/Article/afficherarticles.fxml");
+                });
             btnSignout.setOnAction(e -> {
-                naviguezVers("/User/tablereclamation.fxml");
+                Session.getSession().clearSession();
+                naviguezVers("/User/Login.fxml");
             });
-            btnajouter.setOnAction(e -> {
-                naviguezVers("/Article/ajouterarticle.fxml");
-            });
+                btnajouter.setOnAction(e -> {
+                    naviguezVers("/Article/ajouterarticle.fxml");
+                });
+
+            if(Session.getSession().getUser().getRole().equals("Journaliste")){
+                btnMatch.setVisible(false);
+                btnJoueurs.setVisible(false);
+                btnBoutique.setVisible(false);
+                btnContrats.setVisible(false);
+                btnElection.setVisible(false);
+                btnReservation.setVisible(false);
+            }
+
             // Create a sorted list
             sortedArticles = new SortedList<>(articles);
             sortedArticles.setComparator(Comparator.comparing(Article::getTitreArticle));

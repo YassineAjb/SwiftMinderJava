@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.example.models.Election.Candidat;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -119,6 +120,10 @@ public class CandidatItemController implements Initializable {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
     }
 

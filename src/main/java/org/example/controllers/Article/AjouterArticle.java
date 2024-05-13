@@ -1,7 +1,6 @@
 package org.example.controllers.Article;
 
 import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,8 +19,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.models.Article.Article;
-import org.example.models.Article.Sendsms;
 import org.example.services.Article.ArticleService;
+import org.example.utils.Session;
 
 import java.io.File;
 import java.io.IOException;
@@ -137,45 +136,63 @@ public class AjouterArticle {
     }
 
     public void initialize(){
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
+
+            btnMatch.setOnAction(e -> {
+                naviguezVers("/Article/affichermatch.fxml");
+            });
+            btnReservation.setOnAction(e -> {
+                naviguezVers("/Reservation/Reservation.fxml");
+            });
+            btnJoueurs.setOnAction(e -> {
+                naviguezVers("/Employee/AffichageJoueur.fxml");
+            });
+            btnContrats.setOnAction(e -> {
+                naviguezVers("/Employee/Contrat.fxml");
+            });
+            btnBoutique.setOnAction(e -> {
+                naviguezVers("/Boutique/Store.fxml");
+            });
+            btnElection.setOnAction(e -> {
+                naviguezVers("/Election/DashbordElection.fxml");
+            });
+            btnArticlles.setOnAction(e -> {
+                naviguezVers("/Article/afficherarticles.fxml");
+            });
+
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
-        btnReservation.setOnAction(e -> {
-            naviguezVers("/Reservation/Reservation.fxml");
-        });
-        btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/AffichageJoueur.fxml");
-        });
-        btnContrats.setOnAction(e -> {
-            naviguezVers("/Employee/Contrat.fxml");
-        });
-        btnBoutique.setOnAction(e -> {
-            naviguezVers("/Boutique/Store.fxml");
-        });
-        btnElection.setOnAction(e -> {
-            naviguezVers("/Election/DashbordElection.fxml");
-        });
-        btnArticlles.setOnAction(e -> {
-            naviguezVers("/Article/afficherarticles.fxml");
-        });
+            btnajouter.setOnAction(e -> {
+                naviguezVers("/Article/ajouterarticle.fxml");
+            });
+
+            if(Session.getSession().getUser().getRole().equals("Journaliste")){
+                btnMatch.setVisible(false);
+                btnJoueurs.setVisible(false);
+                btnBoutique.setVisible(false);
+                btnContrats.setVisible(false);
+                btnElection.setVisible(false);
+                btnReservation.setVisible(false);
+            }
     }
 
     @FXML
     void ajouterArticle(ActionEvent event) {
 
-        Sendsms sendsms = new Sendsms();
-        Message.creator(new PhoneNumber("+21625506906"),
-                new PhoneNumber(sendsms.getMynumber()), "Félicitation Article Ajouté Avec sucées ").create();
+//        Sendsms sendsms = new Sendsms();
+//        Message.creator(new PhoneNumber("+21625506906"),
+//                new PhoneNumber(sendsms.getMynumber()), "Félicitation Article Ajouté Avec sucées ").create();
         try {
             String desc = description.getText();
             String tit = titre.getText();
-            String idJournalisteText = idJourNaliste.getText();
+            int idJournaliste = Session.getSession().getUser().getId();
 //            path = imageView.getImage();
 
 
 
             // Vérifier si les champs sont vides
-            if (desc.isEmpty() || tit.isEmpty() || idJournalisteText.isEmpty()) {
+            if (desc.isEmpty() || tit.isEmpty() ) {
                 // Afficher un message d'erreur
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Erreur de saisie");
@@ -185,15 +202,13 @@ public class AjouterArticle {
                 return;  // Sortir de la fonction si les champs sont vides
             }
 
-            int idJournaliste = Integer.parseInt(idJournalisteText);
             Article article = new Article(tit, desc, fileUpload, idJournaliste);
             artic.add(article);
 
-            Parent root = FXMLLoader.load(getClass().getResource("/afficherarticles.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Article/afficherarticles.fxml"));
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = stage.getScene();
-            scene.setRoot(root);
+
+            btnAcceuil.getScene().setRoot(root);
 
         } catch (SQLException e) {
             e.getErrorCode();

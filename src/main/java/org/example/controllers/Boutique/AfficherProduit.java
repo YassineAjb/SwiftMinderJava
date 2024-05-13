@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.models.Boutique.Produit;
 import org.example.services.Boutique.ServiceProduit;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,6 +51,8 @@ public class AfficherProduit {
     private Button btnMatch;
     @FXML
     private Button btnReservation;
+    @FXML
+    private Button btnSignout;
 
 
 
@@ -85,6 +88,10 @@ public class AfficherProduit {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
 

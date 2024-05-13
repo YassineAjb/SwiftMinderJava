@@ -11,6 +11,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import org.example.models.Election.Election;
 import org.example.services.Election.ElectionService;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -82,6 +83,20 @@ public class DashboardElection implements Initializable {
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
         });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
+        });
+
+        if(Session.getSession().getUser().getRole().equals("MembrePlus")){
+            btnMatch.setVisible(false);
+            btnJoueurs.setVisible(true);
+            btnBoutique.setVisible(true);
+            btnContrats.setVisible(false);
+            btnElection.setVisible(true);
+            btnReservation.setVisible(false);
+            btnArticlles.setVisible(false);
+        }
 
     }
 

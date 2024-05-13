@@ -24,6 +24,7 @@ import org.example.models.Employe.ContratCell;
 import org.example.models.Employe.Joueur;
 import org.example.services.Employe.ServiceContrat;
 import org.example.services.Employe.ServiceJoueur;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -174,6 +175,10 @@ public class ContratController {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
         recupererGridContrats();

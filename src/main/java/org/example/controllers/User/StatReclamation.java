@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import org.example.services.User.CrudReclamation;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -74,6 +75,10 @@ public class StatReclamation implements Initializable {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
     }
 

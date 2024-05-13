@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.example.models.Article.Article;
 import org.example.services.Article.ArticleService;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -115,27 +116,45 @@ public class ArticleControllors  implements Initializable{
             e.printStackTrace();
 //             Handle exception as needed
         }
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
+
+
+            btnMatch.setOnAction(e -> {
+                naviguezVers("/Article/affichermatch.fxml");
+            });
+            btnReservation.setOnAction(e -> {
+                naviguezVers("/Reservation/Reservation.fxml");
+            });
+            btnJoueurs.setOnAction(e -> {
+                naviguezVers("/Employee/AffichageJoueur.fxml");
+            });
+            btnContrats.setOnAction(e -> {
+                naviguezVers("/Employee/Contrat.fxml");
+            });
+            btnBoutique.setOnAction(e -> {
+                naviguezVers("/Boutique/Store.fxml");
+            });
+            btnElection.setOnAction(e -> {
+                naviguezVers("/Election/DashbordElection.fxml");
+            });
+            btnArticlles.setOnAction(e -> {
+                naviguezVers("/Article/afficherarticles.fxml");
+            });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
-        btnReservation.setOnAction(e -> {
-            naviguezVers("/Reservation/Reservation.fxml");
-        });
-        btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/AffichageJoueur.fxml");
-        });
-        btnContrats.setOnAction(e -> {
-            naviguezVers("/Employee/Contrat.fxml");
-        });
-        btnBoutique.setOnAction(e -> {
-            naviguezVers("/Boutique/Store.fxml");
-        });
-        btnElection.setOnAction(e -> {
-            naviguezVers("/Election/DashbordElection.fxml");
-        });
-        btnArticlles.setOnAction(e -> {
-            naviguezVers("/Article/afficherarticles.fxml");
-        });
+            btnajouter.setOnAction(e -> {
+                naviguezVers("/Article/ajouterarticle.fxml");
+            });
+
+            if(Session.getSession().getUser().getRole().equals("Journaliste")){
+                btnMatch.setVisible(false);
+                btnJoueurs.setVisible(false);
+                btnBoutique.setVisible(false);
+                btnContrats.setVisible(false);
+                btnElection.setVisible(false);
+                btnReservation.setVisible(false);
+            }
     }
 
     private void fetchDataAndPopulateScrollPane() throws SQLException {

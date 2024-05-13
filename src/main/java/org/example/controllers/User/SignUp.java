@@ -47,7 +47,7 @@ public class SignUp implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        roleCombo.getItems().addAll("Journaliste","Membre","MembrePlus","Moderateur");
+        roleCombo.getItems().addAll("Journaliste","Membre","MembrePlus","Moderateur","admin");
         roleCombo.setValue("");
         ConfirmPassword.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.equals(Password.getText())) {

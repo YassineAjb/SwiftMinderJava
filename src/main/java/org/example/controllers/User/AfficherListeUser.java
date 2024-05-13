@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import org.example.models.User.User;
 import org.example.services.User.Crud_user;
 import org.example.utils.Encryptor;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -136,6 +137,10 @@ public class AfficherListeUser implements Initializable {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
     }

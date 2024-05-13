@@ -18,6 +18,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.models.Article.Match;
 import org.example.services.Article.MatchService;
+import org.example.utils.Session;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -179,6 +180,10 @@ public class AffichageMatch {
         });
         ajouter.setOnAction(e -> {
             naviguezVers("/Article/ajoutermatch.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
         sortedMatches = new SortedList<>(matches);

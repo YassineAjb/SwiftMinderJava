@@ -31,6 +31,7 @@ import org.example.models.Employe.Contrat;
 import org.example.models.Employe.Joueur;
 import org.example.models.Employe.JoueurCell;
 import org.example.services.Employe.ServiceJoueur;
+import org.example.utils.Session;
 
 import java.io.File;
 import java.io.IOException;
@@ -354,6 +355,10 @@ public class Employe {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
     }

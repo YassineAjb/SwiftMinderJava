@@ -14,6 +14,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.models.Election.Candidat;
 import org.example.services.Election.CandidatService;
+import org.example.utils.Session;
 
 import java.io.File;
 import java.io.IOException;
@@ -273,6 +274,10 @@ public class ModifierCandidatController {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
     }
 }

@@ -17,6 +17,7 @@ import org.example.models.Election.Candidat;
 import org.example.models.Election.Vote;
 import org.example.services.Election.CandidatService;
 import org.example.services.Election.VoteService;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -156,6 +157,10 @@ public class ListCandidatV implements Initializable {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
 

@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.example.models.Article.Article;
 import org.example.services.Article.ArticleService;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -134,6 +135,10 @@ public class MatchControllors  implements Initializable{
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
     }
 

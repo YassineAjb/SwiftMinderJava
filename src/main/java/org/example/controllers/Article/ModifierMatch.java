@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.models.Article.Match;
 import org.example.services.Article.MatchService;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -233,6 +234,10 @@ public class ModifierMatch {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
     }
     }

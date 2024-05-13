@@ -19,6 +19,7 @@ import org.example.models.Boutique.Produit;
 import org.example.services.Boutique.ServiceCommande;
 import org.example.services.Boutique.ServiceProduit;
 import org.example.utils.PDFGenerator;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -96,27 +97,55 @@ public class Store {
             e.printStackTrace();
         }
 
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
+
+
+            btnMatch.setOnAction(e -> {
+                naviguezVers("/Article/affichermatch.fxml");
+            });
+            btnReservation.setOnAction(e -> {
+                naviguezVers("/Reservation/Reservation.fxml");
+            });
+            btnJoueurs.setOnAction(e -> {
+                naviguezVers("/Employee/AffichageJoueur.fxml");
+            });
+            btnContrats.setOnAction(e -> {
+                naviguezVers("/Employee/Contrat.fxml");
+            });
+            btnBoutique.setOnAction(e -> {
+                naviguezVers("/Boutique/Store.fxml");
+            });
+            btnElection.setOnAction(e -> {
+                naviguezVers("/Election/DashbordElection.fxml");
+            });
+            btnArticlles.setOnAction(e -> {
+                naviguezVers("/Article/afficherarticles.fxml");
+            });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
-        btnReservation.setOnAction(e -> {
-            naviguezVers("/Reservation/Reservation.fxml");
-        });
-        btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/AffichageJoueur.fxml");
-        });
-        btnContrats.setOnAction(e -> {
-            naviguezVers("/Employee/Contrat.fxml");
-        });
-        btnBoutique.setOnAction(e -> {
-            naviguezVers("/Boutique/Store.fxml");
-        });
-        btnElection.setOnAction(e -> {
-            naviguezVers("/Election/DashbordElection.fxml");
-        });
-        btnArticlles.setOnAction(e -> {
-            naviguezVers("/Article/afficherarticles.fxml");
-        });
+
+
+
+
+
+        if(Session.getSession().getUser().getRole().equals("Membre")){
+            btnMatch.setVisible(false);
+            btnJoueurs.setVisible(true);
+            btnBoutique.setVisible(true);
+            btnContrats.setVisible(false);
+            btnElection.setVisible(false);
+            btnReservation.setVisible(false);
+            btnArticlles.setVisible(false);
+        } else if( Session.getSession().getUser().getRole().equals("MembrePlus")){
+            btnMatch.setVisible(false);
+            btnJoueurs.setVisible(true);
+            btnBoutique.setVisible(true);
+            btnContrats.setVisible(false);
+            btnElection.setVisible(true);
+            btnReservation.setVisible(false);
+            btnArticlles.setVisible(false);
+        }
 
     }
 

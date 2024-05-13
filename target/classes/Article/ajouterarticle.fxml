@@ -54,13 +54,13 @@
                   <Font name="Berlin Sans FB" size="14.0" />
                </font></Button>
                 <ImageView fx:id="photoImageView" fitHeight="167.0" fitWidth="216.0" layoutX="468.0" layoutY="364.0" />
-                <TextField fx:id="idJourNaliste" layoutX="362.0" layoutY="208.0" prefHeight="25.0" prefWidth="108.0" stylesheets="@/Article/Article.css">
+                <TextField fx:id="idJourNaliste" layoutX="362.0" layoutY="208.0" prefHeight="25.0" prefWidth="108.0" stylesheets="@/Article/Article.css" visible="false">
                     <styleClass>
                         <String fx:value="shodow" />
                         <String fx:value="white-bg" />
                         <String fx:value="radius" />
                     </styleClass></TextField>
-                <Label layoutX="363.0" layoutY="175.0" prefHeight="27.0" prefWidth="117.0" text="Id-Journaliste">
+                <Label layoutX="363.0" layoutY="175.0" prefHeight="27.0" prefWidth="117.0" text="Id-Journaliste" visible="false">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font></Label>

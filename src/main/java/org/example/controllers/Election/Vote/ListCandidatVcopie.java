@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import org.example.controllers.Election.Candidat.CandidatItemController;
 import org.example.models.Election.Candidat;
 import org.example.services.Election.CandidatService;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -157,6 +158,10 @@ public class ListCandidatVcopie implements Initializable {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
 

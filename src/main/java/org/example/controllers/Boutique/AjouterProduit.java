@@ -17,6 +17,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.models.Boutique.Produit;
 import org.example.services.Boutique.ServiceProduit;
+import org.example.utils.Session;
 
 import java.io.File;
 import java.io.IOException;
@@ -149,6 +150,10 @@ public class AjouterProduit {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
     }

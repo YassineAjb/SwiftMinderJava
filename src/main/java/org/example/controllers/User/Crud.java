@@ -124,6 +124,10 @@ public class Crud implements Initializable {
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
         });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
+        });
     }
     @javafx.fxml.FXML
     public void AddButton(ActionEvent actionEvent) {
