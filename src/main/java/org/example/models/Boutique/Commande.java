@@ -1,26 +1,27 @@
 package org.example.models.Boutique;
 
+import org.example.models.User.User;
 import org.example.services.Boutique.ServiceProduit;
 
 import java.sql.SQLException;
 
 public class Commande {
     private int idCommande;
-    private int idUser;
+    private User user;
     private int Somme;
     private Produit produit;
     private int quantite;
 
-    public Commande(int idCommande, int idUser, int somme,Produit produit,int quantite) {
+    public Commande(int idCommande, User user, int somme,Produit produit,int quantite) {
         this.idCommande = idCommande;
-        this.idUser = idUser;
+        this.user = user;
         this.Somme = somme;
         this.produit = produit;
         this.quantite = quantite;
     }
 
-    public Commande(int idUser, int somme,Produit produit,int quantite) {
-        this.idUser = idUser;
+    public Commande(User user, int somme,Produit produit,int quantite) {
+        this.user = user;
         this.Somme = somme;
         this.produit = produit;
         this.quantite = quantite;
@@ -50,12 +51,12 @@ public class Commande {
         this.idCommande = idCommande;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getSomme() {

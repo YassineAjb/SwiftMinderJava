@@ -2,7 +2,9 @@ package org.example.services.Boutique;
 
 import org.example.models.Boutique.Commande;
 import org.example.models.Boutique.Produit;
+import org.example.models.User.User;
 import org.example.utils.MyDataBase;
+import org.example.utils.Session;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,41 +14,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceCommande{
+    private User loggedInUser;
+    public void setLoggedInUser(User user) {
+        this.loggedInUser = user;
+    }
     private Connection connection;
 
     public ServiceCommande(){
         connection = MyDataBase.getInstance().getConnection();
+        this.loggedInUser = Session.getSession().getUser();
     }
 
 
     public void ajouter(Commande commande) throws SQLException {
         try {
-            String sql = "INSERT INTO commande (idUser,Somme,idProduit,quantite) VALUES (?, ?, ?,?)";
+            System.out.println(loggedInUser);
+            String sql = "INSERT INTO commande (idUser, Somme, idProduit, quantite) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, commande.getIdUser());
+            statement.setInt(1, loggedInUser.getId());
             statement.setInt(2, commande.getSomme());
             statement.setInt(3, commande.getProduit().getId());
             statement.setInt(4, commande.getQuantite());
 
-
             statement.executeUpdate();
             statement.close();
 
-
-            System.out.println("Commande inséré avec succès.");
+            System.out.println("Commande insérée avec succès.");
         } catch (SQLException e) {
-            System.out.println("Erreur lors de l'insertion du produit : " + e.getMessage());
+            System.out.println("Erreur lors de l'insertion de la commande : " + e.getMessage());
         }
     }
     public void modifier(Commande commande) {
-        String sql = "UPDATE commande SET idUser = ?, Somme = ?, idProduit = ?, quantite = ? WHERE idProduit = ?";
+        String sql = "UPDATE commande SET  Somme = ?, idProduit = ?, quantite = ? WHERE idProduit = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, commande.getIdUser());
-            preparedStatement.setInt(2, commande.getSomme());
-            preparedStatement.setInt(3, commande.getProduit().getId());
-            preparedStatement.setInt(4, commande.getQuantite());
-            preparedStatement.setInt(5, commande.getProduit().getId());
+            //preparedStatement.setInt(1, commande.setUser());
+            preparedStatement.setInt(1, commande.getSomme());
+            preparedStatement.setInt(2, commande.getProduit().getId());
+            preparedStatement.setInt(3, commande.getQuantite());
+            preparedStatement.setInt(4, commande.getProduit().getId());
 
             int rowsAffected = preparedStatement.executeUpdate();
             System.out.println(rowsAffected + " lignes ont été modifiées.");
@@ -62,13 +68,13 @@ public class ServiceCommande{
         List<Commande> commandes = new ArrayList<>();
         String sql = "SELECT * FROM commande WHERE idUser = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, idUser);
+        preparedStatement.setInt(1, loggedInUser.getId());
         ServiceProduit serviceProduit = new ServiceProduit();
-
+        User user = new User();
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             Commande c = new Commande();
-            c.setIdUser(rs.getInt("idUser"));
+            c.setUser(loggedInUser);
             c.setIdCommande(rs.getInt("idCommande"));
             c.setSomme(rs.getInt("Somme"));
             c.setQuantite(rs.getInt("Quantite"));
@@ -87,13 +93,15 @@ public class ServiceCommande{
         List<Commande> commandes= new ArrayList<>();
         int somme = 0;
 
-        commandes = this.afficher(idUser);
+        commandes = this.afficher(Session.getSession().getUser().getId());
         for (int i = 0;i<commandes.size();i++)
         {
             somme+=commandes.get(i).getSomme()*commandes.get(i).getQuantite();
 
         }
+        System.out.println(somme);
         return somme;
+
     }
     public void supprimer(int id) throws SQLException {
         String sql = "Delete from commande where idCommande = ? ";

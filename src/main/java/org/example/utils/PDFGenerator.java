@@ -4,7 +4,6 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.Image;
 import org.example.models.Boutique.Commande;
 import org.example.services.Boutique.ServiceCommande;
 import org.example.services.Boutique.ServiceProduit;
@@ -37,10 +36,10 @@ public class PDFGenerator {
             document.add(new Paragraph("TOTAL TTC: "+ serviceCommande.calculSomme(1)+" DT"));
 
 
-            Image image = Image.getInstance("C:\\Users\\tun\\Desktop\\projet\\Oussamaassal2.0\\src\\main\\resources\\Boutique\\images\\thumbnail_logo.png");
-            image.scaleToFit(400, 200); // Ajustez la taille de l'image selon vos besoins
-            image.setAlignment(Element.ALIGN_CENTER);
-            document.add(image);
+//            Image image = Image.getInstance("C:\\Users\\tun\\Desktop\\projet\\Oussamaassal2.0\\src\\main\\resources\\Boutique\\images\\thumbnail_logo.png");
+//            image.scaleToFit(400, 200); // Ajustez la taille de l'image selon vos besoins
+//            image.setAlignment(Element.ALIGN_CENTER);
+//            document.add(image);
 
             document.close();
             System.out.println("Fichier PDF des commandes généré avec succès !");
