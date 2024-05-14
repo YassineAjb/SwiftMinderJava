@@ -6,6 +6,7 @@ import org.example.models.User.User;
 import org.example.utils.MyDataBase;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class Crud_user {
@@ -195,6 +196,46 @@ public class Crud_user {
         return null;
     }
 
+public int getUserIdByEmail(String email) {
+        int userId = -1; // Initialize userId to -1 indicating that the email is not found
 
+        String sql = "SELECT idUser FROM user WHERE email = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, email);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                userId = rs.getInt("idUser"); // Get the user ID from the result set
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error while retrieving user ID by email: " + ex.getMessage());
+        }
+
+        return userId;
+    }
+
+    public List<User> getAdminUsers() {
+        List<User> adminUsers = new ArrayList<>();
+
+        String sql = "SELECT * FROM user WHERE role = 'admin'";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("iduser"));
+                user.setEmail(rs.getString("email"));
+                user.setMot_de_passe(rs.getString("motdepasse"));
+                user.setRole(rs.getString("role"));
+                user.setNumTel(rs.getString("NumTel"));
+
+                adminUsers.add(user);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error while retrieving admin users: " + e.getMessage());
+        }
+
+        return adminUsers;
+    }
 
 }

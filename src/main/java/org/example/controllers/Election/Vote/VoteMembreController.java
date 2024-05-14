@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.example.controllers.Election.Election.ELectionItemController;
@@ -138,12 +139,12 @@ public class VoteMembreController implements Initializable {
                     fxmlLoader.setLocation(getClass().getResource("/Election/ElectionItem.fxml"));
 
                     try {
-                        HBox hBox = fxmlLoader.load();
-                        ELectionItemController electionItemController = fxmlLoader.getController();
-                        electionItemController.setData(election);
+                        AnchorPane anchorPane = fxmlLoader.load();
+                        ELectionItemController eLectionItemController = fxmlLoader.getController();
+                        eLectionItemController.setData(election);
 
                         // Set the cell's graphic to the loaded HBox
-                        setGraphic(hBox);
+                        setGraphic(anchorPane);
                         /******Select item ******/
                         listViewEV.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                             @Override
@@ -196,4 +197,5 @@ public class VoteMembreController implements Initializable {
             System.err.println(e.getMessage());
         }
     }
+
 }

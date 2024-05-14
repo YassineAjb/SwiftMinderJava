@@ -23,7 +23,7 @@ public class ElectionService implements IService<Election> {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, election.getNomE());
-            preparedStatement.setDate(2, Date.valueOf(election.getDateE()));
+            preparedStatement.setDate(2, java.sql.Date.valueOf(election.getDateE()));
             preparedStatement.setString(3, election.getPosteE());
             preparedStatement.setString(4, election.getPeriodeP());
             preparedStatement.setString(5, election.getImgEpath());
@@ -132,7 +132,7 @@ public class ElectionService implements IService<Election> {
         String sql = "update evenement set nomE = ?, dateE = ?, posteE = ?,periodeP = ?,imgEpath = ? where idE = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, nomE);
-        preparedStatement.setDate(2, Date.valueOf(dateE));
+        preparedStatement.setDate(2, java.sql.Date.valueOf(dateE));
         preparedStatement.setString(3,posteE);
         preparedStatement.setString(4,periodeP);
         preparedStatement.setString(5, imgEpath);

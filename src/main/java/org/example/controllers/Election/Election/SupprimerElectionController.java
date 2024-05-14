@@ -189,7 +189,3 @@ public class SupprimerElectionController {
         }
     }
 }
-
-
-
-

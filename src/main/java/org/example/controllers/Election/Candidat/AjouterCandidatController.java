@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -81,6 +82,36 @@ public class AjouterCandidatController {
     private final CandidatService ps = new CandidatService();
 
     MailSenderService mailSenderService = new MailSenderService() ;
+
+    int idElectionToAddIn;
+
+    public void initializeElection_idToAddIn(int id) {
+        idElectionToAddIn = id;
+        System.out.println("444444444---->idD=" + idElectionToAddIn);
+
+    }
+
+        void gobackListCandidat() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            Parent newPageRoot = loader.load();
+
+            AfficherCandidatController afficherCandidatController = loader.getController();
+            afficherCandidatController.recupererIdE(idElectionToAddIn);
+            System.out.println("111111" + idElectionToAddIn);
+
+
+            Scene newPageScene = new Scene(newPageRoot);
+            Stage currentStage = (Stage) nomTFCA.getScene().getWindow();
+            currentStage.setScene(newPageScene);
+            currentStage.show();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void naviguezVers(String fxmlPath) {
         try {
@@ -171,7 +202,7 @@ private boolean isAlphabetic(String input) {
         int x;
 
         try {
-            x = ps.getIdEbynom(nomElectionTFCA.getText());
+            //x = ps.getIdEbynom(nomElectionTFCA.getText());
 
             // Validate name (nomTFCA) and surname (prenomTFCA)
             if (isAlphabetic(nomTFCA.getText()) && isAlphabetic(prenomTFCA.getText())) {
@@ -181,13 +212,13 @@ private boolean isAlphabetic(String input) {
 
                     // Validate image path (elpaaaathC)
                     if (!elpaaaathC.isEmpty()) {
-                        ps.ajouter(new Candidat(nomTFCA.getText(), prenomTFCA.getText(), Integer.valueOf(ageTFCA.getText()), elpaaaathC, x));
-                        mailSenderService.sendEmail("Ajout Candidat", "Candidat ajouté avec succés ");
+                        ps.ajouter(new Candidat(nomTFCA.getText(), prenomTFCA.getText(), Integer.valueOf(ageTFCA.getText()), elpaaaathC, idElectionToAddIn));
+                        mailSenderService.sendEmailToAdmins("Ajout Candidat", "Candidat : " + nomTFCA.getText() + " " + prenomTFCA.getText() + " ajouté avec succés ");
                         // Show success message
                         showSuccessMessage("Candidate added successfully!");
-
+                        gobackListCandidat();
                         try {
-                            Parent root = FXMLLoader.load(getClass().getResource("/Election/Affichercandidat.fxml"));
+                            Parent root = FXMLLoader.load(getClass().getResource("/Affichercandidat.fxml"));
                             nomTFCA.getScene().setRoot(root);
                         } catch (IOException e) {
                             System.err.println(e.getMessage());
@@ -251,12 +282,26 @@ private boolean isAlphabetic(String input) {
     @FXML
     void goBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherCandidat.fxml"));
-            ageTFCA.getScene().setRoot(root);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            Parent newPageRoot = loader.load();
+
+            AfficherCandidatController afficherCandidatController = loader.getController();
+            afficherCandidatController.recupererIdE(idElectionToAddIn);
+            System.out.println("111111" + idElectionToAddIn);
+
+
+            Scene newPageScene = new Scene(newPageRoot);
+            Stage currentStage = (Stage) nomTFCA.getScene().getWindow();
+            currentStage.setScene(newPageScene);
+            currentStage.show();
+
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            throw new RuntimeException(e);
         }
+
     }
+    
     public void initialize(URL location, ResourceBundle resources) {
         btnMatch.setOnAction(e -> {
             naviguezVers("/Article/affichermatch.fxml");

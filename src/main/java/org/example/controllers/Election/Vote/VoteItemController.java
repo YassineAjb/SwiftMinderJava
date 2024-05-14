@@ -70,32 +70,7 @@ public class VoteItemController implements Initializable {
     private final CandidatService candidatService = new CandidatService();
     private final ElectionService electionService = new ElectionService();
 
-  /*  public void setData(Vote vote) {
-        int idVote=vote.getIdV() ;
-        nomVoteItemCandidat.setText(vote.getNomCandidatbyId(idVote));
-        prenomVoteItemCandidat.setText(vote.getPrenomCandidatbyId(idVote));
-        nomVoteItemElection.setText(vote.getNomElectionbyId(idVote));
 
-        String imagePath = vote.getImgCpathbyId(idVote);
-
-        if (imagePath != null && !imagePath.isEmpty()) {
-            // Load the image from the specified path
-            try (InputStream stream = getClass().getResourceAsStream(imagePath)) {
-                if (stream != null) {
-                    Image image = new Image(stream);
-                    imgVoteItemCandidat.setImage(image);
-                } else {
-                    System.err.println("Image not found:" + imagePath);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.err.println("Error loading image:" + e.getMessage());
-            }
-        } else {
-            // Handle the case when the image path is not provided in the database
-            System.err.println("Image path not found in the database for election: " + vote.getNomE());
-        }
-    }*/
 
     public void naviguezVers(String fxmlPath) {
         try {
@@ -107,8 +82,10 @@ public class VoteItemController implements Initializable {
         }
     }
 
-    public void setData(Vote vote, Candidat candidat, Election election) {
+    public void setData(Candidat candidat, Election election) {
         if (candidat != null ||election != null ) {
+            assert candidat != null;
+            System.out.println("nom candidat votee   "+candidat.getNomC() );
             nomVoteItemCandidat.setText(candidat.getNomC());
             prenomVoteItemCandidat.setText(candidat.getPrenomC());
             nomVoteItemElection.setText(election.getNomE());

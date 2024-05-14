@@ -143,23 +143,23 @@ public class ModifierElectionController {
             }
         }
 */
-        int idElection;
-        public void initializeValues(String nomE, Date dateE, String posteE, String periodeE, String imgEpath, int id) {
+int idElection;
+public void initializeValues(String nomE, Date dateE, String posteE, String periodeE, String imgEpath, int id) {
 
 
-            nomTF.setText(nomE);
-            dateTF.setValue(dateE.toLocalDate()); // Convert Date to LocalDate
-            posteTF.setText(posteE);
-            periodeTF.setText(periodeE);
-            //imgEpath.setText(imgEpath);
+    nomTF.setText(nomE);
+    dateTF.setValue(dateE.toLocalDate()); // Convert Date to LocalDate
+    posteTF.setText(posteE);
+    periodeTF.setText(periodeE);
+    //imgEpath.setText(imgEpath);
 
-           // String imagePath = election.getImgEpath();
-            InputStream stream = getClass().getResourceAsStream("C:/Users/tun/Desktop/projet/Oussamaassal2.0/src/main/resources/Election/images/"+imgEpath);
-            Image image = new Image(stream);
-            imageModif.setImage(image);
+   // String imagePath = election.getImgEpath();
+    InputStream stream = getClass().getResourceAsStream(imgEpath);
+    Image image = new Image(stream);
+    imageModif.setImage(image);
 
-            idElection=id;
-        }
+    idElection=id;
+}
 
     public void initialize(URL location, ResourceBundle resources) {
         btnMatch.setOnAction(e -> {
@@ -300,7 +300,7 @@ public class ModifierElectionController {
 
         if (nomTF.getText().isEmpty() || posteTF.getText().isEmpty() || periodeTF.getText().isEmpty() || date == null || elpaaaathModif.isEmpty()) {
             showAlert("Please fill all the fields!");
-        } else if (!nomTF.getText().matches("^[a-zA-Z]+$")) {
+        } else if (!nomTF.getText().matches("[a-zA-Z0-9]+")) {
             showAlert("Election name must be all alphabetic characters");
         } else if (!posteTF.getText().matches("^[a-zA-Z]+$")) {
             showAlert("Poste must be all alphabetic characters");

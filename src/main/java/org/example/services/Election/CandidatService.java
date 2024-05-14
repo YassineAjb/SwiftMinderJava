@@ -44,7 +44,7 @@ public class CandidatService implements IService<Candidat> {
             preparedStatement.executeUpdate();
         }
     }
-    public void modifierCC(String nomC, String prenomC, int ageC, String imgCpath,String nomE,int idC) throws SQLException {
+    public void modifierCC(String nomC, String prenomC, int ageC, String imgCpath,int idElection,int idC) throws SQLException {
         int idENouv = 0;
         String sql = "update candidat set nomC = ?, prenomC = ?, ageC = ? ,imgCpath = ?,idElection = ? where idC = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -53,11 +53,8 @@ public class CandidatService implements IService<Candidat> {
         preparedStatement.setString(2,prenomC);
         preparedStatement.setInt(3,ageC);
         preparedStatement.setString(4, imgCpath);
-
-        idENouv = getIdEbynom(nomE) ;
-        preparedStatement.setInt(5,idENouv);
-        System.out.println(idENouv + "idnouv election par nom");
-
+        preparedStatement.setInt(5,idElection);
+        System.out.println(idENouv + "idElection : ou on va modifier le candidat");
 
         preparedStatement.setInt(6,idC);
 
@@ -222,6 +219,7 @@ public class CandidatService implements IService<Candidat> {
 
         return candidats;
     }
+
 
 
 

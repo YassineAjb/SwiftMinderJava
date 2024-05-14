@@ -8,8 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
 import org.example.models.Election.Candidat;
 import org.example.services.Election.CandidatService;
 import org.example.utils.Session;
@@ -63,11 +66,18 @@ public class DashboardController implements Initializable {
     @FXML
     private Button btnSignout;
 
+    int id_election ;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadStatistics();
-        loadStatisticsRating();
+        //recupererIdE(id_election);
+        try {
+            loadStatisticsRating(1);
+            System.out.println(id_election);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         btnMatch.setOnAction(e -> {
             naviguezVers("/Article/affichermatch.fxml");
@@ -104,59 +114,70 @@ public class DashboardController implements Initializable {
     }
 
 
-    public void loadStatisticsRating() {
-        try {
-            List<Candidat> candidats = candidatService.recuperer();
+    public void loadStatisticsRating(int id) throws SQLException {
 
-            // Initialize counts for different rating ranges
-            int nbCandidatSup85 = 0;
-            int nbCandidatSup65 = 0;
-            int nbCandidatSup45 = 0;
-            int nbCandidatSup25 = 0;
 
-            // Count occurrences of each rating range
-            for (Candidat candidat : candidats) {
-                int age = candidat.getAgeC();
-                if (age >= 85) {
-                    nbCandidatSup85++;
-                } else if (age >= 65 ) {
-                    nbCandidatSup65++;
-                } else if (age >= 45) {
-                    nbCandidatSup45++;
-                } else if (age >= 25) {
-                    nbCandidatSup25++;
-                }
+        id_election=id;
+        System.out.println("initializeCandidatStat---->idE="+ id_election);
+        List<Candidat> candidats;
+        {
+            try {
+                System.out.println("-0000-------------->"+ id_election);
+                candidats = candidatService.recupererC(id_election);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-
-            // Create pie chart data
-            ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                    new PieChart.Data("Candidat plus de 85 ans", nbCandidatSup85),
-                    new PieChart.Data("Candidat entre 66 et 84 ans", nbCandidatSup65),
-                    new PieChart.Data("Candidat entre 46 et 65", nbCandidatSup45),
-                    new PieChart.Data("Candidat entre 25 et 45 ans", nbCandidatSup25)
-            );
-
-            // Set pie chart data
-            pieChart2.setData(pieChartData);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+
+
+        //List<Candidat> candidats = candidatService.recupererC(id_election);
+        System.out.println(id_election);
+        System.out.println(candidats);
+        // Initialize counts for different rating ranges
+        int nbCandidatSup85 = 0;
+        int nbCandidatSup65 = 0;
+        int nbCandidatSup45 = 0;
+        int nbCandidatSup25 = 0;
+
+        // Count occurrences of each rating range
+        for (Candidat candidat : candidats) {
+            int age = candidat.getAgeC();
+            if (age >= 85) {
+                nbCandidatSup85++;
+            } else if (age >= 65 ) {
+                nbCandidatSup65++;
+            } else if (age >= 45) {
+                nbCandidatSup45++;
+            } else if (age >= 25) {
+                nbCandidatSup25++;
+            }
+        }
+
+        // Create pie chart data
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Candidat plus de 85 ans", nbCandidatSup85),
+                new PieChart.Data("Candidat entre 66 et 84 ans", nbCandidatSup65),
+                new PieChart.Data("Candidat entre 46 et 65", nbCandidatSup45),
+                new PieChart.Data("Candidat entre 25 et 45 ans", nbCandidatSup25)
+        );
+
+        // Set pie chart data
+        pieChart2.setData(pieChartData);
+
     }
 
 
-    public void loadStatistics() {
-        try {
-            List<Candidat> candidats = candidatService.recuperer();
+    public void loadStatistics() throws SQLException {
+        List<Candidat> candidats = candidatService.recuperer();
 
-            // Initialize a map to store role counts
-            Map<String, Integer> roleCounts = new HashMap<>();
+        // Initialize a map to store role counts
+        Map<String, Integer> roleCounts = new HashMap<>();
 
-            // Count occurrences of each role
-            for (Candidat candidat : candidats) {
-                String role = candidat.getNomC().toLowerCase();
-                roleCounts.put(role, roleCounts.getOrDefault(role, 0) + 1);
-            }
+        // Count occurrences of each role
+        for (Candidat candidat : candidats) {
+            String role = candidat.getNomC().toLowerCase();
+            roleCounts.put(role, roleCounts.getOrDefault(role, 0) + 1);
+        }
 
            /* // Create pie chart data
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
@@ -169,19 +190,33 @@ public class DashboardController implements Initializable {
             // Set pie chart data
             pieChart.setData(pieChartData);*/
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
+
+
     @FXML
     void goBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherCandidat.fxml"));
+            /*Parent root = FXMLLoader.load(getClass().getResource("/AfficherCandidat.fxml"));
             pieChart2.getScene().setRoot(root);
+
+            AfficherCandidatController afficherCandidatController= root.getController();
+            afficherCandidatController.recupererIdE(id_election);*/
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/AfficherCandidat.fxml"));
+            Parent newPageRoot = loader.load();
+
+            AfficherCandidatController afficherCandidatController= loader.getController();
+            afficherCandidatController.recupererIdE(id_election);
+
+            Scene newPageScene = new Scene(newPageRoot);
+            Stage currentStage = (Stage) pieChart2.getScene().getWindow();
+            currentStage.setScene(newPageScene);
+            currentStage.show();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
+
 
     public void naviguezVers(String fxmlPath) {
         try {

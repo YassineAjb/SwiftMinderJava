@@ -6,6 +6,8 @@ public class Vote {
     private int idV ;
     private int idCandidatV ;
     private int idElectionV ;
+    private int idUser ;
+
 
     public int getIdV() {
         return idV;
@@ -22,7 +24,12 @@ public class Vote {
     public void setIdCandidatV(int idCandidatV) {
         this.idCandidatV = idCandidatV;
     }
-
+    public int getIdUser() {
+        return idUser;
+    }
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
     public int getIdElectionV() {
         return idElectionV;
     }
@@ -45,6 +52,15 @@ public class Vote {
 
     public void setCElection(Election election) {
         this.election = election;
+    }
+
+    public Vote() {
+    }
+
+    public Vote(int idCandidatV, int idElectionV, int idUser) {
+        this.idCandidatV = idCandidatV;
+        this.idElectionV = idElectionV;
+        this.idUser = idUser;
     }
 
 

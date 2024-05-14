@@ -1,228 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Election.Candidat.AjouterCandidatController">
+<AnchorPane prefHeight="850.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Election.Candidat.AjouterCandidatController">
     <children>
       <ImageView fitHeight="850.0" fitWidth="1000.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/Election/images/background2.png" />
+            <Image url="@images/background1%20(3).png" />
          </image>
       </ImageView>
-        <Button layoutX="619.0" layoutY="683.0" mnemonicParsing="false" onAction="#ajouterCandidat" text="Add" textFill="#00bc06">
+      <ImageView fitHeight="647.0" fitWidth="670.0" layoutX="569.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/FormBC%20(1).png" />
+         </image>
+      </ImageView>
+        <Button layoutX="753.0" layoutY="629.0" mnemonicParsing="false" onAction="#ajouterCandidat" text="Add" textFill="#00bc06">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/Election/images/addIcon.png" />
+                  <Image url="@images/addIcon.png" />
                </image>
             </ImageView>
          </graphic></Button>
-        <TextField fx:id="nomElectionTFCA" layoutX="619.0" layoutY="386.0" promptText="Nom Election" />
-        <TextField fx:id="nomTFCA" layoutX="619.0" layoutY="132.0" promptText="Nom" />
-        <TextField fx:id="ageTFCA" layoutX="619.0" layoutY="307.0" promptText="Age" />
-        <TextField fx:id="prenomTFCA" layoutX="619.0" layoutY="227.0" promptText="Prénom" />
-        <Button fx:id="chooseCimgAjout" layoutX="619.0" layoutY="516.0" mnemonicParsing="false" onAction="#chosirImageCAjout" text="Choose an image" />
-        <ImageView fx:id="imageCAjout" fitHeight="150.0" fitWidth="200.0" layoutX="806.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
+        <Pane prefHeight="850.0" prefWidth="300.0" style="-fx-background-color: #000C48FF;" stylesheets="@../../../../../SuiviPi1/src/main/resources/test.css">
+            <children>
+                <Button fx:id="btnAcceuil1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="22.0" layoutY="159.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../SuiviPi1/src/main/resources/test.css" text="Acceuil" textFill="#163f6f" translateY="-40.0">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8_Home_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnReservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="209.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../SuiviPi1/src/main/resources/test.css" text="Reservation" translateY="-40.0">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8_Slider__32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btncalendrier" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="259.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../SuiviPi1/src/main/resources/test.css" text="Calendrier" translateY="-40.0">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8_Open_Envelope_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnJoueurs" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="359.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../SuiviPi1/src/main/resources/test.css" text="Joueurs" translateY="-40.0">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8_Person_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnStaff" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="309.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../SuiviPi1/src/main/resources/test.css" text="Staff" translateY="-40.0">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8_Xbox_Menu_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnBoutique" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="409.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../SuiviPi1/src/main/resources/test.css" text="Boutique" translateY="-40.0">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8_Box_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSettings1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="459.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../../../../../SuiviPi1/src/main/resources/test.css" text="Election" translateY="-40.0">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8-bulletin-de-vote-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="20.0" layoutY="539.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="263.0" style="-fx-background-color: #FFFFF;" stylesheets="@../../../../../SuiviPi1/src/main/resources/test.css" text="Sign Out" translateY="-40.0">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8_Sign_Out_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <ImageView fitHeight="43.0" fitWidth="288.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <TextField fx:id="nomTFCA" layoutX="742.0" layoutY="148.0" promptText="Nom" />
+        <TextField fx:id="ageTFCA" layoutX="742.0" layoutY="323.0" promptText="Age" />
+        <TextField fx:id="prenomTFCA" layoutX="742.0" layoutY="243.0" promptText="Prénom" />
+        <Button fx:id="chooseCimgAjout" layoutX="607.0" layoutY="477.0" mnemonicParsing="false" onAction="#chosirImageCAjout" text="Choose an image" />
+        <ImageView fx:id="imageCAjout" fitHeight="150.0" fitWidth="200.0" layoutX="773.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@/Election/images/IMAGE1 (4).png" />
+                <Image url="@images/IMAGE1%20(4).png" />
             </image>
         </ImageView>
-      <Label layoutX="497.0" layoutY="137.0" text="Nom" />
-      <Label layoutX="497.0" layoutY="232.0" text="Prenom" />
-      <Label layoutX="497.0" layoutY="312.0" text="Age" />
-      <Label layoutX="497.0" layoutY="391.0" text="Nom d'Election" />
-      <Button fx:id="goBack" layoutX="1088.0" layoutY="735.0" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #00796b;" text="Retour" textFill="WHITE">
+      <Label layoutX="620.0" layoutY="153.0" text="Nom" />
+      <Label layoutX="620.0" layoutY="248.0" text="Prenom" />
+      <Label layoutX="620.0" layoutY="328.0" text="Age" />
+      <Button fx:id="goBack" layoutX="1104.0" layoutY="756.0" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #004AAD;" text="Retour" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/Election/images/retour.png" />
+                  <Image url="@images/retour.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <VBox id="menuu" alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="777.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
-         <children>
-            <Label layoutX="26.0" layoutY="10.0">
-               <font>
-                  <Font name="Arial Bold Italic" size="29.0" />
-               </font>
-            </Label>
-            <Label>
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="Arial Bold Italic" size="22.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="39.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/logo.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <Label layoutX="26.0" layoutY="10.0">
-               <font>
-                  <Font name="Arial Bold Italic" size="29.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnAcceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="190.0" stylesheets="@/Employee/style.css" text="Acceuil" textFill="#e7e5e5">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Home_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnMatch" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Match">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Open_Envelope_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnArticlles" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="177.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Articles">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Open_Envelope_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button id="Reservation" fx:id="btnReservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Reservation">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/shippingtruck.png" />
-                     </image>
-                     <effect>
-                        <ColorAdjust contrast="-1.0" />
-                     </effect>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnJoueurs" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Joueurs">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Person_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnContrats" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Contrats">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Xbox_Menu_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnBoutique" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Boutique">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Box_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnElection" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="384.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Election">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Slider__32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnReclamations" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="429.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Reclamations">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Slider__32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnUsers" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="471.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Users">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Slider__32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="273.0" style="-fx-background-color: #FFFFF;" stylesheets="@/Employee/style.css" text="Sign Out">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/Employee/images/icons8_Sign_Out_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Button>
-            <Label layoutX="26.0" layoutY="63.0">
-               <font>
-                  <Font name="Arial Bold Italic" size="29.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-    </children>
-</AnchorPane>
+      <ImageView fitHeight="103.0" fitWidth="959.0" layoutX="321.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>

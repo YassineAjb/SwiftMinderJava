@@ -20,12 +20,12 @@ public class VoteService implements IService<Vote> {
 
     @Override
     public void ajouter(Vote vote) throws SQLException {
-        String sql = "INSERT INTO vote (idCandidatv, idElectionV) VALUES (?, ?)";
+        String sql = "INSERT INTO vote (idCandidatv, idElectionV, idUser) VALUES (?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, vote.getIdCandidatV());
             preparedStatement.setInt(2, vote.getIdElectionV());
-
+            preparedStatement.setInt(3, vote.getIdUser());
             preparedStatement.executeUpdate();
         }
     }
@@ -51,7 +51,7 @@ public class VoteService implements IService<Vote> {
             p.setIdV(rs.getInt("idV"));
             p.setIdCandidatV(rs.getInt("idCandidatV"));
             p.setIdElectionV(rs.getInt("idElectionV"));
-
+            p.setIdUser(rs.getInt("idUser"));
             votes.add(p);
         }
         return votes;
@@ -60,7 +60,9 @@ public class VoteService implements IService<Vote> {
 
     public Candidat getCandidatForVote(Vote vote) throws SQLException {
         int xx = vote.getIdCandidatV();
-        Candidat candidat = null;
+        //Candidat candidat = null;
+        Candidat candidat = new Candidat();
+
         System.out.println("id  el vote "+xx);
         String sql = "SELECT * FROM candidat WHERE idC = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -68,7 +70,7 @@ public class VoteService implements IService<Vote> {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                candidat = new Candidat();
+                //candidat = new Candidat();
                 candidat.setIdC(rs.getInt("idC"));
                 candidat.setNomC(rs.getString("nomC"));
                 candidat.setPrenomC(rs.getString("prenomC"));
@@ -87,27 +89,47 @@ public class VoteService implements IService<Vote> {
 
     public Election getElectionForVote(Vote vote) {
         int xx = vote.getIdElectionV();
-        Election election = new Election();
+        Election electionn = new Election();
         System.out.println("id el election mte3 el vote "+xx);
         String sql = "SELECT * FROM evenement WHERE idE = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, xx);
             ResultSet rs = preparedStatement.executeQuery();
+            System.out.println(" hnee");
 
                 if (rs.next()) {
                  //   Election election = new Election();
-                    election.setIdE(rs.getInt("idE"));
-                    election.setNomE(rs.getString("nomE"));
-                    election.setDateE(LocalDate.parse(rs.getString("dateE")));
-                    election.setPosteE(rs.getString("posteE"));
-                    election.setPeriodeP(rs.getString("periodeP"));
-                    election.setImgEpath(rs.getString("imgEpath"));
-                    System.out.println("id election mtte3 el vooooote "+rs.getInt("idE"));
-            }
+                    System.out.println(" hnee");
+                    electionn.setIdE(rs.getInt("idE"));
+                    electionn.setNomE(rs.getString("nomE"));
+                    electionn.setDateE(LocalDate.parse(rs.getString("dateE")));
+                    electionn.setPosteE(rs.getString("posteE"));
+                    electionn.setPeriodeP(rs.getString("periodeP"));
+                    electionn.setImgEpath(rs.getString("imgEpath"));System.out.println("id election mtte3 el vooooote "+rs.getInt("idE"));
+            }else {
+                    System.out.println("mouch mawjouda election"+xx);
+                }
         } catch (SQLException ex) {
             System.out.println("Error while searching for Election by id: " + ex.getMessage());
         }
 
-        return election;
+        return electionn;
+    }
+
+    public boolean hasVoted(int idElection, int idUser) {
+        String sql = "SELECT COUNT(*) FROM vote WHERE idElectionV = ? AND idUser = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, idElection);
+            preparedStatement.setInt(2, idUser);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0; // Retourne true si une entrée existe, sinon false
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error while checking if user has voted: " + ex.getMessage());
+        }
+        return false; // Par défaut, indique que l'utilisateur n'a pas voté en cas d'erreur
     }
 }
