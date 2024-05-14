@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import org.example.models.Election.Candidat;
 import org.example.services.Election.CandidatService;
 import org.example.utils.Session;

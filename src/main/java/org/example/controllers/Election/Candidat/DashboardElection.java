@@ -193,12 +193,9 @@ public class DashboardElection implements Initializable {
 
     @FXML
     void goBack(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
-            pieChart.getScene().setRoot(root);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
+        naviguezVers("/Election/AfficherElection.fxml");
+//            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
+//            pieChart.getScene().setRoot(root);
     }
 
 }

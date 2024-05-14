@@ -13,19 +13,19 @@
    <children>
       <ImageView fitHeight="850.0" fitWidth="1000.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/background1%20(3).png" />
+            <Image url="@images/background1 (3).png" />
          </image>
       </ImageView>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0">
          <children>
             <ImageView fitHeight="647.0" fitWidth="670.0" layoutX="547.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/FormBC%20(1).png" />
+                  <Image url="@images/FormBC (1).png" />
                </image>
             </ImageView>
-            <Pane layoutX="-0.0" layoutY="-0.0" prefHeight="850.0" prefWidth="300.0" style="-fx-background-color: #000C48FF;" stylesheets="@../test.css">
+            <Pane layoutX="-0.0" layoutY="-0.0" prefHeight="850.0" prefWidth="300.0" style="-fx-background-color: #000C48FF;" stylesheets="@test.css">
                <children>
-                  <Button fx:id="btnAcceuil1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="22.0" layoutY="159.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../test.css" text="Acceuil" translateY="-40.0">
+                  <Button fx:id="btnAcceuil1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="22.0" layoutY="159.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@test.css" text="Acceuil" translateY="-40.0">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -40,7 +40,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btnReservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="209.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../test.css" text="Reservation" translateY="-40.0">
+                  <Button fx:id="btnReservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="209.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@test.css" text="Reservation" translateY="-40.0">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,7 +52,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btncalendrier" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="259.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../test.css" text="Calendrier" translateY="-40.0">
+                  <Button fx:id="btncalendrier" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="259.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@test.css" text="Calendrier" translateY="-40.0">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -64,7 +64,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btnJoueurs" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="359.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../test.css" text="Joueurs" translateY="-40.0">
+                  <Button fx:id="btnJoueurs" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="359.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@test.css" text="Joueurs" translateY="-40.0">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -76,7 +76,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btnStaff" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="309.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../test.css" text="Staff" translateY="-40.0">
+                  <Button fx:id="btnStaff" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="309.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@test.css" text="Staff" translateY="-40.0">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -88,7 +88,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btnBoutique" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="409.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../test.css" text="Boutique" translateY="-40.0">
+                  <Button fx:id="btnBoutique" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="409.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@test.css" text="Boutique" translateY="-40.0">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -100,7 +100,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btnSettings1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="459.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../test.css" text="Election" translateY="-40.0">
+                  <Button fx:id="btnSettings1" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="23.0" layoutY="459.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@test.css" text="Election" translateY="-40.0">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -112,7 +112,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="20.0" layoutY="539.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="263.0" style="-fx-background-color: #FFFFF;" stylesheets="@../test.css" text="Sign Out" translateY="-40.0">
+                  <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="20.0" layoutY="539.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="263.0" style="-fx-background-color: #FFFFF;" stylesheets="@test.css" text="Sign Out" translateY="-40.0">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -142,7 +142,7 @@
             <ImageView fx:id="imageEModif" fitHeight="150.0" fitWidth="200.0" layoutX="656.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="imageModif" fitHeight="150.0" fitWidth="200.0" layoutX="781.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/IMAGE1%20(4).png" />
+                  <Image url="@images/IMAGE1 (4).png" />
                </image>
             </ImageView>
             <Button fx:id="chooseEimgModif" layoutX="591.0" layoutY="512.0" mnemonicParsing="false" onAction="#chosirImageEModif" text="Choose an image" />
@@ -165,7 +165,7 @@
             </Button>
             <ImageView fitHeight="356.0" fitWidth="938.0" layoutX="309.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/modif%20un%20election.png" />
+                  <Image url="@images/modif_un_election.png" />
                </image>
             </ImageView>
          </children>

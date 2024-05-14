@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="105.0" fitWidth="980.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/back%20(3).png" />
+            <Image url="@images/back (3).png" />
          </image>
       </ImageView>
       <HBox prefHeight="92.0" prefWidth="980.0" spacing="40.0">
@@ -26,7 +26,7 @@
                <children>
                   <ImageView fx:id="imgVoteItemCandidat" fitHeight="74.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/IMAGE1%20(4).png" />
+                        <Image url="@images/IMAGE1 (4).png" />
                      </image>
                   </ImageView>
                </children>

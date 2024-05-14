@@ -5,8 +5,12 @@ import javafx.collections.ObservableList;
 import org.example.models.User.User;
 import org.example.utils.MyDataBase;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Crud_user {

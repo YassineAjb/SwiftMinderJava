@@ -12,9 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
 import org.example.controllers.Election.Candidat.AfficherCandidatController;
 import org.example.controllers.Election.Candidat.DashboardElection;
 import org.example.models.Election.Election;
@@ -265,7 +263,7 @@ public class AfficherElectionController implements Initializable{
                 } else {
                     // Load custom FXML layout for each election
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("/ElectionItem.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/Election/ElectionItem.fxml"));
 
                     try {
                         AnchorPane anchorPane = fxmlLoader.load();

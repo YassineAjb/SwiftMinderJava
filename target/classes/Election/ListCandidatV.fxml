@@ -18,7 +18,7 @@
          <children>
             <ImageView fitHeight="852.0" fitWidth="1026.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/background1%20(3).png" />
+                  <Image url="@images/background1 (3).png" />
                </image>
             </ImageView>
             <Separator layoutY="100.0" prefHeight="0.0" prefWidth="1300.0" />
@@ -43,7 +43,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="/images/icons8_Slider__32px.png" />
+                              <Image  url="@images/icons8_Slider__32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -55,7 +55,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="/images/icons8_Open_Envelope_32px.png" />
+                              <Image  url="@images/icons8_Open_Envelope_32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -67,7 +67,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="/images/icons8_Person_32px.png" />
+                              <Image  url="@images/icons8_Person_32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -79,7 +79,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="/images/icons8_Xbox_Menu_32px.png" />
+                              <Image  url="@images/icons8_Xbox_Menu_32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -91,7 +91,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="/images/icons8_Box_32px.png" />
+                              <Image  url="@images/icons8_Box_32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -115,7 +115,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="/images/icons8_Sign_Out_32px.png" />
+                              <Image  url="@images/icons8_Sign_Out_32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -209,7 +209,7 @@
             </VBox>
             <ImageView fitHeight="87.0" fitWidth="902.0" layoutX="341.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/aujourd%20(1).png" />
+                  <Image url="@images/aujourd (1).png" />
                </image>
             </ImageView>
          </children>

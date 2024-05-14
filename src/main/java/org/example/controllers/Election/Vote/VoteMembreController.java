@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.example.controllers.Election.Election.ELectionItemController;
 import org.example.models.Election.Election;

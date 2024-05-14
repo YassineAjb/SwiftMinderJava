@@ -125,7 +125,7 @@ public class Crud implements Initializable {
             naviguezVers("/Boutique/Store.fxml");
         });
         btnElection.setOnAction(e -> {
-            naviguezVers("/Election/DashbordElection.fxml");
+            naviguezVers("/Election/DashbordCandidat.fxml");
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");

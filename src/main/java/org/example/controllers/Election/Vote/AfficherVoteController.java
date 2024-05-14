@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import org.example.models.Election.Candidat;
 import org.example.models.Election.Election;
 import org.example.models.Election.Vote;

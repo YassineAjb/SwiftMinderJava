@@ -4,16 +4,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.example.models.Election.Candidat;
 import org.example.models.Election.Election;
-import org.example.models.Election.Vote;
 import org.example.services.Election.CandidatService;
 import org.example.services.Election.ElectionService;
-import org.example.utils.Session;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,8 +26,7 @@ public class VoteItemController implements Initializable {
 
     @FXML
     private ImageView imgVoteItemCandidat;
-    @FXML
-    private Button btnArticlles;
+
 
     @FXML
     private Label prenomVoteItemCandidat;
@@ -38,35 +34,6 @@ public class VoteItemController implements Initializable {
     @FXML
     private Label nomVoteItemCandidat;
 
-    @FXML
-    private Button btnAcceuil;
-
-    @FXML
-    private Button btnBoutique;
-
-    @FXML
-    private Button btnUsers;
-
-    @FXML
-    private Button btnReclamations;
-
-    @FXML
-    private Button btnContrats;
-
-    @FXML
-    private Button btnElection;
-
-    @FXML
-    private Button btnJoueurs;
-
-    @FXML
-    private Button btnMatch;
-
-    @FXML
-    private Button btnReservation;
-
-    @FXML
-    private Button btnSignout;
     private final CandidatService candidatService = new CandidatService();
     private final ElectionService electionService = new ElectionService();
 
@@ -116,37 +83,7 @@ public class VoteItemController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        btnMatch.setOnAction(e -> {
-            naviguezVers("/Article/affichermatch.fxml");
-        });
-        btnReservation.setOnAction(e -> {
-            naviguezVers("/Reservation/Reservation.fxml");
-        });
-        btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/AffichageJoueur.fxml");
-        });
-        btnContrats.setOnAction(e -> {
-            naviguezVers("/Employee/Contrat.fxml");
-        });
-        btnBoutique.setOnAction(e -> {
-            naviguezVers("/Boutique/Store.fxml");
-        });
-        btnElection.setOnAction(e -> {
-            naviguezVers("/Election/DashbordElection.fxml");
-        });
-        btnArticlles.setOnAction(e -> {
-            naviguezVers("/Article/afficherarticles.fxml");
-        });
-        btnReclamations.setOnAction(e -> {
-            naviguezVers("/User/tablereclamation.fxml");
-        });
-        btnUsers.setOnAction(e -> {
-            naviguezVers("/User/Crud.fxml");
-        });
-        btnSignout.setOnAction(e -> {
-            Session.getSession().clearSession();
-            naviguezVers("/User/Login.fxml");
-        });
+
     }
 
 

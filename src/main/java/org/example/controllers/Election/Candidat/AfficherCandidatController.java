@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.example.models.Election.Candidat;
 import org.example.services.Election.CandidatService;
@@ -425,7 +424,7 @@ public class AfficherCandidatController implements Initializable{
     @FXML
     void goBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherElection.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
             listViewC.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());

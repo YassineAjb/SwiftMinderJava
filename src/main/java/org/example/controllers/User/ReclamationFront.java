@@ -55,7 +55,7 @@ public class ReclamationFront implements Initializable {
     private TextField titre;
     @javafx.fxml.FXML
     private TextArea description;
-    private int idUser=Session.getSession().getUser().getId(); //ONLY IN FRONT
+    private int idUser= Session.getSession().getUser().getId(); //ONLY IN FRONT
     @javafx.fxml.FXML
     private Button buttonreturn;
     @javafx.fxml.FXML
