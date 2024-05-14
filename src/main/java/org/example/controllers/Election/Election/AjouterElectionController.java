@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.models.Election.Election;
+import org.example.models.Election.SMSSender;
 import org.example.services.Election.ElectionService;
 import org.example.services.Election.MailSenderService;
 
@@ -139,39 +140,47 @@ public void initialize(URL location, ResourceBundle resources) {
         naviguezVers("/Article/affichermatch.fxml");
     });
 }
+
 @FXML
 void ajouterElection(ActionEvent event) {
     elpaaaath = election.getImgEpath();
     try {
-        // Validate name (nomTF) and position (posteTF)
-        if (isAlphabetic(nomTF.getText()) && isAlphabetic(posteTF.getText())) {
+        // Validate name (nomTF)
+        if (isAlphaDigit(nomTF.getText())) {
 
-            // Validate image path (elpaaaath)
-            if (!elpaaaath.isEmpty()) {
+            // Validate position (posteTF)
+            if (isAlphabetic(posteTF.getText())) {
 
-                // Validate period (periodeTF)
-                if (isPeriodValid(periodeTF.getText())) {
-                    // If all validations pass, add the Election
-                    ps.ajouter(new Election(nomTF.getText(), dateTF.getValue(), posteTF.getText(), periodeTF.getText(), elpaaaath));
-                    //mailSenderService.sendEmail("Ajout Candidat", "Candidat ajouté avec succés ");
-                    //SMSSender xx = new SMSSender();
-                    //xx.send_SMS("Yassine", " Ajbouni");
+                // Validate image path (elpaaaath)
+                if (!elpaaaath.isEmpty()) {
 
-                    showSuccessMessage("Election added successfully!");
-                    Affichage();
-                    // Clear the form fields after success
-                    clearFormFields();
+                    // Validate period (periodeTF)
+                    if (isPeriodValid(periodeTF.getText())) {
+                        // If all validations pass, add the Election
+                        ps.ajouter(new Election(nomTF.getText(), dateTF.getValue(), posteTF.getText(), periodeTF.getText(), elpaaaath));
+                        mailSenderService.sendEmailToAdmins("Ajout Election", " Election ajouté avec succès ");
+                        SMSSender xx = new SMSSender();
+                        xx.send_SMS("Mr", " L'administrateur");
+
+                        showSuccessMessage("Election added successfully!");
+                        Affichage();
+                        // Clear the form fields after success
+                        clearFormFields();
+                    } else {
+                        // Display an alert if the period is not valid
+                        showValidationError("Invalid period. Please enter a numeric value followed by 'ans'.");
+                    }
                 } else {
-                    // Display an alert if the period is not valid
-                    showValidationError("Invalid period. Please enter a numeric value followed by 'ans'.");
+                    // Display an alert if the image path is empty
+                    showValidationError("Image path cannot be empty.");
                 }
             } else {
-                // Display an alert if the image path is empty
-                showValidationError("Image path cannot be empty.");
+                // Display an alert if the position is not alphanumeric
+                showValidationError("Invalid Poste. Please enter alphanumeric characters only.");
             }
         } else {
-            // Display an alert if the name or position is not alphabetic
-            showValidationError("Invalid name or position. Please enter alphabetical characters only.");
+            // Display an alert if the name is not alphanumeric
+            showValidationError("Invalid name. Please enter alphanumeric characters only.");
         }
     } catch (SQLException e) {
         // Handle SQL exception
@@ -179,7 +188,7 @@ void ajouterElection(ActionEvent event) {
 
         // Check if the SQL exception is related to a foreign key constraint
         if (e.getErrorCode() == 1452 && e.getMessage().contains("foreign key")) {
-            errorMessage = "Please check the Name of the Election. This name does not exist!!";
+            errorMessage = "Please check the Name or Poste of the Election. This name or poste does not exist!!";
         } else {
             errorMessage = e.getMessage();
         }
@@ -191,9 +200,13 @@ void ajouterElection(ActionEvent event) {
     }
 }
 
+
     // Helper method to check if a string contains only alphabetical characters
     private boolean isAlphabetic(String input) {
         return input.matches("[a-zA-Z]+");
+    }
+    private boolean isAlphaDigit(String input) {
+        return input.matches("[a-zA-Z0-9]+");
     }
 
     // Helper method to check if a string is a valid period (numeric value followed by 'ans')
@@ -229,7 +242,7 @@ void ajouterElection(ActionEvent event) {
     @FXML
     void naviguezAVersAffichage(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherElection.fxml"));
             nomTF.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
@@ -237,10 +250,9 @@ void ajouterElection(ActionEvent event) {
     }
 
 
-
     void Affichage() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherElection.fxml"));
             nomTF.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
@@ -249,7 +261,7 @@ void ajouterElection(ActionEvent event) {
     @FXML
     void goBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherElection.fxml"));
             nomTF.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());

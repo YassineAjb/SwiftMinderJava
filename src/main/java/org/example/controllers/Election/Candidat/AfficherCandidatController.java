@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.example.models.Election.Candidat;
@@ -33,20 +34,21 @@ public class AfficherCandidatController implements Initializable{
     private final CandidatService candidatService=new CandidatService();
     Candidat currentCandidat;
 
-    private int idElectionCandidat;
+    private int idElection;
 
-    public void recupererIdE(int idE) {
-        idElectionCandidat=idE;
-        System.out.println("22222222"+ idElectionCandidat);
+    public void recupererIdE(int id) {
+        idElection=id;
+        System.out.println("initializeCandidat---->idE="+ idElection);
+        List<Candidat> candidatFromService;
+        {
+            try {
+                System.out.println("--------------->"+ idElection);
+                candidatFromService = candidatService.recupererC(idElection);
+                listViewC.getItems().setAll(candidatFromService);
 
-    }
-    List<Candidat> candidatFromService;
-    {
-        try {
-            System.out.println("3333333"+ idElectionCandidat);
-            candidatFromService = candidatService.recuperer();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -109,11 +111,21 @@ public class AfficherCandidatController implements Initializable{
 
     @FXML
     void naviqueVersAjoutC(ActionEvent event) {
+        System.out.println("VersAjoutCandidat---->idE=" + idElection);
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AjouterCandidat.fxml"));
-            idSearchC.getScene().setRoot(root);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCandidat.fxml"));
+            Parent newPageRoot = loader.load();
+
+            AjouterCandidatController ajouterCandidatController = loader.getController();
+            ajouterCandidatController.initializeElection_idToAddIn(idElection);
+
+            Scene newPageScene = new Scene(newPageRoot);
+            Stage currentStage = (Stage) listViewC.getScene().getWindow();
+            currentStage.setScene(newPageScene);
+            currentStage.show();
+
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
@@ -129,9 +141,15 @@ public class AfficherCandidatController implements Initializable{
     }
     public void refrechire() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherCandidat.fxml"));
-            idSearchC.getScene().setRoot(root);
-        } catch (IOException e) {
+            // Clear the list view
+            listViewC.getItems().clear();
+
+            // Retrieve the refreshed list of candidates
+            List<Candidat> candidatFromService = candidatService.recupererC(idElection);
+
+            // Set the items in the list view
+            listViewC.getItems().setAll(candidatFromService);
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }
@@ -155,15 +173,20 @@ public class AfficherCandidatController implements Initializable{
                 } else {
                     // Load custom FXML layout for each election
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("/Election/CandidatItem.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/CandidatItem.fxml"));
 
                     try {
-                        HBox hBox = fxmlLoader.load();
+                        /*HBox hBox = fxmlLoader.load();
                         CandidatItemController candidatItemController = fxmlLoader.getController();
                         candidatItemController.setData(candidat);
 
                         // Set the cell's graphic to the loaded HBox
-                        setGraphic(hBox);
+                        setGraphic(hBox);*/
+
+                        AnchorPane anchorPane = fxmlLoader.load();
+                        CandidatItemController candidatItemController = fxmlLoader.getController();
+                        candidatItemController.setData(candidat);
+                        setGraphic(anchorPane);
                         /******Select item ******/
                         listViewC.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                             @Override
@@ -179,8 +202,8 @@ public class AfficherCandidatController implements Initializable{
             }
         });
         // Set the items in the ListView
-        listViewC.getItems().setAll(candidatFromService);
-
+        //listViewC.getItems().setAll(candidatFromService);
+        
         btnContrats.setOnAction(e -> {
             naviguezVers("/Employee/Contrat.fxml");
         });
@@ -227,14 +250,12 @@ public class AfficherCandidatController implements Initializable{
                         try {
                             // Load custom FXML layout for each election
                             FXMLLoader fxmlLoader = new FXMLLoader();
-                            fxmlLoader.setLocation(getClass().getResource("/Election/CandidatItem.fxml"));
+                            fxmlLoader.setLocation(getClass().getResource("/CandidatItem.fxml"));
 
-                            HBox hBox = fxmlLoader.load();
+                            AnchorPane anchorPane = fxmlLoader.load();
                             CandidatItemController candidatItemController = fxmlLoader.getController();
                             candidatItemController.setData(candidat);
-
-                            // Set the cell's graphic to the loaded HBox
-                            setGraphic(hBox);
+                            setGraphic(anchorPane);
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -259,14 +280,14 @@ public class AfficherCandidatController implements Initializable{
     public void modifyCandidatC() {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/ModifierCandidat.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCandidat.fxml"));
             Parent newPageRoot = loader.load();
 
             ModifierCandidatController modifyCandidatController= loader.getController();
             modifyCandidatController.initializeValues(
                     currentCandidat.getNomC(), currentCandidat.getPrenomC(),
                     currentCandidat.getAgeC(), currentCandidat.getImgCpath(),
-                    currentCandidat.getIdC());
+                    currentCandidat.getIdC(),currentCandidat.getIdElection());
 
             Scene newPageScene = new Scene(newPageRoot);
             Stage currentStage = (Stage) listViewC.getScene().getWindow();
@@ -277,6 +298,7 @@ public class AfficherCandidatController implements Initializable{
             throw new RuntimeException(e);
         }
     }
+
 
 
 
@@ -317,13 +339,33 @@ public class AfficherCandidatController implements Initializable{
     }
 
 
+    void gobackListCandidat() {
+        try {
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            Parent newPageRoot = loader.load();
+
+            AfficherCandidatController afficherCandidatController= loader.getController();
+            afficherCandidatController.recupererIdE(currentCandidat.getIdElection());
+            System.out.println("66666"+ currentCandidat.getIdElection());
+
+
+            Scene newPageScene = new Scene(newPageRoot);
+            Stage currentStage = (Stage) listViewC.getScene().getWindow();
+            currentStage.setScene(newPageScene);
+            currentStage.show();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void deleteCandidatC(ActionEvent event) {
             try {
                 candidatService.supprimer(currentCandidat.getIdC());
-                refrechire();
+                //refrechire();
                 //initialize();
+                gobackListCandidat();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -335,18 +377,23 @@ public class AfficherCandidatController implements Initializable{
     void ShowStatistic(ActionEvent event) {
             try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/DashbordCandidat.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/DashbordCandidat.fxml"));
                 Parent root = loader.load();
                 DashboardController dashboardController = loader.getController();
                 //  dashboardController.loadStatistics();
                 // dashboardController.loadStatisticsRating();
 
+                dashboardController.loadStatisticsRating(idElection);
+                System.out.println("id election to showStat candidat"+idElection);
+
                 idSearchC.getScene().setRoot(root);
 
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        }
+    }
     @FXML
     private void export(ActionEvent event) {
         ExcelExporter d = new ExcelExporter();
@@ -356,7 +403,7 @@ public class AfficherCandidatController implements Initializable{
     @FXML
     void goBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherElection.fxml"));
             listViewC.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());

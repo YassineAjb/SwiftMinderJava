@@ -84,23 +84,22 @@ public class ModifierCandidatController {
         }
     }
     private final CandidatService ps = new CandidatService();
-
+    int idELection;
 
     private String selectedImagePathModifC;
     private String elpaaaathModifC;
     Candidat candidat = new Candidat();
     int idCandidat;
 
-    public void initializeValues(String nomC, String prenomC, int ageC, String imgCpath, int idC) {
+    public void initializeValues(String nomC, String prenomC, int ageC, String imgCpath, int idC, int id) {
 
 
         nomTFCM.setText(nomC);
         prenomTFCM.setText(prenomC);
         ageTFCM.setText(String.valueOf(ageC));
-        nomElectionTFCM.setText("ElectionTest");
         //nomElectionTFCM.setText(String.valueOf(ageC));
         //imgEpath.setText(imgEpath);
-
+        idELection = id ;
         // String imagePath = election.getImgEpath();
         InputStream stream = getClass().getResourceAsStream(imgCpath);
         Image image = new Image(stream);
@@ -179,11 +178,12 @@ public class ModifierCandidatController {
                 if (isAgeValid(ageTFCM.getText())) {
                    // System.out.println("Value of x: " + x);
 
-                    ps.modifierCC(nomTFCM.getText(), prenomTFCM.getText(), Integer.valueOf(ageTFCM.getText()), elpaaaathModifC,nomElectionTFCM.getText(), idCandidat
+                    ps.modifierCC(nomTFCM.getText(), prenomTFCM.getText(), Integer.valueOf(ageTFCM.getText()), elpaaaathModifC,idELection, idCandidat
                     );
                     // Display a success message
                     showSuccessMessage("Candidat modified successfully!");
-                    switchToDisplayAllCandidats();
+                    //switchToDisplayAllCandidats();
+                    gobackListCandidat();
                 } else {
                     // Display an alert if the age is not a valid integer or outside the range
                     showValidationError("Invalid age. Please enter a valid integer between 25 and 99.");
@@ -208,6 +208,27 @@ public class ModifierCandidatController {
             alert.showAndWait();
         }
     }
+    void gobackListCandidat() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            Parent newPageRoot = loader.load();
+
+            AfficherCandidatController afficherCandidatController= loader.getController();
+            afficherCandidatController.recupererIdE(idELection);
+            System.out.println("+999999"+ idELection);
+
+
+            Scene newPageScene = new Scene(newPageRoot);
+            Stage currentStage = (Stage) nomTFCM.getScene().getWindow();
+            currentStage.setScene(newPageScene);
+            currentStage.show();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     public void switchToDisplayAllCandidats() {
@@ -243,10 +264,22 @@ public class ModifierCandidatController {
     @FXML
     void goBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherCandidat.fxml"));
-            nomTFCM.getScene().setRoot(root);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            Parent newPageRoot = loader.load();
+
+            AfficherCandidatController afficherCandidatController= loader.getController();
+            afficherCandidatController.recupererIdE(idELection);
+            System.out.println("+999999"+ idELection);
+
+
+            Scene newPageScene = new Scene(newPageRoot);
+            Stage currentStage = (Stage) nomTFCM.getScene().getWindow();
+            currentStage.setScene(newPageScene);
+            currentStage.show();
+
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 

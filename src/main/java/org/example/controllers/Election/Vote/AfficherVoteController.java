@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import org.example.models.Election.Candidat;
 import org.example.models.Election.Election;
@@ -129,7 +130,7 @@ public class AfficherVoteController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
 
-        listViewV.setCellFactory(param -> new ListCell<Vote>() {
+listViewV.setCellFactory(param -> new ListCell<Vote>() {
             @Override
             protected void updateItem(Vote vote, boolean empty) {
                 super.updateItem(vote, empty);
@@ -141,22 +142,22 @@ public class AfficherVoteController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setLocation(getClass().getResource("/Election/VoteItem.fxml"));
 
-                        HBox hBox = fxmlLoader.load();
+                        AnchorPane anchorPane = fxmlLoader.load();
                         VoteItemController voteItemController = fxmlLoader.getController();
 
                         // Fetch the necessary data using the service
-                        Candidat candidat = getCandidatForVote(vote);
-                        Election election = getElectionForVote(vote);
+                        Candidat candidat = getCandidatForVote5(vote);
+                        Election election = getElectionForVote5(vote);
                         //System.out.println(election.getNomE());
                        // assert candidat != null;
                         //System.out.println(candidat.getNomC());
 
                         // Pass the relevant data to the setData method
                         assert candidat != null;
-                        voteItemController.setData(vote, candidat, election);
+                        System.out.println("hello  "+candidat);
+                        voteItemController.setData( candidat, election);
 
-                        setGraphic(hBox);
-                        // ... (rest of the code)
+                        setGraphic(anchorPane);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -187,10 +188,14 @@ public class AfficherVoteController implements Initializable {
 
     }
 
-    private Candidat getCandidatForVote(Vote vote) {
+    private Candidat getCandidatForVote5(Vote vote) {
         try {
             // Use your VoteService or another service to fetch the Election data
             // You might need to adjust the method signature or implementation based on your service
+            System.out.println("------------getCandidatForVote5---------------");
+            System.out.println("1   "+voteService.getCandidatForVote(vote));
+            System.out.println("2   "+vote);
+            System.out.println("---------------------------");
             return voteService.getCandidatForVote(vote);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -200,9 +205,13 @@ public class AfficherVoteController implements Initializable {
 
 
     // Fetch Election data for a Vote
-    private Election getElectionForVote(Vote vote) {
+    private Election getElectionForVote5(Vote vote) {
         // Use your VoteService or another service to fetch the Election data
         // You might need to adjust the method signature or implementation based on your service
+        System.out.println("------------getElectionForVote5---------------");
+        System.out.println("1   "+voteService.getElectionForVote(vote));
+        System.out.println("2   "+vote);
+        System.out.println("---------------------------");
         return voteService.getElectionForVote(vote);
     }
 

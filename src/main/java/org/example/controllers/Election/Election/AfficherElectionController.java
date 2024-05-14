@@ -11,8 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
+import org.example.controllers.Election.Candidat.AfficherCandidatController;
 import org.example.controllers.Election.Candidat.DashboardElection;
 import org.example.models.Election.Election;
 import org.example.services.Election.ElectionService;
@@ -114,9 +117,15 @@ public class AfficherElectionController implements Initializable{
     }
     public void refrechire() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
-            idSearch.getScene().setRoot(root);
-        } catch (IOException e) {
+            // Clear the list view
+            listViewE.getItems().clear();
+
+            // Retrieve the refreshed list of candidates
+            List<Election> candidatFromService = electionService.recuperer();
+
+            // Set the items in the list view
+            listViewE.getItems().setAll(candidatFromService);
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }
@@ -234,15 +243,13 @@ public class AfficherElectionController implements Initializable{
                 } else {
                     // Load custom FXML layout for each election
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("/Election/ElectionItem.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/ElectionItem.fxml"));
 
                     try {
-                        HBox hBox = fxmlLoader.load();
-                        ELectionItemController electionItemController = fxmlLoader.getController();
-                        electionItemController.setData(election);
-
-                        // Set the cell's graphic to the loaded HBox
-                        setGraphic(hBox);
+                        AnchorPane anchorPane = fxmlLoader.load();
+                        ELectionItemController eLectionItemController = fxmlLoader.getController();
+                        eLectionItemController.setData(election);
+                        setGraphic(anchorPane);
                         /******Select item ******/
                         listViewE.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                             @Override
@@ -347,12 +354,10 @@ private void searchauto() {
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setLocation(getClass().getResource("/Election/ElectionItem.fxml"));
 
-                        HBox hBox = fxmlLoader.load();
-                        ELectionItemController electionItemController = fxmlLoader.getController();
-                        electionItemController.setData(election);
-
-                        // Set the cell's graphic to the loaded HBox
-                        setGraphic(hBox);
+                        AnchorPane anchorPane = fxmlLoader.load();
+                        ELectionItemController eLectionItemController = fxmlLoader.getController();
+                        eLectionItemController.setData(election);
+                        setGraphic(anchorPane);
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -376,31 +381,36 @@ private void searchauto() {
 
     public void modifyElection() {
         try {
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/ModifierElection.fxml"));
             Parent newPageRoot = loader.load();
 
-            ModifierElectionController modifyElectionController= loader.getController();
+            ModifierElectionController modifyElectionController = loader.getController();
             modifyElectionController.initializeValues(
                     currentElection.getNomE(), Date.valueOf(currentElection.getDateE()),
                     currentElection.getPosteE(), currentElection.getPeriodeP(),
-                    currentElection.getImgEpath(),currentElection.getIdE());
+                    currentElection.getImgEpath(), currentElection.getIdE());
 
             Scene newPageScene = new Scene(newPageRoot);
             Stage currentStage = (Stage) listViewE.getScene().getWindow();
             currentStage.setScene(newPageScene);
             currentStage.show();
-
+        } catch (NullPointerException n) {
+            showAlert("Please select an Election to modify");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            showAlert("Error loading the modification page. Please try again.");
         }
     }
 
 
-    /*public void afficherCandidatE(ActionEvent actionEvent) {
+
+    public void afficherCandidatE(ActionEvent actionEvent) {
+        if (currentElection == null) {
+            showAlert("Please select an Election to display the candidates.");
+            return; // Exit the method if currentDesign is null
+        }
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/AfficherCandidat.fxml"));
             Parent newPageRoot = loader.load();
 
             AfficherCandidatController afficherCandidatController= loader.getController();
@@ -416,51 +426,15 @@ private void searchauto() {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }*/
-
-    public void afficherCandidatE(ActionEvent actionEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherCandidat.fxml"));
-            idSearch.getScene().setRoot(root);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-
+    }
+    public void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
-  /*  @FXML
-    private void sortData() {
-        String selectedSortOption = idSort.getValue();
-
-        if (selectedSortOption != null) {
-            ObservableList<Election> items = listViewE.getItems();
-
-            switch (selectedSortOption) {
-                case "Nom Election":
-                    items.sort(Comparator.comparing(Election::getNomE));
-                    break;
-                case "Date Election":
-                    Collections.sort(items, Comparator.comparing(Election::getDateE));
-                    break;
-                case "Poste":
-                    items.sort(Comparator.comparing(Election::getPosteE));
-                    break;
-                case "Periode":
-                    Collections.sort(items, Comparator.comparing(Election::getPeriodeP));
-                    break;
-                // Add more cases for custom sorting logic
-                default:
-                    // Default case, no sorting
-                    break;
-            }
-
-            // Update the ListView with the sorted data
-            listViewE.setItems(items);
-        } else {
-            // Default case, initialize or display original data in the ListView
-            refrechire();
-        }
-    }*/
 
     @FXML
     private void sortData() {

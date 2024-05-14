@@ -7,23 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import org.example.controllers.Election.Candidat.CandidatItemController;
 import org.example.models.Election.Candidat;
 import org.example.models.Election.Vote;
 import org.example.services.Election.CandidatService;
 import org.example.services.Election.VoteService;
+import org.example.services.User.Crud_user;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-
 public class ListCandidatV implements Initializable {
 
 
@@ -65,6 +62,8 @@ public class ListCandidatV implements Initializable {
 
     int idElection ;
 
+    @FXML
+    private TextField mailMembre;
 
 
     public void setElectionId(int id) {
@@ -100,12 +99,11 @@ public class ListCandidatV implements Initializable {
                     fxmlLoader.setLocation(getClass().getResource("/Election/CandidatItem.fxml"));
 
                     try {
-                        HBox hBox = fxmlLoader.load();
+                        AnchorPane anchorPane = fxmlLoader.load();
                         CandidatItemController candidatItemController = fxmlLoader.getController();
                         candidatItemController.setData(candidat);
-
                         // Set the cell's graphic to the loaded HBox
-                        setGraphic(hBox);
+                        setGraphic(anchorPane);
                         /******Select item ******/
                         listViewCAvoter.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                             @Override
@@ -160,33 +158,85 @@ public class ListCandidatV implements Initializable {
     }
 
 
-    @FXML
-    void VoteButton(ActionEvent event) {
-        System.out.println("ID du candidat sélectionné pour voter : " + idCandidatpourVouter);
-        System.out.println("ID de l'élection sélectionnée pour voter : " + idElection);
+    
 
-// Créez un objet Vote avec les ID du candidat et de l'élection
-        Vote vote = new Vote();
-        vote.setIdCandidatV(idCandidatpourVouter);
-        vote.setIdElectionV(idElection);
-
-        // Appelez la méthode ajouter de votre service VoteService
+    public void naviguezVers(String fxmlPath) {
         try {
-            VoteService voteService = new VoteService();
-            voteService.ajouter(vote);
-            showSuccessMessage(" Vote ajouté avec succès !");
-
-            // Ajoutez ici le code pour afficher un message de succès ou rediriger l'utilisateur
-            System.out.println("Vote ajouté avec succès !");
-            goToVoterMembre();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Ajoutez ici le code pour gérer les erreurs d'ajout du vote
-            System.out.println("Erreur lors de l'ajout du vote : " + e.getMessage());
-            showErrorAlert("Failed to add vote. Please try again.");
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            listViewCAvoter.getScene().setRoot(root);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
     }
+
+
+@FXML
+    void VoteButton(ActionEvent event) {
+        String MailMembre = mailMembre.getText();
+
+        // Vérifiez si un candidat a été sélectionné et si un email a été saisi
+        if (idCandidatpourVouter != 0 && !MailMembre.isEmpty()) {
+            System.out.println("ID du candidat sélectionné pour voter : " + idCandidatpourVouter);
+            System.out.println("ID de l'élection sélectionnée pour voter : " + idElection);
+
+            // Récupérez l'ID de l'utilisateur avec l'email spécifié
+            int userId = getUserIdByMail(MailMembre);
+
+            // Vérifiez si l'adresse e-mail est valide
+            if (userId == -1) {
+                // Affichez une alerte indiquant que l'adresse e-mail est invalide
+                showErrorAlert("Adresse e-mail invalide.");
+            } else {
+                // Vérifiez si l'utilisateur a déjà voté dans cette élection
+                if (!hasUserVoted(idElection, userId)) {
+                    // Créez un objet Vote avec les ID du candidat, de l'élection et de l'utilisateur
+                    Vote vote = new Vote();
+                    vote.setIdCandidatV(idCandidatpourVouter);
+                    vote.setIdElectionV(idElection);
+                    vote.setIdUser(userId);
+
+                    // Appelez la méthode ajouter de votre service VoteService
+                    try {
+                        VoteService voteService = new VoteService();
+                        voteService.ajouter(vote);
+                        showSuccessMessage("Vote ajouté avec succès !");
+                        System.out.println("Vote ajouté avec succès !");
+                        goToVoterMembre();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        System.out.println("Erreur lors de l'ajout du vote : " + e.getMessage());
+                        showErrorAlert("Erreur lors de l'ajout du vote. Veuillez réessayer.");
+                    }
+                } else {
+                    // Affichez un message indiquant que l'utilisateur a déjà voté dans cette élection
+                    showErrorAlert("Membre déjà voté dans cette élection.");
+                }
+            }
+        } else {
+            // Affichez une alerte indiquant qu'aucun candidat n'a été sélectionné ou que l'email n'a pas été saisi
+            showErrorAlert("Veuillez sélectionner un candidat et écrire l'adresse e-mail du membre avant de voter.");
+        }
+    }
+
+    private int getUserIdByMail(String email) {
+        Crud_user userService = new Crud_user();
+        return userService.getUserIdByEmail(email);
+        //return 2 ;
+    }
+
+
+
+    // Méthode pour vérifier si l'utilisateur a déjà voté dans une élection donnée
+    private boolean hasUserVoted(int idElection, int idUser) {
+        // Utilisez votre service VoteService pour vérifier si l'utilisateur a déjà voté dans l'élection donnée
+        VoteService voteService = new VoteService();
+        System.out.println(voteService.hasVoted(idElection, idUser));
+        return voteService.hasVoted(idElection, idUser);
+    }
+
+
+
     private void showSuccessMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
@@ -211,16 +261,6 @@ public class ListCandidatV implements Initializable {
         }
     }
 
-    public void naviguezVers(String fxmlPath) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent root = loader.load();
-            listViewCAvoter.getScene().setRoot(root);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
 
     @FXML
     void goToMembreVote(ActionEvent event) {
@@ -231,5 +271,4 @@ public class ListCandidatV implements Initializable {
             System.err.println(e.getMessage());
         }
     }
-
 }
