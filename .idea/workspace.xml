@@ -122,6 +122,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.MainFX" />
+      <item itemvalue="Application.org.example.Test.MainFX" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainFX" />
