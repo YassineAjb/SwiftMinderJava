@@ -46,6 +46,12 @@ public class AjoutTerrain {
     private TextField description;
 
     @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
+
+    @FXML
     private TimePicker ouverture;
 
     @FXML
@@ -126,6 +132,12 @@ public class AjoutTerrain {
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
+        });
+        btnReclamations.setOnAction(e -> {
+            naviguezVers("/User/tablereclamation.fxml");
+        });
+        btnUsers.setOnAction(e -> {
+            naviguezVers("/User/Crud.fxml");
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");

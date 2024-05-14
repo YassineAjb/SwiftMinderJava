@@ -36,6 +36,12 @@ public class ModifierReservation {
 
     @FXML
     private TextField Note;
+
+    @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
     private int idReservation;
 
     private int reservation ;
@@ -106,6 +112,12 @@ public class ModifierReservation {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnReclamations.setOnAction(e -> {
+            naviguezVers("/User/tablereclamation.fxml");
+        });
+        btnUsers.setOnAction(e -> {
+            naviguezVers("/User/Crud.fxml");
         });
     }
 

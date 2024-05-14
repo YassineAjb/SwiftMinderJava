@@ -36,6 +36,12 @@ public class VoteMembreController implements Initializable {
     private Button btnArticlles;
 
     @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
+
+    @FXML
     private Button btnBoutique;
 
     @FXML
@@ -104,6 +110,12 @@ public class VoteMembreController implements Initializable {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnReclamations.setOnAction(e -> {
+            naviguezVers("/User/tablereclamation.fxml");
+        });
+        btnUsers.setOnAction(e -> {
+            naviguezVers("/User/Crud.fxml");
         });
         btnSignout.setOnAction(e -> {
             Session.getSession().clearSession();

@@ -58,6 +58,11 @@ public class AffichageMatch {
 
     @FXML
     private Button ajouter;
+    @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
 
     @FXML
     private Button btncalafficher;
@@ -177,6 +182,12 @@ public class AffichageMatch {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnReclamations.setOnAction(e -> {
+            naviguezVers("/User/tablereclamation.fxml");
+        });
+        btnUsers.setOnAction(e -> {
+            naviguezVers("/User/Crud.fxml");
         });
         ajouter.setOnAction(e -> {
             naviguezVers("/Article/ajoutermatch.fxml");

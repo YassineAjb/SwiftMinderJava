@@ -52,6 +52,12 @@ public class ModifierArticle {
     private Button btnJoueurs;
 
     @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
+
+    @FXML
     private Button btnMatch;
 
     @FXML
@@ -174,10 +180,16 @@ public class ModifierArticle {
             btnArticlles.setOnAction(e -> {
                 naviguezVers("/Article/afficherarticles.fxml");
             });
-        btnSignout.setOnAction(e -> {
-            Session.getSession().clearSession();
-            naviguezVers("/User/Login.fxml");
-        });
+            btnReclamations.setOnAction(e -> {
+                naviguezVers("/User/tablereclamation.fxml");
+            });
+            btnUsers.setOnAction(e -> {
+                naviguezVers("/User/Crud.fxml");
+            });
+            btnSignout.setOnAction(e -> {
+                Session.getSession().clearSession();
+                naviguezVers("/User/Login.fxml");
+            });
 
 
         if(Session.getSession().getUser().getRole().equals("Journaliste")){

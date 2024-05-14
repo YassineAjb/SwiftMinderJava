@@ -28,6 +28,13 @@ public class DashboardController implements Initializable {
 
     @FXML
     private PieChart pieChart;
+
+    @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
+
     @FXML
     private Button btnArticlles;
     @FXML
@@ -82,6 +89,12 @@ public class DashboardController implements Initializable {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnReclamations.setOnAction(e -> {
+            naviguezVers("/User/tablereclamation.fxml");
+        });
+        btnUsers.setOnAction(e -> {
+            naviguezVers("/User/Crud.fxml");
         });
         btnSignout.setOnAction(e -> {
             Session.getSession().clearSession();

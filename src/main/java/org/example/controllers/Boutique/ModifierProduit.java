@@ -62,6 +62,12 @@ public class ModifierProduit {
     private TextField Prix;
 
     @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
+
+    @FXML
     private TextField Quantite;
 
     @FXML
@@ -160,6 +166,12 @@ public class ModifierProduit {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnReclamations.setOnAction(e -> {
+            naviguezVers("/User/tablereclamation.fxml");
+        });
+        btnUsers.setOnAction(e -> {
+            naviguezVers("/User/Crud.fxml");
         });
         btnSignout.setOnAction(e -> {
             Session.getSession().clearSession();

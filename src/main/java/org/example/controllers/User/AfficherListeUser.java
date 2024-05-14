@@ -63,6 +63,12 @@ public class AfficherListeUser implements Initializable {
     private Button deleteButton;
     @FXML
     private Button saveButton;
+
+    @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
     @FXML
     private TextField userrole;
     @FXML
@@ -137,6 +143,12 @@ public class AfficherListeUser implements Initializable {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnReclamations.setOnAction(e -> {
+            naviguezVers("/User/tablereclamation.fxml");
+        });
+        btnUsers.setOnAction(e -> {
+            naviguezVers("/User/Crud.fxml");
         });
         btnSignout.setOnAction(e -> {
             Session.getSession().clearSession();

@@ -35,6 +35,12 @@ public class Reservation {
     private Button btnArticlles;
 
     @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
+
+    @FXML
     private Button btnAcceuil;
 
     @FXML
@@ -108,6 +114,12 @@ public class Reservation {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnReclamations.setOnAction(e -> {
+            naviguezVers("/User/tablereclamation.fxml");
+        });
+        btnUsers.setOnAction(e -> {
+            naviguezVers("/User/Crud.fxml");
         });
 
     }

@@ -54,6 +54,12 @@ public class ModifierCandidatController {
     private Button btnReservation;
 
     @FXML
+    private Button btnUsers;
+
+    @FXML
+    private Button btnReclamations;
+
+    @FXML
     private Button btnSignout;
     @FXML
     private ImageView imageEModif;
@@ -274,6 +280,12 @@ public class ModifierCandidatController {
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");
+        });
+        btnReclamations.setOnAction(e -> {
+            naviguezVers("/User/tablereclamation.fxml");
+        });
+        btnUsers.setOnAction(e -> {
+            naviguezVers("/User/Crud.fxml");
         });
         btnSignout.setOnAction(e -> {
             Session.getSession().clearSession();
