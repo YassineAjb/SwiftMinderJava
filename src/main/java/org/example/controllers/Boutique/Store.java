@@ -149,6 +149,8 @@ public class Store {
             btnElection.setVisible(false);
             btnReservation.setVisible(false);
             btnArticlles.setVisible(false);
+            btnReclamations.setVisible(false);
+            btnUsers.setVisible(false);
         } else if( Session.getSession().getUser().getRole().equals("MembrePlus")){
             btnMatch.setVisible(false);
             btnJoueurs.setVisible(true);
@@ -157,6 +159,8 @@ public class Store {
             btnElection.setVisible(true);
             btnReservation.setVisible(false);
             btnArticlles.setVisible(false);
+            btnReclamations.setVisible(false);
+            btnUsers.setVisible(false);
         }
 
     }

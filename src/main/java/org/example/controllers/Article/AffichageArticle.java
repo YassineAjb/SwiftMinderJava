@@ -237,6 +237,8 @@ import java.util.Optional;
                 btnContrats.setVisible(false);
                 btnElection.setVisible(false);
                 btnReservation.setVisible(false);
+                btnReclamations.setVisible(false);
+                        btnUsers.setVisible(false);
             }
 
             // Create a sorted list

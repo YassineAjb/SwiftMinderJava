@@ -38,7 +38,7 @@
                                  </font></Text>
                               <AnchorPane layoutX="-77.0" layoutY="76.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="720.0">
                                  <children>
-                                    <ScrollPane layoutX="21.0" layoutY="-39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="849.0" stylesheets="@../../../../swiftMinder2.4%20-%20Copy/src/main/resources/Store.css" AnchorPane.bottomAnchor="-72.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-39.0">
+                                    <ScrollPane layoutX="21.0" layoutY="-39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="849.0" stylesheets="@/Reservation/style.css" AnchorPane.bottomAnchor="-72.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="-150.0" AnchorPane.topAnchor="-39.0">
                                        <content>
                                           <GridPane fx:id="produitContainer">
                                              <rowConstraints>

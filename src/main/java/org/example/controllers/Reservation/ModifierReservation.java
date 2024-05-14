@@ -32,6 +32,7 @@ public class ModifierReservation {
     @FXML
     private ListView<String> DateReservation;
     ServiceTerrain serviceTerrain = new ServiceTerrain();
+    @FXML
     private String Emplacement;
 
     @FXML

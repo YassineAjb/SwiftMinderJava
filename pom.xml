@@ -25,6 +25,12 @@
             <version>2.0.1</version>
         </dependency>
         <dependency>
+            <groupId>io.github.palexdev</groupId>
+            <artifactId>mfxcore</artifactId>
+            <version>11.8.1</version> <!-- Replace with the actual version you need -->
+        </dependency>
+
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>17.0.8</version>
