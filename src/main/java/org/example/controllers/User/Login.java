@@ -51,18 +51,17 @@ public class Login {
         }
         User loggedInUser = cr.Login(email);
         if (loggedInUser != null) {
-            if(!Encryptor.TestPassword(loggedInUser.getMot_de_passe(),mot_de_passe))
-            {
+            if (!Encryptor.TestPassword(loggedInUser.getMot_de_passe(), mot_de_passe)) {
                 messageError.setText("mot de passe invalide");
-            }else {
+            } else {
                 messageError.setText("Connexion réussie. Bienvenue, " + loggedInUser.getEmail());
                 user_email.setText("");
                 user_password.setText("");
+                Session.Start_session(loggedInUser);
                 try {
                     Session.Start_session(loggedInUser);
                         if(loggedInUser.getRole().equals("admin")){
                         Parent root = FXMLLoader.load(getClass().getResource("/User/Crud.fxml"));
-
                         button_Sign_In.getScene().setRoot(root);
                     }else if(loggedInUser.getRole().equals("Journaliste")){
                         Parent root = FXMLLoader.load(getClass().getResource("/Article/afficherarticles.fxml"));
@@ -81,13 +80,11 @@ public class Login {
                     System.err.println(e.getMessage());
                 }
             }
-
-
         } else {
-
             messageError.setText("Email ou mot de passe incorrect");
         }
     }
+
 
 
     @FXML

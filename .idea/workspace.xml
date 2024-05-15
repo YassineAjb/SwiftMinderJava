@@ -130,6 +130,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="javaFX" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="javaFX" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.MainFX" />
@@ -201,6 +214,9 @@
       <workItem from="1715706073842" duration="3555000" />
       <workItem from="1715712002816" duration="848000" />
       <workItem from="1715773723174" duration="8349000" />
+      <workItem from="1715529355899" duration="204000" />
+      <workItem from="1715530279125" duration="10211000" />
+      <workItem from="1715555333485" duration="6484000" />
     </task>
     <servers />
   </component>

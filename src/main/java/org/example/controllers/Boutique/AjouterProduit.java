@@ -113,10 +113,12 @@ public class AjouterProduit {
         try {
             String image = "";
             if (selectedImage != null) {
-                image = selectedImage.getUrl();
+                File file = new File(selectedImage.getUrl());
+                image  = file.getName(); // Obtenez le nom du fichier
+                System.out.println(file.getName());
             }
 
-            pr.ajouter(new Produit(NomProduit.getText(), Integer.parseInt(Prix.getText()), Taille.getValue(), Type.getValue(), Integer.parseInt(Quantite.getText()), image));
+            pr.ajouter(new Produit(NomProduit.getText(), Integer.parseInt(Prix.getText()), Taille.getValue(), Type.getValue(), Integer.parseInt(Quantite.getText()), image,9));
 
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -177,10 +179,11 @@ public class AjouterProduit {
         File file = openFile.showOpenDialog(btnImporter.getScene().getWindow());
         if (file != null) {
             selectedImage = new Image(file.toURI().toString());
+            System.out.println(selectedImage);
             imageView.setImage(selectedImage);
-            String imagePath = file.toURI().toString(); // Obtenir le chemin de l'image sous forme d'URI
+            String imagePath = file.getName();
 
-            System.out.println("Chemin de l'image: " + imagePath); // Afficher le chemin de l'image (pour le débogage)
+            System.out.println("Chemin de l'image: " + imagePath);
         }
 
 

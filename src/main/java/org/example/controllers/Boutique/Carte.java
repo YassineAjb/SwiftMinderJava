@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.example.models.Boutique.Commande;
 import org.example.models.Boutique.Produit;
+import org.example.models.User.User;
 import org.example.services.Boutique.ServiceCommande;
 import org.example.services.Boutique.ServiceProduit;
 
@@ -40,6 +41,12 @@ public class Carte {
     private Alert alert;
 
     private Store storeController;
+    private User loggedInUser;
+    public void setLoggedInUser(User user) {
+        this.loggedInUser = user;
+    }
+
+
 
     public void setStoreController(Store storeController) {
         this.storeController = storeController;
@@ -77,47 +84,22 @@ public class Carte {
                 alert.setContentText("Invalid. This product is Out of stock");
                 alert.showAndWait();
             } else {
-                if(qty == 0||taille == "")
-                {
+                if (qty == 0 || taille.equals("")) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Donner le nombre et la taille de produit a commender! ");
                     alert.showAndWait();
-
-                }
-//                else if (qty==0)
-//                {
-//                    alert = new Alert(Alert.AlertType.ERROR);
-//                    alert.setTitle("Error Message");
-//                    alert.setHeaderText(null);
-//                    alert.setContentText("Donner un nombre de produit!");
-//                    alert.showAndWait();
-//                }
-//                else if(taille==null)
-//                {
-//                    alert = new Alert(Alert.AlertType.ERROR);
-//                    alert.setTitle("Error Message");
-//                    alert.setHeaderText(null);
-//                    alert.setContentText("Donner la taille de produit!");
-//                    alert.showAndWait();
-//                }
-                else
-                {
+                } else {
                     ServiceCommande commande = new ServiceCommande();
-
-
                     com.setSomme(prod.getPrixProduit());
-                    com.setIdUser(1);
+                    com.setUser(loggedInUser);
                     com.setProduit(prod);
                     com.setQuantite(qty);
-                    if (commande.exist(com.getProduit().getId())!=0)
-                    {
+                    if (commande.exist(com.getProduit().getId()) != 0) {
                         commande.modifier(com);
-                    }
-                    else {
+                    } else {
                         commande.ajouter(com);
-
                     }
                 }
                 if (storeController != null) {

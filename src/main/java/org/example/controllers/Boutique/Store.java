@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.models.Boutique.Commande;
 import org.example.models.Boutique.Produit;
+import org.example.models.User.User;
 import org.example.services.Boutique.ServiceCommande;
 import org.example.services.Boutique.ServiceProduit;
 import org.example.utils.PDFGenerator;
@@ -28,6 +29,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Store {
+    private User loggedInUser;
 
 
     @FXML
@@ -89,6 +91,7 @@ public class Store {
 
     @FXML
     public void initialize() {
+        this.loggedInUser = Session.getSession().getUser();
         ObservableList<String> triOptions = FXCollections.observableArrayList("...", "Prix croissant", "Prix décroissant");
         tri.setItems(triOptions);
 
@@ -244,7 +247,7 @@ public class Store {
 
     @FXML
     void annuler(ActionEvent event) throws SQLException {
-        serviceCommande.supprimerTout(1);
+        serviceCommande.supprimerTout(loggedInUser.getId());
         this.refreshCommandeList();
 
     }

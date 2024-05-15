@@ -49,7 +49,7 @@ public class ServiceProduit implements IService<Produit> {
             }
             else
             {
-                String sql = "INSERT INTO produit (nomProduit, prixProduit,type, tailleProduit, QauntiteProduit,image) VALUES (?, ?, ?, ?, ?,?)";
+                String sql = "INSERT INTO produit (nomProduit, prixProduit,type, tailleProduit, QauntiteProduit,image,category_id) VALUES (?, ?, ?, ?, ?,?,?)";
                 PreparedStatement statement = connection.prepareStatement(sql);
                 statement.setString(1, produit.getNomProduit());
                 statement.setInt(2, produit.getPrixProduit());
@@ -57,6 +57,7 @@ public class ServiceProduit implements IService<Produit> {
                 statement.setString(4, produit.getTailleProduit());
                 statement.setInt(5, produit.getQuantiteProduit());
                 statement.setString(6, produit.getImage());
+                statement.setInt(7, 9);
 
                 statement.executeUpdate();
                 statement.close();
