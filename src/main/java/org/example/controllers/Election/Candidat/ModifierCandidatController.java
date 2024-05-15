@@ -124,7 +124,7 @@ public class ModifierCandidatController {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
-        fileChooser.setInitialDirectory(new File("C:/Users/yassi/IdeaProjects/ProjetAjbouni/ProjetPidev3A8/src/main/resources/images"));
+        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG image", "*.png"),
                 new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),
@@ -135,7 +135,7 @@ public class ModifierCandidatController {
         if (selectedFile != null) {
             selectedImagePathModifC = selectedFile.getAbsolutePath();
             Path selectedPath = Paths.get(selectedImagePathModifC);
-            Path resourcePath = Paths.get("C:/Users/yassi/IdeaProjects/ProjetAjbouni/ProjetPidev3A8/src/main/resources/images");
+            Path resourcePath = Paths.get("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images");
             Path relativePath = resourcePath.relativize(selectedPath);
             String elpaaaathModifC = "/images/" + relativePath;
 
@@ -220,7 +220,7 @@ public class ModifierCandidatController {
     void gobackListCandidat() {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/AfficherCandidat.fxml"));
             Parent newPageRoot = loader.load();
 
             AfficherCandidatController afficherCandidatController= loader.getController();
@@ -274,7 +274,7 @@ public class ModifierCandidatController {
     void goBack(ActionEvent event) {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/AfficherCandidat.fxml"));
             Parent newPageRoot = loader.load();
 
             AfficherCandidatController afficherCandidatController= loader.getController();

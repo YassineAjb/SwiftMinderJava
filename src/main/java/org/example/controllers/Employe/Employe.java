@@ -35,8 +35,10 @@ import org.example.utils.Session;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -511,15 +513,29 @@ public class Employe {
         }
     }
 
-    private void Importer(ImageView importedImage,TextField img) {
+    private void Importer(ImageView importedImage, TextField img) {
+        FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File");
         File selectedFile = fileChooser.showOpenDialog(new Stage());
         if (selectedFile != null) {
             System.out.println("Selected file: " + selectedFile.getPath());
-            filePath = selectedFile.getName();
-            img.setText(filePath);
+            String fileName = selectedFile.getName();
+            img.setText(fileName);
+            filePath = fileName;
+
+            // Define the target directory and target file path
+            File targetDir = new File("C:/xampp/htdocs/Images/Joueurs");
+            if (!targetDir.exists()) {
+                targetDir.mkdirs(); // Create the target directory if it does not exist
+            }
+            File targetFile = new File(targetDir, fileName);
+
             try {
-                Image image = new Image("/Employee/images/" + filePath);
+                // Move the file to the target directory
+                Files.move(selectedFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+                // Load the image from the new location
+                Image image = new Image(targetFile.toURI().toString());
                 importedImage.setImage(image);
 
             } catch (Exception ex) {

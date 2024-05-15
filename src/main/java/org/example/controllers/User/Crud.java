@@ -116,7 +116,7 @@ public class Crud implements Initializable {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
-            naviguezVers("/Employee/AffichageJoueur.fxml");
+            naviguezVers("/Employee/Employe.fxml");
         });
         btnContrats.setOnAction(e -> {
             naviguezVers("/Employee/Contrat.fxml");
@@ -125,7 +125,7 @@ public class Crud implements Initializable {
             naviguezVers("/Boutique/Store.fxml");
         });
         btnElection.setOnAction(e -> {
-            naviguezVers("/Election/DashbordCandidat.fxml");
+            naviguezVers("/Election/DashbordElection.fxml");
         });
         btnArticlles.setOnAction(e -> {
             naviguezVers("/Article/afficherarticles.fxml");

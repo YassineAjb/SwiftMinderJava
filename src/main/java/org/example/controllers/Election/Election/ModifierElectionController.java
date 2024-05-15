@@ -201,7 +201,7 @@ public void initializeValues(String nomE, Date dateE, String posteE, String peri
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
-        fileChooser.setInitialDirectory(new File("C:/Users/yassi/IdeaProjects/ProjetAjbouni/ProjetPidev3A8/src/main/resources/images"));
+        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG image", "*.png"),
                 new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),
@@ -212,9 +212,9 @@ public void initializeValues(String nomE, Date dateE, String posteE, String peri
         if (selectedFile != null) {
             selectedImagePathModif = selectedFile.getAbsolutePath();
             Path selectedPath = Paths.get(selectedImagePathModif);
-            Path resourcePath = Paths.get("C:/Users/yassi/IdeaProjects/ProjetAjbouni/ProjetPidev3A8/src/main/resources/images");
+            Path resourcePath = Paths.get("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images");
             Path relativePath = resourcePath.relativize(selectedPath);
-            String elpaaaathModif = "/images/"+relativePath;
+            String elpaaaathModif = "/Election/images/"+relativePath;
 
             System.out.println("*****************************");
             System.out.println(selectedImagePathModif);

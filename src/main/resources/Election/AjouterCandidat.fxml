@@ -53,8 +53,10 @@
          </graphic>
       </Button>
       <ImageView fitHeight="103.0" fitWidth="959.0" layoutX="321.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-         </image></ImageView>
+         <image >
+            <Image url="@images/Ajouter un Candidat.png" />
+         </image>
+    </ImageView>
       <VBox id="menuu" alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="777.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
          <children>
             <Label layoutX="26.0" layoutY="10.0">

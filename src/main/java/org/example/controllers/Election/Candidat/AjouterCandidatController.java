@@ -20,11 +20,12 @@ import org.example.utils.Session;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 public class AjouterCandidatController {
 
 
@@ -94,7 +95,7 @@ public class AjouterCandidatController {
         void gobackListCandidat() {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/AfficherCandidat.fxml"));
             Parent newPageRoot = loader.load();
 
             AfficherCandidatController afficherCandidatController = loader.getController();
@@ -123,13 +124,54 @@ public class AjouterCandidatController {
         }
     }
 
+//    @FXML
+//    void chosirImageCAjout(ActionEvent event) {
+//        Stage stage = (Stage) imageCAjout.getScene().getWindow();
+//
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setTitle("Open a file");
+//        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images"));
+//        fileChooser.getExtensionFilters().addAll(
+//                new FileChooser.ExtensionFilter("PNG image", "*.png"),
+//                new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),
+//                new FileChooser.ExtensionFilter("All images", "*.str")
+//        );
+//        File selectedFile = fileChooser.showOpenDialog(stage);
+//
+//        if (selectedFile != null) {
+//            selectedImagePathC = selectedFile.getAbsolutePath();
+//            Path selectedPath = Paths.get(selectedImagePathC);
+//            Path resourcePath = Paths.get("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images");
+//            Path relativePath = resourcePath.relativize(selectedPath);
+//            String elpaaaathC = "/Election/images/"+relativePath;
+//
+//            System.out.println("*****************************");
+//            System.out.println(selectedImagePathC);
+//            System.out.println(selectedPath);
+//            System.out.println(resourcePath);
+//            System.out.println(relativePath);
+//            System.out.println(elpaaaathC);
+//            System.out.println("******************************");
+//
+//            candidat.setImgCpath(elpaaaathC);
+//
+//            // Update the ImageView with the selected image
+//            Image image = new Image("file:" + selectedImagePathC);
+//            imageCAjout.setImage(image);            //System.out.println(image);
+//
+//
+//        }
+//    }
+
+
+
     @FXML
     void chosirImageCAjout(ActionEvent event) {
         Stage stage = (Stage) imageCAjout.getScene().getWindow();
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
-        fileChooser.setInitialDirectory(new File("C:\\Users\\tun\\Desktop\\projet\\Oussamaassal\\src\\main\\resources\\Election/images"));
+        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG image", "*.png"),
                 new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),
@@ -138,30 +180,46 @@ public class AjouterCandidatController {
         File selectedFile = fileChooser.showOpenDialog(stage);
 
         if (selectedFile != null) {
-            selectedImagePathC = selectedFile.getAbsolutePath();
-            Path selectedPath = Paths.get(selectedImagePathC);
-            Path resourcePath = Paths.get("C:\\Users\\tun\\Desktop\\projet\\Oussamaassal\\src\\main\\resources\\Election/images");
-            Path relativePath = resourcePath.relativize(selectedPath);
-            String elpaaaathC = "/images/"+relativePath;
+            try {
+                // Define the target directory and create it if it doesn't exist
+                Path targetDir = Paths.get("C:/xampp/htdocs/Images/Candidats");
+                if (!Files.exists(targetDir)) {
+                    Files.createDirectories(targetDir);
+                }
 
-            System.out.println("*****************************");
-            System.out.println(selectedImagePathC);
-            System.out.println(selectedPath);
-            System.out.println(resourcePath);
-            System.out.println(relativePath);
-            System.out.println(elpaaaathC);
-            System.out.println("******************************");
+                // Define the target file path
+                Path targetFilePath = targetDir.resolve(selectedFile.getName());
 
-            candidat.setImgCpath(elpaaaathC);
+                // Move the file to the target directory
+                Files.move(selectedFile.toPath(), targetFilePath, StandardCopyOption.REPLACE_EXISTING);
 
-            // Update the ImageView with the selected image
-            Image image = new Image("file:" + selectedImagePathC);
-            imageCAjout.setImage(image);            //System.out.println(image);
+                // Get the relative path for the candidate object
+                Path relativePath = targetDir.relativize(targetFilePath);
+                String elpaaaathC =relativePath.toString().replace("\\", "/");
 
+                // Update the candidate object with the new image path
+                candidat.setImgCpath(elpaaaathC);
 
+                // Update the ImageView with the moved image
+                Image image = new Image(targetFilePath.toUri().toString());
+                imageCAjout.setImage(image);
+
+                System.out.println("*****************************");
+                System.out.println("Selected file path: " + selectedFile.getAbsolutePath());
+                System.out.println("Target file path: " + targetFilePath);
+                System.out.println("Relative path: " + relativePath);
+                System.out.println("Image path in candidate object: " + elpaaaathC);
+                System.out.println("******************************");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("No file selected.");
         }
     }
-/*************************ajout sans cntrl saisie*********************/
+
+    /*************************ajout sans cntrl saisie*********************/
    /* @FXML
     void ajouterCandidat(ActionEvent event) {
         elpaaaathC = candidat.getImgCpath();
@@ -218,7 +276,7 @@ private boolean isAlphabetic(String input) {
                         showSuccessMessage("Candidate added successfully!");
                         gobackListCandidat();
                         try {
-                            Parent root = FXMLLoader.load(getClass().getResource("/Affichercandidat.fxml"));
+                            Parent root = FXMLLoader.load(getClass().getResource("/Election/Affichercandidat.fxml"));
                             nomTFCA.getScene().setRoot(root);
                         } catch (IOException e) {
                             System.err.println(e.getMessage());
@@ -283,7 +341,7 @@ private boolean isAlphabetic(String input) {
     void goBack(ActionEvent event) {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCandidat.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/AfficherCandidat.fxml"));
             Parent newPageRoot = loader.load();
 
             AfficherCandidatController afficherCandidatController = loader.getController();

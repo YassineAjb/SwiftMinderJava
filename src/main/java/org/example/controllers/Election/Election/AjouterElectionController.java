@@ -21,8 +21,10 @@ import org.example.utils.Session;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -77,13 +79,54 @@ public class AjouterElectionController {
     private ImageView imageAjout;
     MailSenderService mailSenderService = new MailSenderService() ;
 
+//    @FXML
+//    void chosirImageEAjout(ActionEvent event) {
+//        Stage stage = (Stage) imageAjout.getScene().getWindow();
+//
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setTitle("Open a file");
+//        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images"));
+//        fileChooser.getExtensionFilters().addAll(
+//                new FileChooser.ExtensionFilter("PNG image", "*.png"),
+//                new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),
+//                new FileChooser.ExtensionFilter("All images", "*.str")
+//        );
+//        File selectedFile = fileChooser.showOpenDialog(stage);
+//
+//        if (selectedFile != null) {
+//            selectedImagePath = selectedFile.getAbsolutePath();
+//            Path selectedPath = Paths.get(selectedImagePath);
+//            Path resourcePath = Paths.get("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images");
+//            Path relativePath = resourcePath.relativize(selectedPath);
+//            String elpaaaath = "/Election/images/"+relativePath;
+//
+//            System.out.println("*****************************");
+//            System.out.println(selectedImagePath);
+//            System.out.println(selectedPath);
+//            System.out.println(resourcePath);
+//            System.out.println(relativePath);
+//            System.out.println(elpaaaath);
+//            System.out.println("******************************");
+//
+//            election.setImgEpath(elpaaaath);
+//
+//            // Update the ImageView with the selected image
+//            Image image = new Image("file:" + selectedImagePath);
+//            imageAjout.setImage(image);
+//        //System.out.println(image);
+//
+//
+//        }
+//    }
+
+
     @FXML
-    void chosirImageEAjout(ActionEvent event) {
+    private void chosirImageEAjout(ActionEvent event) {
         Stage stage = (Stage) imageAjout.getScene().getWindow();
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
-        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/Oussamaassal2.0/src/main/resources/Election/images"));
+        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG image", "*.png"),
                 new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),
@@ -92,31 +135,46 @@ public class AjouterElectionController {
         File selectedFile = fileChooser.showOpenDialog(stage);
 
         if (selectedFile != null) {
-            selectedImagePath = selectedFile.getAbsolutePath();
-            Path selectedPath = Paths.get(selectedImagePath);
-            Path resourcePath = Paths.get("C:/Users/tun/Desktop/projet/Oussamaassal2.0/src/main/resources/Election/images");
-            Path relativePath = resourcePath.relativize(selectedPath);
-            String elpaaaath = "/Eelection/images/"+relativePath;
+            try {
+                // Define the target directory and create it if it doesn't exist
+                Path targetDir = Paths.get("C:/xampp/htdocs/Images/Elections");
+                if (!Files.exists(targetDir)) {
+                    Files.createDirectories(targetDir);
+                }
 
-            System.out.println("*****************************");
-            System.out.println(selectedImagePath);
-            System.out.println(selectedPath);
-            System.out.println(resourcePath);
-            System.out.println(relativePath);
-            System.out.println(elpaaaath);
-            System.out.println("******************************");
+                // Define the target file path
+                Path targetFilePath = targetDir.resolve(selectedFile.getName());
 
-            election.setImgEpath(elpaaaath);
+                // Move the file to the target directory
+                Files.move(selectedFile.toPath(), targetFilePath, StandardCopyOption.REPLACE_EXISTING);
 
-            // Update the ImageView with the selected image
-            Image image = new Image("file:" + selectedImagePath);
-            imageAjout.setImage(image);
-        //System.out.println(image);
+                // Get the relative path for the election object
+                Path relativePath = targetDir.relativize(targetFilePath);
+                String elpaaaath = relativePath.toString().replace("\\", "/");
 
+                // Update the election object with the new image path
+                election.setImgEpath(elpaaaath);
 
+                // Update the ImageView with the moved image
+                Image image = new Image(targetFilePath.toUri().toString());
+                imageAjout.setImage(image);
+
+                System.out.println("*****************************");
+                System.out.println("Selected file path: " + selectedFile.getAbsolutePath());
+                System.out.println("Target file path: " + targetFilePath);
+                System.out.println("Relative path: " + relativePath);
+                System.out.println("Image path in election object: " + elpaaaath);
+                System.out.println("******************************");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("No file selected.");
         }
     }
-/********************Ajout sans cntrl de saisie ***********************/
+
+    /********************Ajout sans cntrl de saisie ***********************/
  /*   @FXML
     void ajouterElection(ActionEvent event)  {
         elpaaaath = election.getImgEpath();
@@ -182,7 +240,7 @@ void ajouterElection(ActionEvent event) {
                         ps.ajouter(new Election(nomTF.getText(), dateTF.getValue(), posteTF.getText(), periodeTF.getText(), elpaaaath));
                         mailSenderService.sendEmailToAdmins("Ajout Election", " Election ajouté avec succès ");
                         SMSSender xx = new SMSSender();
-                        xx.send_SMS("Mr", " L'administrateur");
+                        //xx.send_SMS("Mr", " L'administrateur");
 
                         showSuccessMessage("Election added successfully!");
                         Affichage();
@@ -274,7 +332,7 @@ void ajouterElection(ActionEvent event) {
 
     void Affichage() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherElection.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
             nomTF.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
@@ -283,7 +341,7 @@ void ajouterElection(ActionEvent event) {
     @FXML
     void goBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherElection.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Election/AfficherElection.fxml"));
             nomTF.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
