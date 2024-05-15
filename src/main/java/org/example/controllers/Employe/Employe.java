@@ -49,7 +49,8 @@ public class Employe {
 
     @FXML
     private TextField AgeModifier;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private CheckBox DroiteAjout;
 
@@ -347,6 +348,9 @@ public class Employe {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

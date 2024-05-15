@@ -38,7 +38,8 @@ public class ContratController {
     private DateRangePicker ContratDateAjout;
     @FXML
     private Button btnArticlles;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private DateRangePicker ContratDateModifier;
 
@@ -165,6 +166,9 @@ public class ContratController {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

@@ -33,7 +33,8 @@ public class Crud implements Initializable {
     private Button btnBoutique;
     @FXML
     private Button btnArticlles;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnContrats;
 
@@ -113,6 +114,9 @@ public class Crud implements Initializable {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
@@ -122,7 +126,7 @@ public class Crud implements Initializable {
             naviguezVers("/Employee/Contrat.fxml");
         });
         btnBoutique.setOnAction(e -> {
-            naviguezVers("/Boutique/Store.fxml");
+            naviguezVers("/Boutique/AfficherProduit.fxml");
         });
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");

@@ -45,6 +45,8 @@ public class Store {
 
     @FXML
     private Button btnReclamations;
+    @FXML
+    private Button btnTerrain;
 
     @FXML
     private Button btnJoueurs;
@@ -111,18 +113,27 @@ public class Store {
             btnMatch.setOnAction(e -> {
                 naviguezVers("/Article/affichermatch.fxml");
             });
-            btnReservation.setOnAction(e -> {
-                naviguezVers("/Reservation/Reservation.fxml");
-            });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
             btnJoueurs.setOnAction(e -> {
                 naviguezVers("/Employee/AffichageJoueur.fxml");
             });
             btnContrats.setOnAction(e -> {
                 naviguezVers("/Employee/Contrat.fxml");
             });
-            btnBoutique.setOnAction(e -> {
-                naviguezVers("/Boutique/Store.fxml");
-            });
+            if(Session.getSession().getUser().getRole().equals("admin")){
+                btnBoutique.setOnAction(e -> {
+                    naviguezVers("/Boutique/AfficherProduit.fxml");
+                });
+            }else {
+                btnBoutique.setOnAction(e -> {
+                    naviguezVers("/Boutique/Store.fxml");
+                });
+            }
             btnElection.setOnAction(e -> {
                 naviguezVers("/Election/DashbordElection.fxml");
             });

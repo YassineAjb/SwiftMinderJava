@@ -31,7 +31,8 @@ public class DashboardElection implements Initializable {
     private Button btnArticlles;
     @FXML
     private Button btnUsers;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnReclamations;
     @FXML
@@ -71,6 +72,9 @@ public class DashboardElection implements Initializable {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

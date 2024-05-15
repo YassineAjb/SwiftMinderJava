@@ -14,48 +14,24 @@ import javafx.stage.Stage;
 import org.example.models.Reservation.Reservation;
 import org.example.services.Reservation.ServiceReservation;
 import org.example.services.Reservation.ServiceTerrain;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class ModifierReservation {
 
-
-    @FXML
-    private ImageView Retour;
-    @FXML
-    private Button btnArticlles;
-
-    @FXML
-    private ChoiceBox<String> Choixterrain;
-
-    @FXML
-    private ListView<String> DateReservation;
-    ServiceTerrain serviceTerrain = new ServiceTerrain();
-    @FXML
-    private String Emplacement;
-
-    @FXML
-    private TextField Note;
-
     @FXML
     private Button btnUsers;
 
     @FXML
     private Button btnReclamations;
-    private int idReservation;
-
-    private int reservation ;
-    private final ServiceReservation sr = new ServiceReservation();
-
-    private String[] lol = {"9-10:30", "10-11:30", "12-13:30", "14-15:30", "16 - 17:30", "17:30-19"};
-
-    @FXML
-    private Button btnAcceuil;
-
     @FXML
     private Button btnBoutique;
-
+    @FXML
+    private Button btnArticlles;
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnContrats;
 
@@ -73,13 +49,32 @@ public class ModifierReservation {
 
     @FXML
     private Button btnSignout;
+    @FXML
+    private ImageView Retour;
 
+
+    @FXML
+    private ChoiceBox<String> Choixterrain;
+
+    @FXML
+    private ListView<String> DateReservation;
+    ServiceTerrain serviceTerrain = new ServiceTerrain();
+    private String Emplacement;
+
+    @FXML
+    private TextField Note;
+    private int idReservation;
+
+    private int reservation ;
+    private final ServiceReservation sr = new ServiceReservation();
+
+    private String[] lol = {"9-10:30", "10-11:30", "12-13:30", "14-15:30", "16 - 17:30", "17:30-19"};
 
     public void naviguezVers(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
-            btnAcceuil.getScene().setRoot(root);
+            btnSignout.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -97,6 +92,9 @@ public class ModifierReservation {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
@@ -119,6 +117,10 @@ public class ModifierReservation {
         });
         btnUsers.setOnAction(e -> {
             naviguezVers("/User/Crud.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
     }
 

@@ -32,7 +32,8 @@ public class ListCandidatVcopie implements Initializable {
     private Button btnBoutique;
     @FXML
     private Button btnArticlles;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnContrats;
 
@@ -148,6 +149,9 @@ public class ListCandidatVcopie implements Initializable {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

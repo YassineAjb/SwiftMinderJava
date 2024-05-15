@@ -36,7 +36,8 @@ public class AjouterElectionController {
 
     @FXML
     private Button btnAcceuil;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnBoutique;
 
@@ -192,6 +193,9 @@ public void initialize(URL location, ResourceBundle resources) {
         naviguezVers("/Article/affichermatch.fxml");
     });
     btnReservation.setOnAction(e -> {
+        naviguezVers("/Reservation/listeReservation.fxml");
+    });
+    btnTerrain.setOnAction(e -> {
         naviguezVers("/Reservation/Reservation.fxml");
     });
     btnJoueurs.setOnAction(e -> {

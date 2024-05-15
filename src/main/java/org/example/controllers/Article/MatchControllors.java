@@ -26,7 +26,8 @@ public class MatchControllors  implements Initializable{
 
     @FXML
     private Button btnajouter;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnimporter;
 
@@ -124,6 +125,9 @@ public class MatchControllors  implements Initializable{
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

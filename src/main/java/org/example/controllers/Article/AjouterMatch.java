@@ -25,7 +25,8 @@ public class AjouterMatch {
 
     @FXML
     private TextField adversaire;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button affichermatch;
 
@@ -113,6 +114,9 @@ public class AjouterMatch {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

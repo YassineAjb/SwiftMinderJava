@@ -29,6 +29,8 @@ public class AfficherVoteController implements Initializable {
     @FXML
     private Button btnArticlles;
     @FXML
+    private Button btnTerrain;
+    @FXML
     private ComboBox<?> idSortC;
 
     @FXML
@@ -179,6 +181,9 @@ listViewV.setCellFactory(param -> new ListCell<Vote>() {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

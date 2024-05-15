@@ -21,6 +21,10 @@ import org.example.utils.Session;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 
 
@@ -33,7 +37,8 @@ public class ModifierProduit {
     private Button btnBoutique;
     @FXML
     private Button btnArticlles;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnJoueurs;
 
@@ -153,6 +158,9 @@ public class ModifierProduit {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
@@ -198,14 +206,31 @@ public class ModifierProduit {
         openFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg"));
         File file = openFile.showOpenDialog(btnImporter.getScene().getWindow());
         if (file != null) {
+            try {
+                // Define the target directory and create it if it doesn't exist
+                Path targetDir = Paths.get("C:/xampp/htdocs/Images/Produits");
+                if (!Files.exists(targetDir)) {
+                    Files.createDirectories(targetDir);
+                }
 
-            selectedImage = new Image(file.toURI().toString());
-            imageView.setImage(selectedImage);
-            String imagePath = file.toURI().toString(); // Obtenir le chemin de l'image sous forme d'URI
+                // Define the target file path
+                Path targetFilePath = targetDir.resolve(file.getName());
 
-            System.out.println("Chemin de l'image: " + imagePath); // Afficher le chemin de l'image (pour le débogage)
+                // Move the file to the target directory
+                Files.move(file.toPath(), targetFilePath, StandardCopyOption.REPLACE_EXISTING);
+
+                // Load the image from the new location
+                selectedImage = new Image(targetFilePath.toUri().toString());
+                imageView.setImage(selectedImage);
+
+                String imagePath = targetFilePath.getFileName().toString();
+                System.out.println("Chemin de l'image: " + imagePath);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("No file selected.");
         }
-
     }
     public void naviguezVers(String URL) {
         try {

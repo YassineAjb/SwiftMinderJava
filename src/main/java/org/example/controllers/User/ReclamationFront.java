@@ -23,7 +23,8 @@ import java.util.ResourceBundle;
 public class ReclamationFront implements Initializable {
     @FXML
     private Button btnBoutique;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnContrats;
     @FXML
@@ -75,6 +76,9 @@ public class ReclamationFront implements Initializable {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

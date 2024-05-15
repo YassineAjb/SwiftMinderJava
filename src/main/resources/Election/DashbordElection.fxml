@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
@@ -19,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="870.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Election.Candidat.DashboardElection">
+<AnchorPane prefHeight="870.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Election.Candidat.DashboardElection">
 
     <children>
       <ImageView fitHeight="870.0" fitWidth="1548.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
@@ -46,7 +38,7 @@
             <Image url="@images/Statistique_des_ages_des_election.png" />
          </image>
       </ImageView>
-      <VBox id="menuu" alignment="TOP_CENTER" prefHeight="870.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
+      <VBox id="menuu" alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="777.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
          <children>
             <Label layoutX="26.0" layoutY="10.0">
                <font>
@@ -116,6 +108,21 @@
                </padding>
             </Button>
             <Button id="Reservation" fx:id="btnReservation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Reservation">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Employee/images/shippingtruck.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust contrast="-1.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button id="Reservation" fx:id="btnTerrain" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="261.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@/Employee/style.css" text="Terrains">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -41,7 +41,8 @@ public class ModifierElectionController {
         private TextField nomTF;
     @FXML
     private Button btnArticlles;
-
+    @FXML
+    private Button btnTerrain;
         @FXML
         private TextField periodeTF;
 
@@ -173,6 +174,9 @@ public void initializeValues(String nomE, Date dateE, String posteE, String peri
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

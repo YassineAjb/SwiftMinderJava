@@ -16,6 +16,7 @@ import org.example.models.Reservation.Reservation;
 import org.example.services.Reservation.ServiceReservation;
 import org.example.services.Reservation.ServiceTerrain;
 import org.example.utils.MyDataBase;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -25,36 +26,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Terrain {
-
-    @FXML
-    private ChoiceBox<String> Choixterrain;
-
-    @FXML
-    private ListView<String> DateReservation;
-
-    @FXML
-    private TextField Note;
-
-    @FXML
-    private Button addReservation;
-
-    @FXML
-    private VBox Emplacement;
-
-    @FXML
-    private Button btnAcceuil;
-    @FXML
-    private Button btnArticlles;
-
-    @FXML
-    private Button btnBoutique;
-
     @FXML
     private Button btnUsers;
 
     @FXML
     private Button btnReclamations;
-
+    @FXML
+    private Button btnBoutique;
+    @FXML
+    private Button btnArticlles;
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnContrats;
 
@@ -72,7 +54,20 @@ public class Terrain {
 
     @FXML
     private Button btnSignout;
+    @FXML
+    private ChoiceBox<String> Choixterrain;
 
+    @FXML
+    private ListView<String> DateReservation;
+
+    @FXML
+    private TextField Note;
+
+    @FXML
+    private Button addReservation;
+
+    @FXML
+    private VBox Emplacement;
 
     private final ServiceReservation serviceReservation = new ServiceReservation();
 
@@ -83,12 +78,11 @@ public class Terrain {
 
     private String[] lol = {"9-10:30", "10-11:30", "12-13:30", "14-15:30", "16 - 17:30", "17:30-19"};
 
-
     public void naviguezVers(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
-            btnAcceuil.getScene().setRoot(root);
+            btnSignout.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -109,6 +103,9 @@ public class Terrain {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
@@ -131,6 +128,10 @@ public class Terrain {
         });
         btnUsers.setOnAction(e -> {
             naviguezVers("/User/Crud.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
         }
 

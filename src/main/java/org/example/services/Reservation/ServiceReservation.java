@@ -30,7 +30,7 @@ public class ServiceReservation {
             while (resultSet.next()) {
                 Reservation reservation = new Reservation();
                 reservation.setReservationID(resultSet.getInt("reservationID"));
-                reservation.setChoixTerrain(String.valueOf(resultSet.getInt("id")));
+                reservation.setChoixTerrain(String.valueOf(resultSet.getInt("idTerrain")));
                 reservation.setDateReservation(resultSet.getString("dateReservation"));
                 reservation.setNote(resultSet.getString("note"));
                 reservation.setEmplacement(resultSet.getString("emplacement"));

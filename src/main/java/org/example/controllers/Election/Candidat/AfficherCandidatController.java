@@ -67,7 +67,7 @@ public class AfficherCandidatController implements Initializable{
     @FXML
     private Button btnAcceuil;
     @FXML
-    private Button btncalendrier;
+    private Button btnTerrain;
 
     @FXML
     private Button btnUsers;
@@ -303,6 +303,9 @@ public class AfficherCandidatController implements Initializable{
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

@@ -68,11 +68,11 @@ public class Login {
 
                         button_Sign_In.getScene().setRoot(root);
                     }else if(loggedInUser.getRole().equals("Membre")){
-                        Parent root = FXMLLoader.load(getClass().getResource("/Employee/AffichageJoueur.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("/Boutique/Store.fxml"));
 
                         button_Sign_In.getScene().setRoot(root);
                     }else if(loggedInUser.getRole().equals("MembrePlus")){
-                        Parent root = FXMLLoader.load(getClass().getResource("/Employee/AffichageJoueur.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("/Boutique/Store.fxml"));
 
                         button_Sign_In.getScene().setRoot(root);
                     }

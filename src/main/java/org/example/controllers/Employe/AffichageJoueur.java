@@ -37,25 +37,27 @@ public class AffichageJoueur implements Initializable {
     private ScrollPane JoueurScroll;
     @FXML
     private GridPane gridJoueurs;
-    @FXML
-    private Button btnArticlles;
+
     @FXML
     private Button JoueurDetails;
 
     @FXML
     private Button btnAcceuil;
 
+
+    @FXML
+    private Button btncalendrier;
     @FXML
     private Button btnUsers;
 
     @FXML
     private Button btnReclamations;
     @FXML
-    private Button btncalendrier;
-
-    @FXML
     private Button btnBoutique;
-
+    @FXML
+    private Button btnArticlles;
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnContrats;
 
@@ -142,6 +144,9 @@ public class AffichageJoueur implements Initializable {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

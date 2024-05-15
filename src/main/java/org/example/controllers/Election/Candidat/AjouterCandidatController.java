@@ -33,7 +33,8 @@ public class AjouterCandidatController {
     private TextField nomTFCA;
     @FXML
     private Button btnArticlles;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private TextField prenomTFCA;
 
@@ -365,6 +366,9 @@ private boolean isAlphabetic(String input) {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

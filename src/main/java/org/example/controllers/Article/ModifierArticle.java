@@ -25,7 +25,8 @@ public class ModifierArticle {
 
     @FXML
     private TextField ida;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private TextField idj;
 
@@ -162,9 +163,12 @@ public class ModifierArticle {
             btnMatch.setOnAction(e -> {
                 naviguezVers("/Article/affichermatch.fxml");
             });
-            btnReservation.setOnAction(e -> {
-                naviguezVers("/Reservation/Reservation.fxml");
-            });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
             btnJoueurs.setOnAction(e -> {
                 naviguezVers("/Employee/AffichageJoueur.fxml");
             });

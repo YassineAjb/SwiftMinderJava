@@ -12,9 +12,10 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.example.models.Reservation.Terrain;
 import org.example.models.Reservation.TerrainCell;
 import org.example.services.Reservation.ServiceTerrain;
-import org.example.models.Reservation.Terrain;
+import org.example.utils.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -25,26 +26,23 @@ public class Reservation {
 
     @FXML
     private ListView<Terrain> affichage;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnAjouter ;
 
     @FXML
     private Button btnModifier ;
-    @FXML
-    private Button btnArticlles;
 
     @FXML
     private Button btnUsers;
 
     @FXML
     private Button btnReclamations;
-
-    @FXML
-    private Button btnAcceuil;
-
     @FXML
     private Button btnBoutique;
+    @FXML
+    private Button btnArticlles;
 
     @FXML
     private Button btnContrats;
@@ -64,12 +62,11 @@ public class Reservation {
     @FXML
     private Button btnSignout;
 
-
     public void naviguezVers(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
-            btnAcceuil.getScene().setRoot(root);
+            btnSignout.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -98,6 +95,9 @@ public class Reservation {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
@@ -120,6 +120,10 @@ public class Reservation {
         });
         btnUsers.setOnAction(e -> {
             naviguezVers("/User/Crud.fxml");
+        });
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
 
     }

@@ -62,7 +62,7 @@ public class TerrainCell extends ListCell<Terrain>  {
     }
 
     @Override
-    protected void updateItem(org.example.models.Reservation.Terrain terrain, boolean empty) {
+    protected void updateItem(Terrain terrain, boolean empty) {
         super.updateItem(terrain, empty);
 
         if (empty || terrain == null) {

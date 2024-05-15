@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -14,13 +13,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import org.example.models.Boutique.Produit;
 import org.example.services.Boutique.ServiceProduit;
 import org.example.utils.Session;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 
 
@@ -59,6 +61,8 @@ public class AjouterProduit {
     @FXML
     private Button btnAjouter;
     @FXML
+    private Button btnTerrain;
+    @FXML
     private Button btnAnnuler;
     private Produit produit;
     private Image selectedImage;
@@ -88,20 +92,22 @@ public class AjouterProduit {
 
     @FXML
     void Annuler(javafx.event.ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) btnAjouter.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/Boutique/AfficherProduit.fxml"));
-        primaryStage.setTitle("Ajouter Produit");
-        primaryStage.setScene(new Scene(root, 1920, 1080));
-        primaryStage.show();
+
+        naviguezVers("/Boutique/AfficherProduit.fxml");
+//        Stage stage = (Stage) btnAjouter.getScene().getWindow();
+//        stage.close();
+//        Stage primaryStage = new Stage();
+//        Parent root = FXMLLoader.load(getClass().getResource("/Boutique/AfficherProduit.fxml"));
+//        primaryStage.setTitle("Ajouter Produit");
+//        primaryStage.setScene(new Scene(root, 1920, 1080));
+//        primaryStage.show();
 
 
     }
 
     @FXML
     void ajouterProduit(javafx.event.ActionEvent actionEvent) throws IOException {
-        if (NomProduit.getText().isEmpty() || Prix.getText().isEmpty() || Taille.getValue() == null || Type.getValue() == null || Quantite.getText().isEmpty()) {
+        if (NomProduit.getText().isEmpty() || Prix.getText().isEmpty() || Taille.getValue() == null || Type.getValue() == null || Quantite.getText().isEmpty() || selectedImage == null) {
             // Afficher une alerte si des champs obligatoires sont vides
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -127,6 +133,8 @@ public class AjouterProduit {
             alert.showAndWait();
         }
 
+        naviguezVers("/Boutique/AfficherProduit.fxml");
+
 
     }
 
@@ -142,6 +150,9 @@ public class AjouterProduit {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
@@ -172,22 +183,58 @@ public class AjouterProduit {
 
     }
 
+//    @FXML
+//    void Importer(ActionEvent event) {
+//        FileChooser openFile = new FileChooser();
+//        openFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg"));
+//        File file = openFile.showOpenDialog(btnImporter.getScene().getWindow());
+//        if (file != null) {
+//            selectedImage = new Image(file.toURI().toString());
+//            System.out.println(selectedImage);
+//            imageView.setImage(selectedImage);
+//            String imagePath = file.getName();
+//
+//            System.out.println("Chemin de l'image: " + imagePath);
+//        }
+//
+//
+//    }
+
+
+
     @FXML
     void Importer(ActionEvent event) {
         FileChooser openFile = new FileChooser();
         openFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg"));
         File file = openFile.showOpenDialog(btnImporter.getScene().getWindow());
         if (file != null) {
-            selectedImage = new Image(file.toURI().toString());
-            System.out.println(selectedImage);
-            imageView.setImage(selectedImage);
-            String imagePath = file.getName();
+            try {
+                // Define the target directory and create it if it doesn't exist
+                Path targetDir = Paths.get("C:/xampp/htdocs/Images/Produits");
+                if (!Files.exists(targetDir)) {
+                    Files.createDirectories(targetDir);
+                }
 
-            System.out.println("Chemin de l'image: " + imagePath);
+                // Define the target file path
+                Path targetFilePath = targetDir.resolve(file.getName());
+
+                // Move the file to the target directory
+                Files.move(file.toPath(), targetFilePath, StandardCopyOption.REPLACE_EXISTING);
+
+                // Load the image from the new location
+                selectedImage = new Image(targetFilePath.toUri().toString());
+                imageView.setImage(selectedImage);
+
+                String imagePath = targetFilePath.getFileName().toString();
+                System.out.println("Chemin de l'image: " + imagePath);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("No file selected.");
         }
-
-
     }
+
 
     public void naviguezVers(String URL) {
         try {

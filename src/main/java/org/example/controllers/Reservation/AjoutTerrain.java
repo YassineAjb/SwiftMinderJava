@@ -1,5 +1,9 @@
 package org.example.controllers.Reservation;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import com.dlsc.gemsfx.TimePicker;
 import com.dlsc.gemsfx.daterange.DateRangePicker;
 import com.gluonhq.maps.MapPoint;
@@ -8,70 +12,29 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.example.services.Reservation.ServiceTerrain;
 import org.example.models.Reservation.Terrain;
+import org.example.services.Reservation.ServiceTerrain;
+import org.example.utils.Session;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class AjoutTerrain {
-
-    @FXML
-    private VBox Emplacement;
-
-    @FXML
-    private TextField GeoX;
-
-    @FXML
-    private TextField GeoY;
-
-    private MapView mapView;
-
-    @FXML
-    private TextField nom_Terrain;
-
-    @FXML
-    private TextField adresse;
-    @FXML
-    private Button btnArticlles;
-
-    @FXML
-    private TextField description;
-
     @FXML
     private Button btnUsers;
 
     @FXML
     private Button btnReclamations;
-
-    @FXML
-    private TimePicker ouverture;
-
-    @FXML
-    private TimePicker fermeture;
-
-    @FXML
-    private DateRangePicker datedispo;
-
-    @FXML
-    private DatePicker datePicker;
-
-    @FXML
-    private ImageView Retour;
-
-    @FXML
-    private Button btnAcceuil;
-
     @FXML
     private Button btnBoutique;
-
+    @FXML
+    private Button btnArticlles;
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnContrats;
 
@@ -89,19 +52,50 @@ public class AjoutTerrain {
 
     @FXML
     private Button btnSignout;
+    @FXML
+    private VBox Emplacement;
+
+    @FXML
+    private TextField GeoX;
 
 
+    @FXML
+    private TextField GeoY;
 
+    private MapView mapView;
+
+    @FXML
+    private TextField nom_Terrain;
+
+    @FXML
+    private TextField adresse;
+
+    @FXML
+    private TextField description;
+
+    @FXML
+    private TimePicker ouverture;
+
+    @FXML
+    private TimePicker fermeture;
+
+    @FXML
+    private DateRangePicker datedispo;
+
+    @FXML
+    private DatePicker datePicker;
+
+    @FXML
+    private ImageView Retour;
     public void naviguezVers(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
-            btnAcceuil.getScene().setRoot(root);
+            btnSignout.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
-
     public void initialize() {
         Retour.setOnMouseClicked(event -> {
             loadListeReservationView();
@@ -119,6 +113,9 @@ public class AjoutTerrain {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
@@ -133,14 +130,18 @@ public class AjoutTerrain {
         btnElection.setOnAction(e -> {
             naviguezVers("/Election/DashbordElection.fxml");
         });
+        btnArticlles.setOnAction(e -> {
+            naviguezVers("/Article/afficherarticles.fxml");
+        });
         btnReclamations.setOnAction(e -> {
             naviguezVers("/User/tablereclamation.fxml");
         });
         btnUsers.setOnAction(e -> {
             naviguezVers("/User/Crud.fxml");
         });
-        btnArticlles.setOnAction(e -> {
-            naviguezVers("/Article/afficherarticles.fxml");
+        btnSignout.setOnAction(e -> {
+            Session.getSession().clearSession();
+            naviguezVers("/User/Login.fxml");
         });
     }
 
@@ -220,7 +221,7 @@ public class AjoutTerrain {
             MapPoint newPoint = new MapPoint(x, y);
             mapView.flyTo(0, newPoint, 0.1);
         } catch (NumberFormatException e) {
-
+            // Handle the case where input is not a valid double
         }
     }
 

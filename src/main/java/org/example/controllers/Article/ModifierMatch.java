@@ -26,7 +26,8 @@ public class ModifierMatch {
 
     @FXML
     private TextField adversaire;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private DatePicker date;
 
@@ -224,6 +225,9 @@ public class ModifierMatch {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {

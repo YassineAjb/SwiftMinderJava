@@ -36,7 +36,8 @@ public class AjouterArticle {
 
     @FXML
     private Button btnUsers;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private Button btnReclamations;
     @FXML
@@ -145,9 +146,12 @@ public class AjouterArticle {
             btnMatch.setOnAction(e -> {
                 naviguezVers("/Article/affichermatch.fxml");
             });
-            btnReservation.setOnAction(e -> {
-                naviguezVers("/Reservation/Reservation.fxml");
-            });
+        btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
+            naviguezVers("/Reservation/Reservation.fxml");
+        });
             btnJoueurs.setOnAction(e -> {
                 naviguezVers("/Employee/AffichageJoueur.fxml");
             });

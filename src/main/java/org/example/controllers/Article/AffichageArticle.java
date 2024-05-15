@@ -61,7 +61,8 @@ import java.util.Optional;
         private Button btnSignout;
 
         @FXML
-        private Button btnStaff;
+        private Button btnTerrain;
+
 
         @FXML
         private Button btnUsers;
@@ -199,6 +200,9 @@ import java.util.Optional;
                     naviguezVers("/Article/affichermatch.fxml");
                 });
                 btnReservation.setOnAction(e -> {
+                    naviguezVers("/Reservation/listeReservation.fxml");
+                });
+                btnTerrain.setOnAction(e -> {
                     naviguezVers("/Reservation/Reservation.fxml");
                 });
                 btnJoueurs.setOnAction(e -> {

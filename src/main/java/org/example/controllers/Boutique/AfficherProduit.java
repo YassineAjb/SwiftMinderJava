@@ -5,12 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import org.example.models.Boutique.Produit;
 import org.example.services.Boutique.ServiceProduit;
 import org.example.utils.Session;
@@ -32,7 +30,8 @@ public class AfficherProduit {
 
     @FXML
     private Button btnReclamations;
-
+    @FXML
+    private Button btnTerrain;
     @FXML
     private VBox vbox;
     @FXML
@@ -78,6 +77,9 @@ public class AfficherProduit {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
@@ -146,23 +148,20 @@ public class AfficherProduit {
     }
     @FXML
     void Ajouter(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Boutique/AjouterProduit.fxml"));
-            Parent root = loader.load();
-
-
-
-            // Afficher la nouvelle scène
-            Scene scene = new Scene(root,1920,1080);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Ajouter Produit");
-            stage.show();
-
-            ((Stage) btnAjouter.getScene().getWindow()).close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        naviguezVers("/Boutique/AjouterProduit.fxml");
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Boutique/AjouterProduit.fxml"));
+//            Parent root = loader.load();
+//
+//
+//
+//            // Afficher la nouvelle scène
+//            Scene scene = new Scene(root,1920,1080);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.setTitle("Ajouter Produit");
+//            stage.show();
+//
+//            ((Stage) btnAjouter.getScene().getWindow()).close();
 
     }
 //    @FXML

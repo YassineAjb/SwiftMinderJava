@@ -46,6 +46,9 @@ public class AffichageMatch {
     private Button btnJoueurs;
 
     @FXML
+    private Button btnTerrain;
+
+    @FXML
     private Button btnMatch;
     @FXML
     private Button btnArticlles;
@@ -166,6 +169,9 @@ public class AffichageMatch {
             naviguezVers("/Article/affichermatch.fxml");
         });
         btnReservation.setOnAction(e -> {
+            naviguezVers("/Reservation/listeReservation.fxml");
+        });
+        btnTerrain.setOnAction(e -> {
             naviguezVers("/Reservation/Reservation.fxml");
         });
         btnJoueurs.setOnAction(e -> {
