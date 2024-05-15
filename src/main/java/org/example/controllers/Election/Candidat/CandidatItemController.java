@@ -54,6 +54,8 @@ public class CandidatItemController implements Initializable {
         File file = new File(imageCPath);
         Image image = new Image(file.toURI().toString());
         imgItemCandidat.setImage(image);
+
+
 //        if (imageCPath != null && !imageCPath.isEmpty()) {
 //            // Load the image from the specified path
 //            try (InputStream stream = getClass().getResourceAsStream(imageCPath)) {

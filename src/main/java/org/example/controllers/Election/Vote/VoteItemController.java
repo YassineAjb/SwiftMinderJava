@@ -12,8 +12,8 @@ import org.example.models.Election.Election;
 import org.example.services.Election.CandidatService;
 import org.example.services.Election.ElectionService;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -57,8 +57,12 @@ public class VoteItemController implements Initializable {
             prenomVoteItemCandidat.setText(candidat.getPrenomC());
             nomVoteItemElection.setText(election.getNomE());
 
+            String imagePath ="C:/xampp/htdocs/Images/Candidats/" + candidat.getImgCpath();
+            File file = new File(imagePath);
+            Image image = new Image(file.toURI().toString());
+            imgVoteItemCandidat.setImage(image);
 
-            String imagePath = candidat.getImgCpath();
+            /*String imagePath = candidat.getImgCpath();
 
             if (imagePath != null && !imagePath.isEmpty()) {
                 try (InputStream stream = getClass().getResourceAsStream(imagePath)) {
@@ -74,7 +78,7 @@ public class VoteItemController implements Initializable {
                 }
             } else {
                 System.err.println("Image path not found in the database for candidat: " + candidat.getIdC());
-            }
+            }*/
         }
 
     }

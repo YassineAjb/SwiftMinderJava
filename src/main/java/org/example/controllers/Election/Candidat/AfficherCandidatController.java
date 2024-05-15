@@ -154,13 +154,100 @@ public class AfficherCandidatController implements Initializable{
 
             // Retrieve the refreshed list of candidates
             List<Candidat> candidatFromService = candidatService.recupererC(idElection);
-            System.out.println(idElection);
+            System.out.println("Election ID: " + idElection); // Debug print
+
             // Set the items in the list view
             listViewC.getItems().setAll(candidatFromService);
+
+            // Set the custom cell factory for the ListView
+            listViewC.setCellFactory(param -> new ListCell<Candidat>() {
+                @Override
+                protected void updateItem(Candidat candidat, boolean empty) {
+                    super.updateItem(candidat, empty);
+
+                    if (empty || candidat == null) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        try {
+                            // Load custom FXML layout for each candidat
+                            FXMLLoader fxmlLoader = new FXMLLoader();
+                            fxmlLoader.setLocation(getClass().getResource("/Election/CandidatItem.fxml"));
+
+                            AnchorPane anchorPane = fxmlLoader.load();
+                            CandidatItemController candidatItemController = fxmlLoader.getController();
+                            candidatItemController.setData(candidat);
+                            setGraphic(anchorPane);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            setText("Error loading item");
+                        }
+                    }
+                }
+            });
+
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }
+
+    @FXML
+    private void searchautoV() {
+        String searchAttribute = idSearchWithC.getValue();
+        String searchKeyword = idSearchC.getText();
+
+        if (searchKeyword.isEmpty()) {
+            // Reset to original state if the search keyword is empty
+            refrechire();
+            return;
+        }
+
+        try {
+            List<Candidat> searchResults = candidatService.searchCandidatByNomStartingWithLetter(searchAttribute, searchKeyword);
+
+            // Debug: Print the size of the search results
+            System.out.println("Search results size: " + searchResults.size());
+
+            // Clear and update the ListView with search results
+            listViewC.getItems().clear();
+            listViewC.getItems().addAll(searchResults);
+
+            // Set the custom cell factory again for the ListView
+            listViewC.setCellFactory(param -> new ListCell<Candidat>() {
+                @Override
+                protected void updateItem(Candidat candidat, boolean empty) {
+                    super.updateItem(candidat, empty);
+
+                    if (empty || candidat == null) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        System.out.println("Updating item: " + candidat.getNomC()); // Debug print
+
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("/Election/CandidatItem.fxml"));
+
+                        try {
+                            AnchorPane anchorPane = fxmlLoader.load();
+                            CandidatItemController candidatItemController = fxmlLoader.getController();
+                            candidatItemController.setData(candidat);
+                            setGraphic(anchorPane);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            setText("Error loading item");
+                        }
+                    }
+                }
+            });
+
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+
 
 
 
@@ -245,57 +332,7 @@ public class AfficherCandidatController implements Initializable{
         });
     }
 
-    @FXML
-    private void searchautoV() {
-        String searchAttribute = idSearchWithC.getValue();
-        String searchKeyword = idSearchC.getText();
 
-        if (searchKeyword.isEmpty()) {
-            //initialize(); // Reset the table to its initial state
-            refrechire();
-        }
-
-        try {
-            List<Candidat> searchResults = candidatService.searchCandidatByNomStartingWithLetter(searchAttribute, searchKeyword);
-
-            // Set a custom cell factory for the ListView
-            listViewC.setCellFactory(param -> new ListCell<Candidat>() {
-                @Override
-                protected void updateItem(Candidat candidat, boolean empty) {
-                    super.updateItem(candidat, empty);
-
-                    if (empty || candidat == null) {
-                        // If the cell is empty or the election is null, set the cell text to empty
-                        setText("");
-                    } else {
-                        try {
-                            // Load custom FXML layout for each election
-                            FXMLLoader fxmlLoader = new FXMLLoader();
-                            fxmlLoader.setLocation(getClass().getResource("/Election/CandidatItem.fxml"));
-
-                            AnchorPane anchorPane = fxmlLoader.load();
-                            CandidatItemController candidatItemController = fxmlLoader.getController();
-                            candidatItemController.setData(candidat);
-                            setGraphic(anchorPane);
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            // Add debug output or log the exception
-                        }
-                    }
-                }
-            });
-
-            // Set the items in the ListView
-            listViewC.getItems().setAll(searchResults);
-
-        } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-        }
-    }
 
 
     public void modifyCandidatC() {

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
@@ -11,20 +19,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Election.Candidat.DashboardElection">
+<AnchorPane prefHeight="870.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Election.Candidat.DashboardElection">
 
     <children>
-      <ImageView fitHeight="850.0" fitWidth="1000.0" layoutX="300.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="870.0" fitWidth="1548.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/fghj.png" />
+            <Image url="@images/Untitled%20design%20(7).png" />
          </image>
       </ImageView>
-        <AnchorPane layoutX="651.0" layoutY="151.0" prefHeight="361.0" prefWidth="634.0">
+        <AnchorPane layoutX="725.0" layoutY="250.0" prefHeight="361.0" prefWidth="634.0">
             <children>
-                <PieChart fx:id="pieChart" prefHeight="361.0" prefWidth="634.0" />
+                <PieChart fx:id="pieChart" layoutY="26.0" prefHeight="361.0" prefWidth="634.0" />
             </children>
         </AnchorPane>
-      <Button fx:id="goBack" layoutX="1110.0" layoutY="753.0" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #004AAD;" text="Retour" textFill="WHITE">
+      <Button fx:id="goBack" layoutX="1359.0" layoutY="767.0" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #004AAD;" text="Retour" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -33,12 +41,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="361.0" fitWidth="763.0" layoutX="449.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="361.0" fitWidth="763.0" layoutX="542.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Statistique_des_ages_des_election.png" />
          </image>
       </ImageView>
-      <VBox id="menuu" alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="777.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
+      <VBox id="menuu" alignment="TOP_CENTER" prefHeight="870.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
          <children>
             <Label layoutX="26.0" layoutY="10.0">
                <font>

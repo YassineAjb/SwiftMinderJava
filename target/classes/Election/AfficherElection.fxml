@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -16,11 +23,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Election.Election.AfficherElectionController">
+<AnchorPane prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Election.Election.AfficherElectionController">
    <children>
-      <ImageView fitHeight="850.0" fitWidth="1000.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="892.0" fitWidth="1500.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/background1 (3).png" />
+            <Image url="@images/backkkk.png" />
          </image>
       </ImageView>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0">
@@ -156,7 +163,7 @@
             </ImageView>
          </children>
       </Pane>
-      <VBox id="menuu" alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="777.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
+      <VBox id="menuu" alignment="TOP_CENTER" prefHeight="850.0" prefWidth="200.0" style=" -fx-background-radius: 0 20 20 0;" styleClass="menuu" stylesheets="@/Employee/style.css">
          <children>
             <Label layoutX="26.0" layoutY="10.0">
                <font>

@@ -127,57 +127,42 @@ public class AfficherElectionController implements Initializable{
             // Clear the list view
             listViewE.getItems().clear();
 
-            // Retrieve the refreshed list of candidates
-            List<Election> candidatFromService = electionService.recuperer();
+            // Retrieve the refreshed list of elections
+            List<Election> electionsFromService = electionService.recuperer();
+
+            // Set the custom cell factory again (if needed)
+            listViewE.setCellFactory(param -> new ListCell<Election>() {
+                @Override
+                protected void updateItem(Election election, boolean empty) {
+                    super.updateItem(election, empty);
+
+                    if (empty || election == null) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("/Election/ElectionItem.fxml"));
+
+                        try {
+                            AnchorPane anchorPane = fxmlLoader.load();
+                            ELectionItemController electionItemController = fxmlLoader.getController();
+                            electionItemController.setData(election);
+                            setGraphic(anchorPane);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            setText("Error loading item");
+                        }
+                    }
+                }
+            });
 
             // Set the items in the list view
-            listViewE.getItems().setAll(candidatFromService);
+            listViewE.getItems().setAll(electionsFromService);
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }
 
-    /********************** l'affichage le9dim *************************************/
-    /*
-    @FXML
-    void initialize() {
-        try {
-            List<Election> elections = ps.recuperer();
-            ObservableList<Election> observableList = FXCollections.observableList(elections);
-            tableView.setItems(observableList);
-
-            nomCol.setCellValueFactory(new PropertyValueFactory<>("nomE"));
-            descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-            dateCol.setCellValueFactory(new PropertyValueFactory<>("dateE"));
-        } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-        }
-    }*/
-    /********************** l'affichage le9dim *************************************/
-
-
-   /*****************************Affichage Nader ********************/
-   /*public void initialize()  {
-        ObservableList<Election> elections = FXCollections.observableArrayList();
-        listViewE.setItems(elections);
-        try {
-            List<Election> electionFromService = electionService.recuperer();
-            elections.addAll(electionFromService);
-            listViewE.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-                @Override
-                public void changed(ObservableValue<? extends Number> observableValue, Number oldIndex, Number newIndex) {
-                    currentElection = listViewE.getSelectionModel().getSelectedItem();
-                }
-            });
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-    }*/
-    /**********************Affichage Nader *********************************/
     public List<Election> getAllElections() {
         List<Election> elections = new ArrayList<>();
 
@@ -287,55 +272,57 @@ public class AfficherElectionController implements Initializable{
         // Set the items in the ListView
         listViewE.getItems().setAll(electionFromService);
     }
-/***************************************************************************************************/
-   /* @FXML
-    private void searchauto() {
 
+
+
+    @FXML
+    private void searchauto() {
         String searchAttribute = idSearchWith.getValue();
         String searchKeyword = idSearch.getText();
 
         if (searchKeyword.isEmpty()) {
-            initialize();
-
+            // Reset to original state if the search keyword is empty
+            refrechire();
+            return;
         }
 
         try {
-            List<Election> searchResults = electionService.searchElectionByNomStartingWithLetter(searchAttribute,searchKeyword);
+            List<Election> searchResults = electionService.searchElectionByNomStartingWithLetter(searchAttribute, searchKeyword);
 
-           // ObservableList<Election> observableList = FXCollections.observableList(searchResults);
+            // Debug: Print the size of the search results
+            System.out.println("Search results size: " + searchResults.size());
 
-           // List<Election> elections = new ArrayList<>(getAllElections());
+            // Clear and update the ListView with search results
+            listViewE.getItems().clear();
+            listViewE.getItems().addAll(searchResults);
 
-            // Set a custom cell factory for the ListView
+            // Set the custom cell factory again for the ListView
             listViewE.setCellFactory(param -> new ListCell<Election>() {
                 @Override
                 protected void updateItem(Election election, boolean empty) {
                     super.updateItem(election, empty);
 
                     if (empty || election == null) {
-                        // If the cell is empty or the election is null, set the cell text to empty
-                        setText("");
+                        setText(null);
+                        setGraphic(null);
                     } else {
-                        // Load custom FXML layout for each election
+                        System.out.println("Updating item: " + election.getNomE()); // Debug print
+
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/ElectionItem.fxml"));
+                        fxmlLoader.setLocation(getClass().getResource("/Election/ElectionItem.fxml"));
 
                         try {
-                            HBox hBox = fxmlLoader.load();
-                            ELectionItemController electionItemController = fxmlLoader.getController();
-                            electionItemController.setData(election);
-
-                            // Set the cell's graphic to the loaded HBox
-                            setGraphic(hBox);
-
+                            AnchorPane anchorPane = fxmlLoader.load();
+                            ELectionItemController eLectionItemController = fxmlLoader.getController();
+                            eLectionItemController.setData(election);
+                            setGraphic(anchorPane);
                         } catch (IOException e) {
                             e.printStackTrace();
+                            setText("Error loading item");
                         }
                     }
                 }
             });
-            // Set the items in the ListView
-            listViewE.getItems().setAll(searchResults);
 
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -343,62 +330,7 @@ public class AfficherElectionController implements Initializable{
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
-
-    }*/
-
-@FXML
-private void searchauto() {
-    String searchAttribute = idSearchWith.getValue();
-    String searchKeyword = idSearch.getText();
-
-    if (searchKeyword.isEmpty()) {
-        //initialize(); // Reset the table to its initial state
-        refrechire();
     }
-
-    try {
-        List<Election> searchResults = electionService.searchElectionByNomStartingWithLetter(searchAttribute, searchKeyword);
-
-        // Set a custom cell factory for the ListView
-        listViewE.setCellFactory(param -> new ListCell<Election>() {
-            @Override
-            protected void updateItem(Election election, boolean empty) {
-                super.updateItem(election, empty);
-
-                if (empty || election == null) {
-                    // If the cell is empty or the election is null, set the cell text to empty
-                    setText("");
-                } else {
-                    try {
-                        // Load custom FXML layout for each election
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/Election/ElectionItem.fxml"));
-
-                        AnchorPane anchorPane = fxmlLoader.load();
-                        ELectionItemController eLectionItemController = fxmlLoader.getController();
-                        eLectionItemController.setData(election);
-                        setGraphic(anchorPane);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        // Add debug output or log the exception
-                    }
-                }
-            }
-        });
-
-        // Set the items in the ListView
-        listViewE.getItems().setAll(searchResults);
-
-    } catch (SQLException e) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setContentText(e.getMessage());
-        alert.showAndWait();
-    }
-}
-
-
     public void modifyElection() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Election/ModifierElection.fxml"));
@@ -414,8 +346,8 @@ private void searchauto() {
             Stage currentStage = (Stage) listViewE.getScene().getWindow();
             currentStage.setScene(newPageScene);
             currentStage.show();
-        } catch (NullPointerException n) {
-            showAlert("Please select an Election to modify");
+        /*} catch (NullPointerException n) {
+            showAlert("Please select an Election to modify");*/
         } catch (IOException e) {
             showAlert("Error loading the modification page. Please try again.");
         }

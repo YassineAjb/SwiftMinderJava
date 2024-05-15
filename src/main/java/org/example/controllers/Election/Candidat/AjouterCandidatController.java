@@ -171,7 +171,7 @@ public class AjouterCandidatController {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
-        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images"));
+        fileChooser.setInitialDirectory(new File("C:/Users/yassi/OneDrive/Documents/JavaFx/src/main/resources/Election/images"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG image", "*.png"),
                 new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),

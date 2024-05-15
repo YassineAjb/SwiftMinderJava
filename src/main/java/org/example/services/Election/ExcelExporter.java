@@ -1,15 +1,13 @@
 package org.example.services.Election;
 
 import javafx.scene.control.ListView;
-import org.example.models.Election.Candidat;
+import javafx.stage.FileChooser;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import java.io.FileOutputStream;
+import org.example.models.Election.Candidat;
 
 import java.io.File;
-
-import javafx.stage.FileChooser;
+import java.io.FileOutputStream;
 
 
 public class ExcelExporter {

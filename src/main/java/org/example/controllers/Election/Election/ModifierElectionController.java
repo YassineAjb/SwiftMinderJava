@@ -19,10 +19,11 @@ import org.example.utils.Session;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -154,8 +155,14 @@ public void initializeValues(String nomE, Date dateE, String posteE, String peri
     //imgEpath.setText(imgEpath);
 
    // String imagePath = election.getImgEpath();
-    InputStream stream = getClass().getResourceAsStream(imgEpath);
+   /* InputStream stream = getClass().getResourceAsStream(imgEpath);
+    System.out.println("ajbouuuuuuuuuuuuuuni "+imgEpath);
     Image image = new Image(stream);
+    imageModif.setImage(image);*/
+
+    String imagePath ="C:/xampp/htdocs/Images/Elections/" +imgEpath ;
+    File file = new File(imagePath);
+    Image image = new Image(file.toURI().toString());
     imageModif.setImage(image);
 
     idElection=id;
@@ -196,12 +203,12 @@ public void initializeValues(String nomE, Date dateE, String posteE, String peri
     }
 
     @FXML
-    void chosirImageEModif(ActionEvent event) {
+    private void chosirImageEModif(ActionEvent event) {
         Stage stage = (Stage) imageModif.getScene().getWindow();
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
-        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images"));
+        fileChooser.setInitialDirectory(new File("C:/Users/yassi/OneDrive/Documents/JavaFx/src/main/resources/Election/images"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG image", "*.png"),
                 new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),
@@ -210,27 +217,42 @@ public void initializeValues(String nomE, Date dateE, String posteE, String peri
         File selectedFile = fileChooser.showOpenDialog(stage);
 
         if (selectedFile != null) {
-            selectedImagePathModif = selectedFile.getAbsolutePath();
-            Path selectedPath = Paths.get(selectedImagePathModif);
-            Path resourcePath = Paths.get("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images");
-            Path relativePath = resourcePath.relativize(selectedPath);
-            String elpaaaathModif = "/Election/images/"+relativePath;
+            try {
+                // Define the target directory and create it if it doesn't exist
+                Path targetDir = Paths.get("C:/xampp/htdocs/Images/Elections");
+                if (!Files.exists(targetDir)) {
+                    Files.createDirectories(targetDir);
+                }
 
-            System.out.println("*****************************");
-            System.out.println(selectedImagePathModif);
-            System.out.println(selectedPath);
-            System.out.println(resourcePath);
-            System.out.println(relativePath);
-            System.out.println(elpaaaathModif);
-            System.out.println("******************************");
+                // Define the target file path
+                Path targetFilePath = targetDir.resolve(selectedFile.getName());
 
-            election.setImgEpath(elpaaaathModif);
+                // Move the file to the target directory
+                Files.move(selectedFile.toPath(), targetFilePath, StandardCopyOption.REPLACE_EXISTING);
 
-            // Update the ImageView with the selected image
-            Image image = new Image("file:" + selectedImagePathModif);
-            imageModif.setImage(image);            //System.out.println(image);
+                // Get the relative path for the election object
+                Path relativePath = targetDir.relativize(targetFilePath);
+                String elpaaaath = relativePath.toString().replace("\\", "/");
 
+                // Update the election object with the new image path
+                election.setImgEpath(elpaaaath);
 
+                // Update the ImageView with the moved image
+                Image image = new Image(targetFilePath.toUri().toString());
+                imageModif.setImage(image);
+
+                System.out.println("*****************************");
+                System.out.println("Selected file path: " + selectedFile.getAbsolutePath());
+                System.out.println("Target file path: " + targetFilePath);
+                System.out.println("Relative path: " + relativePath);
+                System.out.println("Image path in election object: " + elpaaaath);
+                System.out.println("******************************");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("No file selected.");
         }
     }
 
@@ -308,7 +330,7 @@ public void initializeValues(String nomE, Date dateE, String posteE, String peri
             showAlert("Invalid Periode Format. Please enter a valid period in the format 'Xans', where X is a number.");
         } else {
             try {
-                System.out.println("111111111111111");
+                System.out.println("1111111*****1****1111111");
                 System.out.println(elpaaaathModif);
                 ps.modifier(nomTF.getText(), date, posteTF.getText(),
                         periodeTF.getText(), elpaaaathModif, idElection);

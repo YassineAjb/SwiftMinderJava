@@ -18,10 +18,11 @@ import org.example.utils.Session;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -110,9 +111,14 @@ public class ModifierCandidatController {
         //imgEpath.setText(imgEpath);
         idELection = id ;
         // String imagePath = election.getImgEpath();
-        InputStream stream = getClass().getResourceAsStream(imgCpath);
-        Image image = new Image(stream);
+        //InputStream stream = getClass().getResourceAsStream(imgCpath);
+        //Image image = new Image(stream);
+        //imageCModif.setImage(image);
+        String imagePath ="C:/xampp/htdocs/Images/Candidats/" +imgCpath ;
+        File file = new File(imagePath);
+        Image image = new Image(file.toURI().toString());
         imageCModif.setImage(image);
+        System.out.println("helllllllooo "+imagePath);
 
         idCandidat = idC;
     }
@@ -124,7 +130,7 @@ public class ModifierCandidatController {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
-        fileChooser.setInitialDirectory(new File("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images"));
+        fileChooser.setInitialDirectory(new File("C:/Users/yassi/OneDrive/Documents/JavaFx/src/main/resources/Election/images"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG image", "*.png"),
                 new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),
@@ -133,27 +139,42 @@ public class ModifierCandidatController {
         File selectedFile = fileChooser.showOpenDialog(stage);
 
         if (selectedFile != null) {
-            selectedImagePathModifC = selectedFile.getAbsolutePath();
-            Path selectedPath = Paths.get(selectedImagePathModifC);
-            Path resourcePath = Paths.get("C:/Users/tun/Desktop/projet/JAVAFX/Oussamaassal2.0/src/main/resources/Election/images");
-            Path relativePath = resourcePath.relativize(selectedPath);
-            String elpaaaathModifC = "/images/" + relativePath;
+            try {
+                // Define the target directory and create it if it doesn't exist
+                Path targetDir = Paths.get("C:/xampp/htdocs/Images/Candidats");
+                if (!Files.exists(targetDir)) {
+                    Files.createDirectories(targetDir);
+                }
 
-            System.out.println("*****************************");
-            System.out.println(selectedImagePathModifC);
-            System.out.println(selectedPath);
-            System.out.println(resourcePath);
-            System.out.println(relativePath);
-            System.out.println(elpaaaathModifC);
-            System.out.println("******************************");
+                // Define the target file path
+                Path targetFilePath = targetDir.resolve(selectedFile.getName());
 
-            candidat.setImgCpath(elpaaaathModifC);
+                // Move the file to the target directory
+                Files.move(selectedFile.toPath(), targetFilePath, StandardCopyOption.REPLACE_EXISTING);
 
-            // Update the ImageView with the selected image
-            Image image = new Image("file:" + selectedImagePathModifC);
-            imageCModif.setImage(image);            //System.out.println(image);
+                // Get the relative path for the candidate object
+                Path relativePath = targetDir.relativize(targetFilePath);
+                String elpaaaathC =relativePath.toString().replace("\\", "/");
 
+                // Update the candidate object with the new image path
+                candidat.setImgCpath(elpaaaathC);
 
+                // Update the ImageView with the moved image
+                Image image = new Image(targetFilePath.toUri().toString());
+                imageCModif.setImage(image);
+
+                System.out.println("*****************************");
+                System.out.println("Selected file path: " + selectedFile.getAbsolutePath());
+                System.out.println("Target file path: " + targetFilePath);
+                System.out.println("Relative path: " + relativePath);
+                System.out.println("Image path in candidate object: " + elpaaaathC);
+                System.out.println("******************************");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("No file selected.");
         }
     }
 
