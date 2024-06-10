@@ -16,16 +16,16 @@ public class SMSSender {
     public void  send_SMS (String username,String lastName) {
 
 
-        String ACCOUNT_SID = "AC5bc580ea6b3b2aee76723258977dfd6a";
-        String AUTH_TOKEN = "5e3aadeeec1f3b00fb445bdfd68526ed";
+        String ACCOUNT_SID = "***";
+        String AUTH_TOKEN = "*****";
 
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         String message = "Bonjour " +username +lastName+"Election ajoutée avec succès";
 
 
         Message twilioMessage = Message.creator(
-                new com.twilio.type.PhoneNumber("+21623990938"),
-                new com.twilio.type.PhoneNumber("+17744257047"),message).create();
+                new com.twilio.type.PhoneNumber("+\"*****\";"),
+                new com.twilio.type.PhoneNumber("+\"*****\";"),message).create();
 
         System.out.println("SMS envoyé : " + twilioMessage.getSid());
     }
