@@ -7,8 +7,8 @@ import com.twilio.type.PhoneNumber;
 public class SMSsender {
 
         // Twilio account credentials
-        public static final String ACCOUNT_SID = "ACb8c9ae38a6e3b1ad0661e7fe67bf0092";
-        public static final String AUTH_TOKEN = "5447eee704635b0685587c3daef114ab";
+        public static final String ACCOUNT_SID = "******";
+        public static final String AUTH_TOKEN = "****";
 
         public static void Send(String toPhoneNumber, String messageBody){
             // Initialize Twilio client with your account credentials
@@ -17,7 +17,7 @@ public class SMSsender {
             // Create a Twilio Message
             Message message = Message.creator(
                             new PhoneNumber(toPhoneNumber), // To phone number
-                            new PhoneNumber("+18627019330"), // From Twilio phone number
+                            new PhoneNumber("+***"), // From Twilio phone number
                             messageBody) // SMS body
                     .create();
 
